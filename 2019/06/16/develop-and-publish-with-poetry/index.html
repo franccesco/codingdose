@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="flattr:id" content="jj5n1v">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="I’ve been trying to publish my packages to PyPi so people can access my software more easily. But I have to be honest, Python’s publishing system is not the best out there and it has to improve quite">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Develop and Publish Your Python Packages With Poetry">
+<meta property="og:url" content="http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/index.html">
+<meta property="og:site_name" content="CodingDose()">
+<meta property="og:description" content="I’ve been trying to publish my packages to PyPi so people can access my software more easily. But I have to be honest, Python’s publishing system is not the best out there and it has to improve quite">
+<meta property="og:image" content="http://codingdose.info/assets/images/poetry/pytest_red_1.png">
+<meta property="og:image" content="http://codingdose.info/assets/images/poetry/pytest_green_1.png">
+<meta property="article:published_time" content="2019-06-16T17:20:44.000Z">
+<meta property="article:modified_time" content="2020-10-07T04:23:15.859Z">
+<meta property="article:author" content="Franccesco Orozco">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://codingdose.info/assets/images/poetry/pytest_red_1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Develop and Publish Your Python Packages With Poetry</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1481923801760340",
+        enable_page_level_ads: true
+      });
+    </script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CodingDose()" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/06/26/Save-your-dictionaries-lists-tuples-and-other-objects-with-Pickle/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/06/15/how-to-use-a-progress-bar-in-python/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/&text=Develop and Publish Your Python Packages With Poetry" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/&title=Develop and Publish Your Python Packages With Poetry" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/&is_video=false&description=Develop and Publish Your Python Packages With Poetry" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Develop and Publish Your Python Packages With Poetry&body=Check out this article: http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/&title=Develop and Publish Your Python Packages With Poetry" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/&title=Develop and Publish Your Python Packages With Poetry" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/&title=Develop and Publish Your Python Packages With Poetry" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/&title=Develop and Publish Your Python Packages With Poetry" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/&name=Develop and Publish Your Python Packages With Poetry&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Installing-Poetry"><span class="toc-number">1.</span> <span class="toc-text">Installing Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating-our-package-and-adding-dependencies"><span class="toc-number">2.</span> <span class="toc-text">Creating our package and adding dependencies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Developing-our-module-and-our-CLI"><span class="toc-number">3.</span> <span class="toc-text">Developing our module and our CLI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Publishing-our-tool"><span class="toc-number">4.</span> <span class="toc-text">Publishing our tool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installing-our-tool"><span class="toc-number">5.</span> <span class="toc-text">Installing our tool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">6.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Further-reading"><span class="toc-number">7.</span> <span class="toc-text">Further reading</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Develop and Publish Your Python Packages With Poetry
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Franccesco Orozco</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-06-16T17:20:44.000Z" itemprop="datePublished">2019-06-16</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/python/" rel="tag">python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>I’ve been trying to publish my packages to <a href="http://pypi.org/" target="_blank" rel="noopener">PyPi</a> so people can access my software more easily. But I have to be honest, Python’s publishing system is not the best out there and it has to improve quite a lot.</p>
+<p>Wandering around I stumbled upon <a href="https://poetry.eustace.io/" target="_blank" rel="noopener"><strong>Poetry</strong></a>, which is a python packager and dependency manager created by <em>Sébastien Eustace</em> for people that doesn’t want to lose their head managing a Python project.</p>
+<p>Let’s say that we want to make a small command line application that checks the status of a web page, let’s call it <strong>checkstat</strong>. So how can we <strong>create</strong>, <strong>develop</strong>, and <strong>publish</strong> our software with Poetry?</p>
+<hr>
+<blockquote>
+<p>Courtesy Notice:<br>This post has been revisited and updated on <em>2019-06-16 11:20:44</em>.</p>
+</blockquote>
+<hr>
+<h2 id="Installing-Poetry"><a href="#Installing-Poetry" class="headerlink" title="Installing Poetry"></a>Installing Poetry</h2><p>You can install poetry effortlessly with a python script provided by the creator.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python</span><br></pre></td></tr></table></figure>
+
+<p>Now we are able to see Poetry’s options.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ poetry</span><br><span class="line">Poetry 0.12.14</span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line">  <span class="built_in">command</span> [options] [arguments]</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  -h, --<span class="built_in">help</span>                      Display this <span class="built_in">help</span> message</span><br><span class="line">  -q, --quiet                     Do not output any message</span><br><span class="line">  -V, --version                   Display this application version</span><br><span class="line">      --ansi                      Force ANSI output</span><br><span class="line">      --no-ansi                   Disable ANSI output</span><br><span class="line">  -n, --no-interaction            Do not ask any interactive question</span><br><span class="line">  -v|vv|vvv, --verbose[=VERBOSE]  Increase the verbosity of messages: 1 <span class="keyword">for</span> normal output, 2 <span class="keyword">for</span> more verbose output and 3 <span class="keyword">for</span> debug</span><br><span class="line"></span><br><span class="line">Available commands:</span><br><span class="line">  about          Short information about Poetry.</span><br><span class="line">  add            Add a new dependency to pyproject.toml.</span><br><span class="line">  build          Builds a package, as a tarball and a wheel by default.</span><br><span class="line">  check          Checks the validity of the pyproject.toml file.</span><br><span class="line">  config         Sets/Gets config options.</span><br><span class="line"></span><br><span class="line">--- SNIP ---</span><br><span class="line"></span><br><span class="line"> debug</span><br><span class="line">  debug:info     Shows debug information.</span><br><span class="line">  debug:resolve  Debugs dependency resolution.</span><br><span class="line"> self</span><br><span class="line">  self:update    Updates poetry to the latest version.</span><br></pre></td></tr></table></figure>
+
+<h2 id="Creating-our-package-and-adding-dependencies"><a href="#Creating-our-package-and-adding-dependencies" class="headerlink" title="Creating our package and adding dependencies"></a>Creating our package and adding dependencies</h2><p>First we have to create our package with the <code>new</code> sub-command, this will create a file structure in which we can work on.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Create a new package</span></span><br><span class="line">$ poetry new checkstat</span><br><span class="line">Created package checkstat <span class="keyword">in</span> checkstat</span><br><span class="line"></span><br><span class="line"><span class="comment"># Enter the new package directory</span></span><br><span class="line">$ <span class="built_in">cd</span> checkstat</span><br><span class="line"></span><br><span class="line"><span class="comment"># Prints the directory tree</span></span><br><span class="line">$ tree</span><br><span class="line">.</span><br><span class="line">├── checkstat</span><br><span class="line">│   └── __init__.py</span><br><span class="line">├── pyproject.toml</span><br><span class="line">├── README.rst</span><br><span class="line">└── tests</span><br><span class="line">    ├── __init__.py</span><br><span class="line">    └── test_checkstat.py</span><br><span class="line"></span><br><span class="line">2 directories, 5 files</span><br></pre></td></tr></table></figure>
+
+<p>As we can see, we only need the sub-command <code>new</code> followed by a name argument to create a directory structure for our little project. This will also generate a configuration file for our project called <a href="https://poetry.eustace.io/docs/pyproject/" target="_blank" rel="noopener"><strong><code>pyproject.toml</code></strong></a> which is a much better way to define your project configuration than <strong><code>setup.py</code></strong>, specially for people who are new to python, you can <a href="https://www.python.org/dev/peps/pep-0518/" target="_blank" rel="noopener">read more about this implementation here</a>.</p>
+<figure class="highlight toml"><table><tr><td class="code"><pre><span class="line"><span class="section">[tool.poetry]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">"checkstat"</span></span><br><span class="line"><span class="attr">version</span> = <span class="string">"0.1.0"</span></span><br><span class="line"><span class="attr">description</span> = <span class="string">""</span></span><br><span class="line"><span class="attr">authors</span> = [<span class="string">"Franccesco Orozco &lt;franccesco@codingdose.info&gt;"</span>]</span><br><span class="line"></span><br><span class="line"><span class="section">[tool.poetry.dependencies]</span></span><br><span class="line"><span class="attr">python</span> = <span class="string">"^3.7"</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.poetry.dev-dependencies]</span></span><br><span class="line"><span class="attr">pytest</span> = <span class="string">"^3.0"</span></span><br></pre></td></tr></table></figure>
+
+<p>As you can see, it describes basic information about the project, dependencies and development dependencies. We will get back to the TOML file shortly.</p>
+<p>What we want to do next is to create the virtual environment of our project and install the development dependencies with the command <code>install</code>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Create package isolated virtualenv and install dependencies</span></span><br><span class="line">$ poetry install</span><br></pre></td></tr></table></figure>
+
+<p><video src="/assets/images/poetry/poetry-install.webm" preload autoplay loop controls></video></p>
+<p>Now that we have installed the requirements and initiated the virtual environment let’s add more libraries to our project, shall we? Let’s add <a href="http://click.pocoo.org/" target="_blank" rel="noopener">Click</a>, <a href="https://github.com/tartley/colorama" target="_blank" rel="noopener">Colorama</a> and <a href="http://docs.python-requests.org/en/master/" target="_blank" rel="noopener">Requests</a>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Add dependencies</span></span><br><span class="line">$ poetry add click colorama requests</span><br></pre></td></tr></table></figure>
+
+<p><video src="/assets/images/poetry/poetry-add.webm" preload autoplay loop controls></video></p>
+<p>There you go, now if we check the our <strong><code>pyproject.toml</code></strong> again, you can see that it has the new package dependencies.</p>
+<figure class="highlight toml"><table><tr><td class="code"><pre><span class="line"><span class="section">[tool.poetry.dependencies]</span></span><br><span class="line"><span class="attr">python</span> = <span class="string">"^3.7"</span></span><br><span class="line"><span class="attr">click</span> = <span class="string">"^7.0"</span></span><br><span class="line"><span class="attr">colorama</span> = <span class="string">"^0.4.1"</span></span><br><span class="line"><span class="attr">requests</span> = <span class="string">"^2.22"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Developing-our-module-and-our-CLI"><a href="#Developing-our-module-and-our-CLI" class="headerlink" title="Developing our module and our CLI"></a>Developing our module and our CLI</h2><p>We’re ready to develop our <em>checkstat</em> module and command line interface. Let’s start by making a test with <a href="https://docs.pytest.org/en/latest/" target="_blank" rel="noopener">Pytest</a>. For this, let’s open <code>test_checkstat.py</code> inside our <em>tests</em> folder.</p>
+<p>Here we’re going to set an <em>expectation</em>. Our module <strong><code>checkstat</code></strong> should have a method called <strong><code>is_up</code></strong> which should return <strong>True</strong> if the webpage returns the code <a href="https://httpstatuses.com/200" target="_blank" rel="noopener"><em>200</em></a> for any other HTTP code it should return <strong>False</strong>. Here’s the test:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> checkstat</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_checkstat</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""Test if checkstat module returns True on 200 code."""</span></span><br><span class="line">    <span class="keyword">assert</span> checkstat.is_up(<span class="string">'https://codingdose.info'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Now if we run this test with pytest it will show red because we haven’t build any modules yet, but for the sake of demonstration, let’s show the red test first.</p>
+<hr>
+<blockquote>
+<p>Remember:<br>In order to use the packages <em>inside</em> your virtual environment, you have to activate it first. With Poetry, you can either use <code>poetry run _command_</code> or simply activate it once using <code>poetry shell</code>.</p>
+</blockquote>
+<hr>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Running our test</span></span><br><span class="line">$ poetry run pytest</span><br></pre></td></tr></table></figure>
+<p><img src="/assets/images/poetry/pytest_red_1.png" alt="Pytest red test"></p>
+<p>Now, let’s build the module shall we? Let’s make a file called <strong><code>checkstat.py</code></strong> under the <em>checkstat</em> directory and define a <strong><code>is_up</code></strong> method that returns <strong><code>True</code></strong> if the webpage is reachable and returns a <em>200</em> HTTP code.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># checkstat/checkstat.py</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_up</span><span class="params">(webpage)</span>:</span></span><br><span class="line">    <span class="string">"""Return True if 200 code was received, else return False."""</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        req = requests.get(webpage)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># On connection error, return False.</span></span><br><span class="line">    <span class="keyword">except</span> requests.exceptions.ConnectionError:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="comment"># Connection was successful, return True on 200 code, else return False.</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> req.status_code == <span class="number">200</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>Now let’s add our module to our initialization package so it gets correctly loaded.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># checkstat/__init__.py</span></span><br><span class="line"><span class="keyword">from</span> .checkstat <span class="keyword">import</span> is_up</span><br></pre></td></tr></table></figure>
+
+<p>Let’s re-run our test to see if its passing now.</p>
+<p><img src="/assets/images/poetry/pytest_green_1.png" alt="Pytest green test"></p>
+<p>Perfect, now that our test is passing we can go ahead and make our command line interface. Let’s create a file called <strong><code>cli.py</code></strong> inside our <em>checkstat</em> folder.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># checkstat/cli.py</span></span><br><span class="line"><span class="keyword">import</span> click</span><br><span class="line"><span class="keyword">import</span> checkstat</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@click.command()</span></span><br><span class="line"><span class="meta">@click.argument('host')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(host)</span>:</span></span><br><span class="line">    <span class="string">"""CLI for checkstat package."""</span></span><br><span class="line">    print(<span class="string">'Status: '</span>, end=<span class="string">''</span>)</span><br><span class="line">    <span class="keyword">if</span> checkstat.is_up(host):</span><br><span class="line">        click.secho(<span class="string">'Up and running.'</span>, bold=<span class="literal">True</span>, fg=<span class="string">'green'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        click.secho(<span class="string">'Server is down.'</span>, bold=<span class="literal">True</span>, fg=<span class="string">'red'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>Perfect, now we have completed our CLI, but we haven’t tried it yet, how do we make it run on the terminal without calling <code>python x_file.py</code>? Easy-peasy, let’s edit the <strong><code>pyproject.toml</code></strong> and add a <strong><em>script</em></strong> section.</p>
+<figure class="highlight toml"><table><tr><td class="code"><pre><span class="line"><span class="section">[tool.poetry]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">"checkstat"</span></span><br><span class="line"><span class="attr">version</span> = <span class="string">"0.1.0"</span></span><br><span class="line"><span class="attr">description</span> = <span class="string">""</span></span><br><span class="line"><span class="attr">authors</span> = [<span class="string">"Franccesco Orozco &lt;franccesco.orozco@codingdose.info&gt;"</span>]</span><br><span class="line"></span><br><span class="line">--- SNIP ---</span><br><span class="line"></span><br><span class="line"><span class="comment"># New section</span></span><br><span class="line"><span class="section">[tool.poetry.scripts]</span></span><br><span class="line"><span class="attr">checkstat</span> = <span class="string">"checkstat.cli:main"</span></span><br></pre></td></tr></table></figure>
+
+<p>What does <code>checkstat.cli:main</code> means? It means: <em>Hey python, whenever I type <strong>checkstat</strong> I want you to execute the function <strong>main()</strong> inside of the module <strong>cli.py</strong> in the package <strong>checkstat</strong></em>.</p>
+<p>Now that we have updated our configuration file, our CLI gets automatically loaded into our virtual environment and we can execute it directly with Poetry. Let’s test it ourselves with a working webpage and another one that returns a 500 HTTP status.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ poetry run checkstat https://codingdose.info</span><br><span class="line">Status: Up and running.</span><br><span class="line"></span><br><span class="line">$ poetry run checkstat https://httpstat.us/500</span><br><span class="line">Status: Server is down.</span><br></pre></td></tr></table></figure>
+
+<p><video src="/assets/images/poetry/checkstat-updown.webm" preload autoplay loop controls></video></p>
+<p>Awesome! Our little command line application is ready to be published.</p>
+<h2 id="Publishing-our-tool"><a href="#Publishing-our-tool" class="headerlink" title="Publishing our tool"></a>Publishing our tool</h2><p>Publishing our tool to the PyPi is really effortless, let’s try to do it right now. First of all we have to build our package.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ poetry build</span><br><span class="line">Building checkstat (0.1.0)</span><br><span class="line"> - Building sdist</span><br><span class="line"> - Built checkstat-0.1.0.tar.gz</span><br><span class="line"></span><br><span class="line"> - Building wheel</span><br><span class="line"> - Built checkstat-0.1.0-py2.py3-none-any.whl</span><br></pre></td></tr></table></figure>
+
+<p>Now we have to upload it to the pypi.org repository.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ poetry publish</span><br><span class="line">Username: franccesco</span><br><span class="line">Password: **********</span><br><span class="line"></span><br><span class="line"> - Uploading checkstat-0.1.0-py2.py3-none-any.whl 100%</span><br><span class="line"> - Uploading checkstat-0.1.0.tar.gz 100%</span><br></pre></td></tr></table></figure>
+
+<p>And that’s it! Our tools is now available to <em>anyone</em> using <code>pip</code> to install packages. Let’s check it out: <a href="https://pypi.org/project/checkstat/" target="_blank" rel="noopener">https://pypi.org/project/checkstat/</a></p>
+<h2 id="Installing-our-tool"><a href="#Installing-our-tool" class="headerlink" title="Installing our tool"></a>Installing our tool</h2><p>Let’s go and install our tool to see if it’s available now.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pip install checkstat</span><br></pre></td></tr></table></figure>
+
+<p>And let’s execute it.</p>
+<p><video src="/assets/images/poetry/install-checkstat.webm" preload autoplay loop controls></video></p>
+<p>It works!</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>I hope you like the entry, today we have learn how to <strong>create, develop and ship</strong> a very basic CLI. Poetry is an incredibly easy to use and flexible tool to create your packages and distribute them. Of course, there’s a lot more than I have shown here, remember to check out Poetry’s documentation.</p>
+<h2 id="Further-reading"><a href="#Further-reading" class="headerlink" title="Further reading"></a>Further reading</h2><ul>
+<li><a href="https://poetry.eustace.io/" target="_blank" rel="noopener">Poetry</a></li>
+<li><a href="https://poetry.eustace.io/docs/" target="_blank" rel="noopener">Poetry’s Documentation</a></li>
+<li><a href="https://docs.python-guide.org/scenarios/cli/" target="_blank" rel="noopener">Command Line Applications</a></li>
+<li><a href="https://python-guide-cn.readthedocs.io/en/latest/writing/structure.html" target="_blank" rel="noopener">Structuring Your Project</a></li>
+<li><a href="http://docs.python-requests.org/en/master/" target="_blank" rel="noopener">Requests</a></li>
+<li><a href="http://click.pocoo.org/" target="_blank" rel="noopener">Click</a></li>
+<li><a href="https://docs.pytest.org/en/latest/" target="_blank" rel="noopener">Pytest</a></li>
+</ul>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Installing-Poetry"><span class="toc-number">1.</span> <span class="toc-text">Installing Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating-our-package-and-adding-dependencies"><span class="toc-number">2.</span> <span class="toc-text">Creating our package and adding dependencies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Developing-our-module-and-our-CLI"><span class="toc-number">3.</span> <span class="toc-text">Developing our module and our CLI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Publishing-our-tool"><span class="toc-number">4.</span> <span class="toc-text">Publishing our tool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installing-our-tool"><span class="toc-number">5.</span> <span class="toc-text">Installing our tool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">6.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Further-reading"><span class="toc-number">7.</span> <span class="toc-text">Further reading</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/&text=Develop and Publish Your Python Packages With Poetry" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/&title=Develop and Publish Your Python Packages With Poetry" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/&is_video=false&description=Develop and Publish Your Python Packages With Poetry" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Develop and Publish Your Python Packages With Poetry&body=Check out this article: http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/&title=Develop and Publish Your Python Packages With Poetry" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/&title=Develop and Publish Your Python Packages With Poetry" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/&title=Develop and Publish Your Python Packages With Poetry" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/&title=Develop and Publish Your Python Packages With Poetry" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/&name=Develop and Publish Your Python Packages With Poetry&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Franccesco Orozco
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-114371181-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'codingdose';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+

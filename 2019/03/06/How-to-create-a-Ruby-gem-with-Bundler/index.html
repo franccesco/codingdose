@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="flattr:id" content="jj5n1v">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="I’ve been writing and focusing on Python lately and I’ve been wanting to make more content about Ruby. Ruby was my very first language and the one that got me into this programming world. For this ent">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Create a Ruby Gem With Bundler">
+<meta property="og:url" content="http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/index.html">
+<meta property="og:site_name" content="CodingDose()">
+<meta property="og:description" content="I’ve been writing and focusing on Python lately and I’ve been wanting to make more content about Ruby. Ruby was my very first language and the one that got me into this programming world. For this ent">
+<meta property="og:image" content="http://codingdose.info/assets/images/bundler/test_fail.png">
+<meta property="og:image" content="http://codingdose.info/assets/images/bundler/test_pass.png">
+<meta property="article:published_time" content="2019-03-06T18:44:08.000Z">
+<meta property="article:modified_time" content="2020-10-07T04:23:15.857Z">
+<meta property="article:author" content="Franccesco Orozco">
+<meta property="article:tag" content="ruby">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://codingdose.info/assets/images/bundler/test_fail.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>How to Create a Ruby Gem With Bundler</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1481923801760340",
+        enable_page_level_ads: true
+      });
+    </script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CodingDose()" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/08/06/Generate-and-sign-your-commits-with-GPG-in-Github/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/&text=How to Create a Ruby Gem With Bundler" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/&title=How to Create a Ruby Gem With Bundler" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/&is_video=false&description=How to Create a Ruby Gem With Bundler" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to Create a Ruby Gem With Bundler&body=Check out this article: http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/&title=How to Create a Ruby Gem With Bundler" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/&title=How to Create a Ruby Gem With Bundler" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/&title=How to Create a Ruby Gem With Bundler" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/&title=How to Create a Ruby Gem With Bundler" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/&name=How to Create a Ruby Gem With Bundler&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What’s-a-ruby-gem"><span class="toc-number">1.</span> <span class="toc-text">What’s a ruby gem?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-install-a-gem"><span class="toc-number">2.</span> <span class="toc-text">How to install a gem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dependency-issues"><span class="toc-number">3.</span> <span class="toc-text">Dependency issues</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bundler-comes-to-the-rescue"><span class="toc-number">4.</span> <span class="toc-text">Bundler comes to the rescue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Require-gems-in-your-Gemfile"><span class="toc-number">5.</span> <span class="toc-text">Require gems in your Gemfile</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Creating-our-project"><span class="toc-number"></span> <span class="toc-text">Creating our project</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Project-description"><span class="toc-number">1.</span> <span class="toc-text">Project description</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating-a-gem-with-bundler"><span class="toc-number">2.</span> <span class="toc-text">Creating a gem with bundler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Friendlier-reports-with-minitest-reports"><span class="toc-number">3.</span> <span class="toc-text">Friendlier reports with minitest-reports</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HaveIBeenPwned-API"><span class="toc-number">4.</span> <span class="toc-text">HaveIBeenPwned API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Generating-a-secure-passphrase"><span class="toc-number">5.</span> <span class="toc-text">Generating a secure passphrase</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Checking-passphrases-with-HIBP-API"><span class="toc-number">6.</span> <span class="toc-text">Checking passphrases with HIBP API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Asserting-secure-passwords"><span class="toc-number">7.</span> <span class="toc-text">Asserting secure passwords</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Refactoring-our-tests"><span class="toc-number">8.</span> <span class="toc-text">Refactoring our tests</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Command-Line-Interface-CLI-and-publishing-our-gem-in-RubyGems"><span class="toc-number"></span> <span class="toc-text">Command Line Interface (CLI) and publishing our gem in RubyGems</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating-our-CLI-with-Thor"><span class="toc-number">1.</span> <span class="toc-text">Creating our CLI with Thor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Managing-versions-with-gem-release"><span class="toc-number">2.</span> <span class="toc-text">Managing versions with gem-release</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Publishing-our-gem"><span class="toc-number">3.</span> <span class="toc-text">Publishing our gem</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number"></span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#EOF"><span class="toc-number">1.</span> <span class="toc-text">EOF</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        How to Create a Ruby Gem With Bundler
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Franccesco Orozco</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-03-06T18:44:08.000Z" itemprop="datePublished">2019-03-06</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/ruby/" rel="tag">ruby</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>I’ve been writing and focusing on Python lately and I’ve been wanting to make more content about Ruby. Ruby was my very first language and the one that got me into this programming world.</p>
+<p>For this entry I’m going to write how to create, test and publish our gem to <a href="https://rubygems.org/" target="_blank" rel="noopener">RubyGems.org</a> to make it available for everyone, and in future entries we’re going to see <strong>how to setup a CI/CD</strong> for automatic testing and deployment, <strong>Behavior Driven Testing</strong> with Cucumber/Aruba and <strong>Code Coverage</strong> with SimpleCov.</p>
+<p>Let’s start with the basics. You can skip the basics <a href="#Creating-a-gem-with-bundler">clicking here</a></p>
+<h2 id="What’s-a-ruby-gem"><a href="#What’s-a-ruby-gem" class="headerlink" title="What’s a ruby gem?"></a>What’s a ruby gem?</h2><p>A ruby gem is a piece of code that you can integrate to your software (made in ruby) to help you achieve some tasks more easily. Think of it as a <em>library</em>, because that’s exactly what it is!</p>
+<p>An example of this would be requiring a gem that can make <em>http</em> requests for us. One gem (read <em>library</em>) that can perform this would be <a href="https://github.com/jnunemaker/httparty" target="_blank" rel="noopener">httparty</a>.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="meta">irb(main):001:0&gt;</span> require <span class="string">'httparty'</span></span><br><span class="line">=&gt; true</span><br><span class="line"><span class="meta">irb(main):002:0&gt;</span> response = HTTParty.get(<span class="string">'https://google.com'</span>)</span><br><span class="line"><span class="meta">irb(main):003:0&gt;</span> response.header</span><br><span class="line">=&gt; #&lt;Net::HTTPOK 200 OK readbody=true&gt;</span><br></pre></td></tr></table></figure>
+<p>Another good example is the gem <a href="https://github.com/janlelis/clipboard" target="_blank" rel="noopener">Clipboard</a> that allow us to copy, paste and clear the clipboard on Linux, MacOS and Windows.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="meta">irb(main):001:0&gt;</span> require <span class="string">'clipboard'</span></span><br><span class="line">=&gt; true</span><br><span class="line"><span class="meta">irb(main):002:0&gt;</span> Clipboard.copy(<span class="string">'Hello world!'</span>)</span><br><span class="line">=&gt; <span class="string">"Hello world!"</span></span><br><span class="line"><span class="meta">irb(main):003:0&gt;</span> Clipboard.paste</span><br><span class="line">=&gt; <span class="string">"Hello world!"</span></span><br><span class="line"><span class="meta">irb(main):004:0&gt;</span> Clipboard.clear</span><br><span class="line">=&gt; <span class="string">""</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="How-to-install-a-gem"><a href="#How-to-install-a-gem" class="headerlink" title="How to install a gem"></a>How to install a gem</h2><p>Installing a gem is pretty straight forward, we can do this with the <code>gem</code> command line application provided by RubyGems, you shouldn’t worry about installing it as it comes bundled with Ruby since version 1.9:</p>
+<pre><code>$ gem install _gem_name_here_</code></pre>
+<p>To install the Clipboard gem, then we can install it like this.</p>
+<pre><code>$ gem install clipboard</code></pre>
+<p>The end users that are going to use our gem will also install our gem (or library) like this.</p>
+<h2 id="Dependency-issues"><a href="#Dependency-issues" class="headerlink" title="Dependency issues"></a>Dependency issues</h2><p>There’s only one issue with this implementation, and that is when you have two pieces of code that requires different versions of (let’s say) Clipboard. For example, <strong>SoftwareA</strong> requires the Clipboard gem version <em>0.5.8</em>, and <strong>SoftwareB</strong> requires the version <em>1.1.2</em> of the same gem and it brings breaking changes as it is not backwards compatible with the previous versions of the gem.</p>
+<p><strong>SoftwareA</strong> was installed first, so you have the Clipboard version <em>0.5.8</em> but as soon as you install the <strong>SoftwareB</strong> using the gem command line, it proceeds to install Clipboard’s newest version, which would be <em>1.1.2</em>.</p>
+<p>As this new version brings breaking changes and it’s not backwards compatible with previous versions, due to refactoring, renamed functions/method/classes, etc. It becomes pretty obvious that <strong>SoftwareA</strong> won’t work.</p>
+<p>You reinstall the previous version of Clipboard <em>0.5.8</em> and it works now! But guess what, <strong>SoftwareB</strong> just broke. Welcome to the <a href="https://en.wikipedia.org/wiki/Dependency_hell" target="_blank" rel="noopener">Dependency Hell</a>.</p>
+<h2 id="Bundler-comes-to-the-rescue"><a href="#Bundler-comes-to-the-rescue" class="headerlink" title="Bundler comes to the rescue"></a>Bundler comes to the rescue</h2><p>To resolve this issue, we need a sort of isolated environment where we can develop or deploy our software without meddling with the version numbers of our dependencies in our other projects ourselves.</p>
+<p>Bundler was designed with this idea in mind, where you can build your own library or app without affecting the version numbers in your multiple projects. If you’re familiar with virtualenv, venv, pipenv or poetry in Python, then you’ll get the hang of it in no time.</p>
+<p>To install bundler we follow the same procedure when installing any other gem.</p>
+<pre><code>gem install bundler</code></pre>
+<p>After that, we’re able to use bundler with any application to install its requirements, for this we can go to the project folder and create a gemfile (or gemspec sometimes) and create a <code>Gemfile</code>.</p>
+<h2 id="Require-gems-in-your-Gemfile"><a href="#Require-gems-in-your-Gemfile" class="headerlink" title="Require gems in your Gemfile"></a>Require gems in your Gemfile</h2><p>This <code>Gemfile</code> will contain the other libraries that we’re going to use to make our gem work. For this example we’re going to create a folder to hold a new project and then we’re creating a <code>Gemfile</code> to hold our dependencies.</p>
+<pre><code>$ mkdir mygem
+$ cd mygem
+$ touch Gemfile</code></pre>
+<p>Now we have a Gemfile in our directory <code>mygem</code>, let’s fill it with a gem that we’re going to require to build our command line interface, this gem is <a href="http://whatisthor.com/" target="_blank" rel="noopener">Thor</a>.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Gemfile</span></span><br><span class="line">source <span class="string">"https://rubygems.org"</span></span><br><span class="line">gem <span class="string">'thor'</span>, <span class="string">'~&gt; 0.20'</span></span><br></pre></td></tr></table></figure>
+
+<p>What’s happening here? Well, the first line is going to tell Bundler that we’re going to require our gems from the server <a href="https://rubygems.org/" target="_blank" rel="noopener">rubygems.org</a>. The second line is telling Bundler to install the gem Thor.</p>
+<p>But what’s that <code>~&gt;</code> doing there? It’s basically a way of saying <em>“I want the highest version of thor between the range of &gt;= 0.20 and &lt; 1.0</em>. This translates to the highest version of thor available since <em>0.20</em> but <strong>less</strong> than <em>1.0</em>.</p>
+<p>This is called the <a href="https://robots.thoughtbot.com/rubys-pessimistic-operator" target="_blank" rel="noopener">Ruby’s Pessimistic Operator</a>, the <a href="https://guides.rubygems.org/patterns/#pessimistic-version-constraint" target="_blank" rel="noopener">twiddle-wakka</a> or the <a href="https://github.com/rubygems/rubygems/pull/123" target="_blank" rel="noopener"><em>spermy operator</em></a> if you prefer it that way.</p>
+<p>Now that we have defined our requirements we can fetch the lastest gem versions available for us using the <code>update</code> command in Bundler.</p>
+<pre><code>$ bundle update
+Fetching gem metadata from https://rubygems.org/.
+Resolving dependencies...
+Using bundler 1.16.4
+Fetching thor 0.20.0
+Installing thor 0.20.0
+Bundle updated!</code></pre>
+<p>Now, that we have fetch the latest versions (within our version constrain define in the Gemfile, of course) we can proceed to install them using the <code>install</code> command.</p>
+<pre><code>$ bundle install
+Using bundler 1.16.4
+Using thor 0.20.0
+Bundle complete! 1 Gemfile dependency, 2 gems now installed.
+Use `bundle info [gemname]` to see where a bundled gem is installed</code></pre>
+<p>This will generate a <code>Gemfile.lock</code> file that will pin our gem versions.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">GEM</span><br><span class="line">  <span class="symbol">remote:</span> <span class="symbol">https:</span>/<span class="regexp">/rubygems.org/</span></span><br><span class="line">  <span class="symbol">specs:</span></span><br><span class="line">    thor (<span class="number">0</span>.<span class="number">20.0</span>)</span><br><span class="line"></span><br><span class="line">PLATFORMS</span><br><span class="line">  ruby</span><br><span class="line"></span><br><span class="line">DEPENDENCIES</span><br><span class="line">  thor (~&gt; <span class="number">0</span>.<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">BUNDLED WITH</span><br><span class="line">   <span class="number">1.16</span>.<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<p>You can see here that there’s specifications about the version numbers of our dependencies, platforms, the remote server where we’re going to retrieve our gems and the bundler version.</p>
+<p>Now we’re able to use the <code>thor</code> gem in our library. To our surprise, this gem comes also with a <a href="https://en.wikipedia.org/wiki/Command-line_interface" target="_blank" rel="noopener">command line interface</a> (CLI) that we can use.</p>
+<p>To execute it, we have to do it under the environment that bundler has prepared for us. We can execute it using the <code>exec</code> command in bundler.</p>
+<pre><code>$ bundle exec thor
+Commands:
+  thor help [COMMAND]  # Describe available commands or one specific command
+  thor install NAME    # Install an optionally named Thor file into your system commands
+  thor installed       # List the installed Thor modules and commands
+  thor list [SEARCH]   # List the available thor commands (--substring means .*SEARCH)
+  thor uninstall NAME  # Uninstall a named Thor module
+  thor update NAME     # Update a Thor file from its original location
+  thor version         # Show Thor version</code></pre>
+<p>Awesome! Now we know how to define requirements and versions constrains within our application’s project, we can go and create a directory structure for our gem. But beware, developing gems is a <em>bit different</em> than developing applications with Ruby.</p>
+<h1 id="Creating-our-project"><a href="#Creating-our-project" class="headerlink" title="Creating our project"></a>Creating our project</h1><h2 id="Project-description"><a href="#Project-description" class="headerlink" title="Project description"></a>Project description</h2><p>What we’re going to create is a gem with a command line interface called DiceMyPass (or <strong>DMP</strong>, from now on). This gem will provide you with a secure passphrase extracted from EFF’s long wordlist with an optional length. For example:</p>
+<pre><code>$ dmp gen
+- Passphrase: slashed uncharted evoke placard outweigh revision</code></pre>
+<p>Additionally, we’re going to add an option to our <code>gen</code> (read generate) command that will check if our newly generated passphrase was found on a dataset on <a href="https://haveibeenpwned.com/" target="_blank" rel="noopener">HIBP</a> to check if its vulnerable. For example:</p>
+<pre><code>$ dmp gen --hibp
+- Passphrase: rockstar brunt stunt remindful astronaut bats
+- Password was not found in a dataset.</code></pre>
+<p>And lastly, we’re going to add a option to copy the new passphrase to the clipboard with the flag <code>--clipboard</code>.</p>
+<h2 id="Creating-a-gem-with-bundler"><a href="#Creating-a-gem-with-bundler" class="headerlink" title="Creating a gem with bundler"></a>Creating a gem with bundler</h2><p>Now we’re going to get our hands dirty, you might think that we will have to create a directory structure and a Gemfile for our Ruby gem DMP, fortunately bundler got things covered for us and is able to scaffold one for us.</p>
+<p>Allow bundler to create a scaffold of your project using the <code>gem</code> command in bundler. It’s going to ask you a couple of questions, they’re all important but when it asks you about testing then you should write <strong>minitest</strong>, which is a gem that will help us to test the functionality of our gem.</p>
+<pre><code>$ bundler gem dmp
+Creating gem &#39;dmp&#39;...
+MIT License enabled in config
+Code of conduct enabled in config
+      create  dmp/Gemfile
+      create  dmp/lib/dmp.rb
+      create  dmp/lib/dmp/version.rb
+      create  dmp/dmp.gemspec
+      create  dmp/Rakefile
+      create  dmp/README.md
+      create  dmp/bin/console
+      create  dmp/bin/setup
+      create  dmp/.gitignore
+      create  dmp/.travis.yml
+      create  dmp/test/test_helper.rb
+      create  dmp/test/dmp_test.rb
+      create  dmp/LICENSE.txt
+      create  dmp/CODE_OF_CONDUCT.md
+Initializing git repo in /home/franccesco/workspace/dmp
+Gem &#39;dmp&#39; was successfully created.</code></pre>
+<p>This will generate a directory structure and there’s a couple of files that requires your attention.</p>
+<table>
+<thead>
+<tr>
+<th align="left">File</th>
+<th align="right">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Gemfile</td>
+<td align="right">Gemfile holding our <strong>application dependencies</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>dmp.gemspec</strong></td>
+<td align="right">Gemspec holding our <strong>gem dependencies</strong></td>
+</tr>
+<tr>
+<td align="left">Rakefile</td>
+<td align="right"><strong>Rake commands</strong> to handle our build cycle</td>
+</tr>
+<tr>
+<td align="left">CODE_OF_CONDUCT.md</td>
+<td align="right">Code of Conduct to let people know <strong>how to contribute</strong></td>
+</tr>
+<tr>
+<td align="left">LICENSE.txt</td>
+<td align="right"><strong>License your project</strong> under the MIT license</td>
+</tr>
+<tr>
+<td align="left"><strong>.gitignore</strong></td>
+<td align="right">List of <strong>files excluded</strong> from version control (git)</td>
+</tr>
+<tr>
+<td align="left"><strong>lib/dmp.rb</strong></td>
+<td align="right">The file where we’re going to develop our gem</td>
+</tr>
+<tr>
+<td align="left">lib/dmp/version.rb</td>
+<td align="right">Here we’re going to <strong>bump the version number of our gem</strong></td>
+</tr>
+</tbody></table>
+<p>Obviously, there are others that are also important, but we’re going to see them in other posts.</p>
+<p>Now, we have to define the dependencies of our project, but hold on, we’re not using the <strong>Gemfile</strong> to define our dependencies in our gem, we’re using the <code>.gemspec</code> here.</p>
+<p>This is because there’s a difference between developing a gem and developing an application. I’m not going through the details about the differences, you can find that in <a href="https://yehudakatz.com/2010/12/16/clarifying-the-roles-of-the-gemspec-and-gemfile/" target="_blank" rel="noopener">this excellent article made by Yehuda Katz</a>.</p>
+<p>To make it easier for you, just remember:</p>
+<ul>
+<li>When developing an app: Use the <strong>Gemfile.</strong></li>
+<li>When developing a gem: Use the <strong>gemspec</strong>.</li>
+</ul>
+<p>Let’s open up our gemspec and fill it with the necessary information, remember to replace the <code>TODO</code>‘s with relevant information.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">lib = File.expand_path(<span class="string">"../lib"</span>, __FILE_<span class="number">_</span>)</span><br><span class="line">$LOAD_PATH.unshift(lib) <span class="keyword">unless</span> $LOAD_PATH.<span class="keyword">include</span>?(lib)</span><br><span class="line"><span class="keyword">require</span> <span class="string">"dmp/version"</span></span><br><span class="line"></span><br><span class="line">Gem::Specification.new <span class="keyword">do</span> <span class="params">|spec|</span></span><br><span class="line">  spec.name          = <span class="string">"dmp"</span></span><br><span class="line">  spec.version       = Dmp::VERSION</span><br><span class="line">  spec.authors       = [<span class="string">"Franccesco Orozco"</span>]</span><br><span class="line">  spec.email         = [<span class="string">"franccesco@codingdose.info"</span>]</span><br><span class="line"></span><br><span class="line">  spec.summary       = <span class="string">%q&#123;Generate a secure passphrase.&#125;</span></span><br><span class="line">  spec.description   = <span class="string">%q&#123;Generates a passphrase using EFF's long wordlist.&#125;</span></span><br><span class="line">  spec.homepage      = <span class="string">"https://github.com/franccesco/dmp"</span></span><br><span class="line">  spec.license       = <span class="string">"MIT"</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Specify which files should be added to the gem when it is released.</span></span><br><span class="line">  <span class="comment"># The `git ls-files -z` loads the files in the RubyGem that have been added into git.</span></span><br><span class="line">  spec.files         = Dir.chdir(File.expand_path(<span class="string">'..'</span>, __FILE_<span class="number">_</span>)) <span class="keyword">do</span></span><br><span class="line">    <span class="string">`git ls-files -z`</span>.split(<span class="string">"\x0"</span>).reject &#123; <span class="params">|f|</span> f.match(<span class="regexp">%r&#123;^(test|spec|features)/&#125;</span>) &#125;</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  spec.bindir        = <span class="string">"exe"</span></span><br><span class="line">  spec.executables   = spec.files.grep(<span class="regexp">%r&#123;^exe/&#125;</span>) &#123; <span class="params">|f|</span> File.basename(f) &#125;</span><br><span class="line">  spec.require_paths = [<span class="string">"lib"</span>]</span><br><span class="line"></span><br><span class="line">  <span class="comment"># add dependencies</span></span><br><span class="line">  spec.add_dependency <span class="string">'thor'</span>, <span class="string">'~&gt; 0'</span></span><br><span class="line">  spec.add_dependency <span class="string">'colorize'</span>, <span class="string">'~&gt; 0.8'</span></span><br><span class="line">  spec.add_dependency <span class="string">'clipboard'</span>, <span class="string">'~&gt; 1.1'</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># add dependencies specially for development needs</span></span><br><span class="line">  spec.add_development_dependency <span class="string">"bundler"</span>, <span class="string">"~&gt; 1.16"</span></span><br><span class="line">  spec.add_development_dependency <span class="string">"rake"</span>, <span class="string">"~&gt; 10.0"</span></span><br><span class="line">  spec.add_development_dependency <span class="string">"irb"</span>, <span class="string">"~&gt; 1.0.0"</span></span><br><span class="line">  spec.add_development_dependency <span class="string">"minitest"</span>, <span class="string">"~&gt; 5.0"</span></span><br><span class="line">  spec.add_development_dependency <span class="string">"minitest-reporters"</span>, <span class="string">"~&gt; 1.3"</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>As you can see, we have define our dependencies. <strong>Thor</strong> to handle our command line interface, <strong>Colorize</strong> to print colored strings to the command line, and <strong>Clipboard</strong> to copy the output to our clipboard automatically.</p>
+<p>For our development dependencies we have added <strong>minitest-reporters</strong> which displays a nice report of our tests right in the command line.</p>
+<p>As you can see, they all have version constrains to avoid that our gem breaks when the dependencies are updated with major versions and incompatible changes. Let’s install our dependencies.</p>
+<pre><code>$ bundle update
+Fetching gem metadata from https://rubygems.org/........
+Resolving dependencies...
+Using rake 10.5.0
+Using ansi 1.5.0
+Using builder 3.2.3
+Using bundler 1.16.4
+Using clipboard 1.1.2
+Using colorize 0.8.1
+Using thor 0.20.0
+Using dmp 0.1.0 from source at `.`
+Using minitest 5.11.3
+Using ruby-progressbar 1.10.0
+Using minitest-reporters 1.3.4
+Bundle updated!
+
+$ bundle install
+Using rake 10.5.0
+Using ansi 1.5.0
+Using builder 3.2.3
+Using bundler 1.16.4
+Using clipboard 1.1.2
+Using colorize 0.8.1
+Using thor 0.20.0
+Using dmp 0.1.0 from source at `.`
+Using minitest 5.11.3
+Using ruby-progressbar 1.10.0
+Using minitest-reporters 1.3.4
+Bundle complete! 5 Gemfile dependencies, 11 gems now installed.
+Use `bundle info [gemname]` to see where a bundled gem is installed.</code></pre>
+<p>There you go, we have now installed our dependencies, and if you look closely, we have also installed our gem in development mode.</p>
+<pre><code>Using dmp 0.1.0 from source at `.`</code></pre>
+<p>After we have updated and installed our dependencies, it is important that we exclude the newly generated <code>Gemfile.lock</code> from version control, as we’re developing a gem, not an application, and we’re not trying to replicate our environment in another one.</p>
+<pre><code>$ echo Gemfile.lock &gt;&gt; .gitignore</code></pre>
+<p>Now that we have excluded the lock file, let’s make a simple test before making our first commit.</p>
+<p>Open up <strong>test/dmp_test.rb</strong> and let’s fill it with the following content.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">"test_helper"</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'dmp'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DmpTest</span> &lt; Minitest::Test</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">test_that_it_has_a_version_number</span></span></span><br><span class="line">    refute_nil <span class="symbol">:</span><span class="symbol">:Dmp</span><span class="symbol">:</span><span class="symbol">:VERSION</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">test_say_hi</span></span></span><br><span class="line">    assert_equal Dmp.say_hi(<span class="string">'Franccesco'</span>), <span class="string">'Hello, Franccesco!'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>Now, we can see that we have 2 tests here. The first one test if our module has a <code>VERSION</code> number and if it <em>doesn’t</em> have this constant in our module then it should complain. We can check this out in the dmp module.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Dmp</span></span></span><br><span class="line">  VERSION = <span class="string">"0.1.0"</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>Now for the other one, we have written a test that checks that the result of our module function <code>say_hi(&#39;Franccesco&#39;)</code> returns <code>Hello, Franccesco!</code>. As we haven’t written any modules yet, it will fail. Let’s respect the <em>red, green, refactor</em> cycle and let’s make it fail.</p>
+<p>For this, let’s run <code>rake test</code> to begin our minitests.</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ bundle <span class="built_in">exec</span> rake <span class="built_in">test</span></span><br><span class="line">  1) Error:</span><br><span class="line">DmpTest<span class="comment">#test_say_hi:</span></span><br><span class="line">NoMethodError: undefined method `say_hi<span class="string">' for Dmp:Module</span></span><br><span class="line"><span class="string">    /home/franccesco/dmp/test/dmp_test.rb:10:in `test_say_hi'</span></span><br><span class="line"></span><br><span class="line">2 runs, 1 assertions, 0 failures, 1 errors, 0 skips</span><br></pre></td></tr></table></figure>
+
+<p>Minitest complains that it cannot find the method <code>say_hi</code>, this is because we haven’t created our module yet. Let’s create it right now on <strong>lib/dmp.rb</strong> to make it pass.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment"># lib/dmp.rb</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">"dmp/version"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Dmp</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">say_hi</span><span class="params">(name)</span></span></span><br><span class="line">    <span class="string">"Hello, <span class="subst">#&#123;name&#125;</span>!"</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>There you go! We have written a simple module that takes a name as a parameter and returns a salute with your name of choice. Let’s run the test again.</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ bundle <span class="built_in">exec</span> rake <span class="built_in">test</span></span><br><span class="line"><span class="comment"># Running:</span></span><br><span class="line"></span><br><span class="line">..</span><br><span class="line"></span><br><span class="line">Finished <span class="keyword">in</span> 0.000661s, 3027.9266 runs/s, 3027.9266 assertions/s.</span><br><span class="line"></span><br><span class="line">2 runs, 2 assertions, 0 failures, 0 errors, 0 skips</span><br></pre></td></tr></table></figure>
+
+<p>All good now! Our module returns no failures now, meaning that our module successfully returns a salute with our name. Now, our tests are fine, but we can make our minitest report more friendly!</p>
+<h2 id="Friendlier-reports-with-minitest-reports"><a href="#Friendlier-reports-with-minitest-reports" class="headerlink" title="Friendlier reports with minitest-reports"></a>Friendlier reports with minitest-reports</h2><p>Our <em>red-green-refactor</em> cycle is not showing neither red or green yet, so let’s add that to our environment. We can modify the behavior and presentation of our test opening the test helper found in <strong>test/test_helper.rb</strong>.</p>
+<p>Just before, we added a development dependency in our <code>gemspec</code>, a gem called <a href="https://github.com/kern/minitest-reporters" target="_blank" rel="noopener">minitest-reporters</a> which modifies the presentation in our reports, open <strong>test/test_helper.rb</strong> and spin up the minitest-reporter gem.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">$LOAD_PATH.unshift File.expand_path(<span class="string">"../../lib"</span>, __FILE_<span class="number">_</span>)</span><br><span class="line"><span class="keyword">require</span> <span class="string">"dmp"</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">"minitest/autorun"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># add default progress bar to reports</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'minitest/reporters'</span></span><br><span class="line"></span><br><span class="line">Minitest::Reporters.use!</span><br></pre></td></tr></table></figure>
+
+<p>This will use the default progress bar reporter when we run our test. To try it out, let’s open up <strong>lib/dmp.rb</strong> and modify our code to make it fail.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">"dmp/version"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Dmp</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">say_hi</span><span class="params">(name)</span></span></span><br><span class="line">    <span class="string">"Hello, Palmer!"</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>We now that our test is expecting to return another name, the one that we provide, but it will return <strong>Palmer</strong> instead, this way our test should represent a failed test with a red progress bar.</p>
+<p><img src="/assets/images/bundler/test_fail.png" alt="red test"></p>
+<p>There we go! this step is not entirely necessary for the development of our projects but it’s surely a nice addition as it adds visual aid and also makes testing a lot more enjoyable for sure. Let’s make the test pass, shall we?</p>
+<p>Let’s fix our method <code>say_hi</code> so it returns our name instead of <strong>Palmer</strong>, you know how to do that ;). After that, our test should be green now.</p>
+<p><img src="/assets/images/bundler/test_pass.png" alt="green test"></p>
+<p>Great! Now that we have setup our minitests correctly, we can move on and make a more robust test, one that actually will test the functionality of our project, but before we write those tests, it would be useful to explain how the HaveIBeenPwned API works.</p>
+<h2 id="HaveIBeenPwned-API"><a href="#HaveIBeenPwned-API" class="headerlink" title="HaveIBeenPwned API"></a>HaveIBeenPwned API</h2><p>In order to write the test, we have to learn how the HaveIBeenPwned API works first, and it is actually not difficult at all. As we only need to access a certain function of the API, we don’t need to learn every aspect of the API itself, only the one to check if our password is vulnerable.</p>
+<p>You can find the documentation of this aspect of the API <a href="https://haveibeenpwned.com/API/v2#PwnedPasswords" target="_blank" rel="noopener">clicking here</a>, but let me give you an overview of how it works and what kind of requests we can submit.</p>
+<p>Let’s say that our password is <em>‘passw0rd’</em>, but if we want to check this password through the API, we cannot submit the password in clear text as this would be an insecure practice. Instead we have to submit a <em>partial</em> hash encoded in SHA-1 which are the first 5 characters of the hash and then submit it to:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;api.pwnedpasswords.com&#x2F;range&#x2F;&#123;first 5 hash chars&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This will return a list of suffixes of all the hashes that matches the first 5 characters of our hash, followed by a count of how many that hash was found in vulnerable datasets. Here are the simplified steps:</p>
+<ol>
+<li>We encode our ‘passw0rd’ string to SHA-1 which would be <code>7C6A61C68EF8B9B6B061B28C348BC1ED7921CB53</code></li>
+<li>We submit the first 5 characters of our hash <code>7C6A6</code> to the API, which would be <a href="https://api.pwnedpasswords.com/range/7C6A6" target="_blank" rel="noopener">https://api.pwnedpasswords.com/range/7C6A6</a></li>
+<li>It will return a long list of hashes, we only need to find the suffix of our hash, which would be <code>1C68EF8B9B6B061B28C348BC1ED7921CB53</code></li>
+</ol>
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># If the password is secure, we wouldn&#39;t be able</span><br><span class="line"># to find the suffix of the hash here.</span><br><span class="line"># This is clearly not the case.</span><br><span class="line"></span><br><span class="line">-- SNIP --</span><br><span class="line">1BC4E6F00BECB5998201277DC62F89E08B0:7</span><br><span class="line">1BC5AF255E721AF1C4AA83FD0F8EE8A79B8:3</span><br><span class="line">1C68EF8B9B6B061B28C348BC1ED7921CB53:216221 &lt;&lt;- Here</span><br><span class="line">1CEA692E5FA3ED23B956839B4B8BFCCC5F5:4</span><br><span class="line">1DC4A0F7305069370733B17882579EBDF4E:3</span><br><span class="line">-- SNIP --</span><br></pre></td></tr></table></figure>
+
+<p>This method is called the <a href="https://en.wikipedia.org/wiki/K-anonymity" target="_blank" rel="noopener">K-Anonymity model</a>, and as we can see, the password <em>‘passw0rd’</em> was found in 216221 datasets. This makes it obvious that this is not a secure password at all, so let’s implement this functionality into our code, shall we?</p>
+<h2 id="Generating-a-secure-passphrase"><a href="#Generating-a-secure-passphrase" class="headerlink" title="Generating a secure passphrase"></a>Generating a secure passphrase</h2><p>As already stated in our project description, we’re going to create a single gem that generates a passphrase and also it checks if the generated password is a <em>known vulnerable password</em>.</p>
+<p>Right now, we’re going to delete our previous <code>say_hi</code> test and we’re going to create three more empty tests that we will fill-out eventually. Here’s how the tests should look:</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">"test_helper"</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'dmp'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DmpTest</span> &lt; Minitest::Test</span></span><br><span class="line">  <span class="comment"># def setup; end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">test_that_it_has_a_version_number</span></span></span><br><span class="line">    refute_nil <span class="symbol">:</span><span class="symbol">:Dmp</span><span class="symbol">:</span><span class="symbol">:VERSION</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># def test_gen_passphrase; end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># def test_vulnerable_pass; end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># def test_secure_pass; end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>Now, we can see that we have three more tests and a setup method:</p>
+<ol>
+<li>First, we’re going to test if our module (dmp) generates a secure passphrase.</li>
+<li>We’re going to check if our generated passphrase is secure enough.</li>
+<li>Lastly, We’re going to test if our program alerts us if a password is vulnerable.</li>
+</ol>
+<p>Let’s fill-out <code>test_gen_passphrase</code> first. As we know, when we create tests we create <em>expectations</em>. Following this idea, we’re going to define how our program should create our secure passphrase. Our “secure” passphrase for these tests will be <em>“coding dose dot com”</em> in the meantime.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_gen_passphrase</span></span></span><br><span class="line">  <span class="comment"># gen_passphrase should generate and respect prassphrase length</span></span><br><span class="line">  passphrase3 = Dmp.gen_passphrase(<span class="number">3</span>)</span><br><span class="line">  passphrase_default = Dmp.gen_passphrase</span><br><span class="line">  passphrase12 = Dmp.gen_passphrase(<span class="number">12</span>)</span><br><span class="line">  assert_equal passphrase3.length, <span class="number">3</span>, <span class="string">'Passphrase length != 3'</span></span><br><span class="line">  assert_equal passphrase_default.length, <span class="number">7</span>, <span class="string">'Passphrase length != 7'</span></span><br><span class="line">  assert_equal passphrase12.length, <span class="number">12</span>, <span class="string">'Passphrase length != 12'</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>There’s a lot going on here, huh? No worries though, this is more of the same. Let’s analyze the first variable declaration and the first assertion:</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Here we generate a passphrase which will consist on three words</span></span><br><span class="line">passphrase3 = Dmp.gen_passphrase(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">-- SNIP --</span><br><span class="line"></span><br><span class="line"><span class="comment"># Now we check if the passphrase previously created has a length of three words.</span></span><br><span class="line">assert_equal passphrase3.length, <span class="number">3</span>, <span class="string">'Passphrase length != 3'</span></span><br></pre></td></tr></table></figure>
+
+<p>If the passphrase is not equal to <em>three</em> words then it complains with the message <em>‘Passphrase length != 3’</em>. Let’s run this test.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">NoMethodError:</span> undefined method <span class="string">`gen_passphrase' for Dmp:Module</span></span><br></pre></td></tr></table></figure>
+
+<p>Our first expectation did not run correctly, but of course, this is what we’re looking for. So as there’s no method named <em>gen_passphrase</em> in our module yet, we’ll have to create it first. But before we do that, we’ll have to look for a dictionary that gives us a list of words which we’ll use to generate a passphrase consisting in 3, 4, 8, 100 words if we need to. You can find the list here: <a href="https://raw.githubusercontent.com/franccesco/dmp/master/lib/dmp/assets/eff_long_wordlist.txt" target="_blank" rel="noopener">eff_long_wordlist.txt</a></p>
+<p>Now, let’s save this file in <code>lib/dmp/assets/eff_long_wordlist.txt</code>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ mkdir lib/dmp/assets</span><br><span class="line">$ wget -O lib/dmp/assets/eff_long_wordlist.txt https://raw.githubusercontent.com/franccesco/dmp/master/lib/dmp/assets/eff_long_wordlist.txt</span><br></pre></td></tr></table></figure>
+
+<p>Now that we have saved the dictionary in the assets folder, we can open up our module and code the core functionality of our gem, which is to generate a secure passphrase using this dictionary.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Dmp</span></span></span><br><span class="line">  <span class="comment"># First we load the absolute path of our eff_long_wordlist.txt.</span></span><br><span class="line">  @eff_wordlist = File.dirname(__FILE_<span class="number">_</span>) + <span class="string">'/dmp/assets/eff_long_wordlist.txt'</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># The default passphrase length should be 7</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">gen_passphrase</span><span class="params">(pass_length = <span class="number">7</span>)</span></span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Read filename eff_long_wordlist and save it as a list.</span></span><br><span class="line">    wordlist = File.readlines(@eff_wordlist)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Strip the '\n' out of every line.</span></span><br><span class="line">    wordlist.map(&amp;<span class="symbol">:strip!</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Shuffle the list and return a list up to pass_length words</span></span><br><span class="line">    <span class="comment"># which in the case would be equal to 7 words.</span></span><br><span class="line">    wordlist.shuffle[<span class="number">0</span>...pass_length]</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>This should be pretty easy:</p>
+<ol>
+<li>We create an instance variable holding the absolute path of our wordlist</li>
+<li>Define our method <em>gen_passphrase</em> with a default length of 7</li>
+<li>Load our wordlist as a list and hold it in the <em>wordlist</em> variable.</li>
+<li>Strip every ‘\n’ in each word</li>
+<li>Lastly, we scramble the words and return a list of words with our desired length.</li>
+</ol>
+<p>Let’s test it out:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Started with run options --seed 2535</span><br><span class="line"></span><br><span class="line">  2/2: [==========================================================================] 100% Time: 00:00:00, Time: 00:00:00</span><br><span class="line"></span><br><span class="line">Finished <span class="keyword">in</span> 0.01531s</span><br><span class="line">2 tests, 4 assertions, 0 failures, 0 errors, 0 skips</span><br></pre></td></tr></table></figure>
+
+<p>Awesome! Our code works! But how can we actually check how it works? We’ll we can definitely import it into IRB and try it out with <code>bundle exec irb</code>:</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="meta">irb(main):001:0&gt;</span> require <span class="string">'dmp'</span></span><br><span class="line">=&gt; true</span><br><span class="line"><span class="meta">irb(main):002:0&gt;</span> Dmp.gen_passphrase</span><br><span class="line">=&gt; [<span class="string">"autopilot"</span>, <span class="string">"ivy"</span>, <span class="string">"overlay"</span>, <span class="string">"down"</span>, <span class="string">"visitor"</span>, <span class="string">"prenatal"</span>, <span class="string">"flirt"</span>]</span><br><span class="line"><span class="meta">irb(main):003:0&gt;</span> Dmp.gen_passphrase(<span class="number">3</span>)</span><br><span class="line">=&gt; [<span class="string">"roulette"</span>, <span class="string">"earthen"</span>, <span class="string">"garbage"</span>]</span><br><span class="line"><span class="meta">irb(main):004:0&gt;</span> Dmp.gen_passphrase(<span class="number">6</span>)</span><br><span class="line">=&gt; [<span class="string">"tartly"</span>, <span class="string">"happier"</span>, <span class="string">"juice"</span>, <span class="string">"itunes"</span>, <span class="string">"job"</span>, <span class="string">"eastward"</span>]</span><br></pre></td></tr></table></figure>
+
+<p>You see? Now we can create a secure passphrase with our method. Let’s move onto the next test.</p>
+<h2 id="Checking-passphrases-with-HIBP-API"><a href="#Checking-passphrases-with-HIBP-API" class="headerlink" title="Checking passphrases with HIBP API"></a>Checking passphrases with HIBP API</h2><p>Let’s write the test of our method to check if a passphrase or password is vulnerable (read <em>found in a dataset</em>).</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_vulnerable_pass</span></span></span><br><span class="line">  <span class="comment"># check_pwned should flag this password</span></span><br><span class="line">  vuln_count = Dmp.check_pwned(<span class="string">'passw0rd'</span>)</span><br><span class="line">  refute_nil vuln_count</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>Let’s analyze the first piece of code.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">vuln_count = Dmp.check_pwned(<span class="string">'passw0rd'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>It gets clearer if we read this code in <em>reverse</em>. We have the password <code>&#39;passw0rd&#39;</code> that we want to check if it’s unsafe using the method <code>check_pwned</code> that belongs to the module <code>Dmp</code> and we want to hold the value or output of this action to the variable <code>vuln_count</code>. This output should tell us in how many datasets was the password found.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">assert_nil vuln_count</span><br></pre></td></tr></table></figure>
+
+<p>As our password is not secure at all, then the value of <em>vuln_count</em> should <strong>not</strong> be <code>nil</code>, this is because we out method <em>check_pwned</em> should find the suffix of our hash in the HaveIBeenPwned (HIBP) datasets. With this in mind, we test the the value of <em>vuln_count</em> should not be <code>nil</code> with <code>refute_nil</code>. Let’s run the test.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">NoMethodError:</span> undefined method <span class="string">`check_pwned' for Dmp:Module</span></span><br></pre></td></tr></table></figure>
+
+<p>As there’s no method named <strong>check_pwned</strong> then our test complains, let’s open up the module <em>dmp.rb</em> and fill-out the code.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">NoMethodError:</span> undefined method <span class="string">`check_pwned' for Dmp:Module</span></span><br></pre></td></tr></table></figure>
+
+<p>No method? no problem, let’s fill it out in our module.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">"dmp/version"</span></span><br><span class="line"><span class="comment"># require SHA-1 digest and http utilities</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'digest/sha1'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'net/http'</span></span><br><span class="line">mod</span><br><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Dmp</span></span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># -- CODE SNIPPED --</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">check_pwned</span><span class="params">(passphrase)</span></span></span><br><span class="line">    <span class="comment"># If the passphrase is an array generated by gen_passphrase we convert</span></span><br><span class="line">    <span class="comment"># the passphrase to an unified string, if it's a string already then</span></span><br><span class="line">    <span class="comment"># no changes are applied to the passphrase variable.</span></span><br><span class="line">    passphrase = passphrase.join(<span class="string">' '</span>) <span class="keyword">if</span> passphrase.is_a?(Array)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># We encode our passphrase to SHA-1, and save or prefix consisting</span></span><br><span class="line">    <span class="comment"># in 5 characters to the variable sha1_excerpt and the suffix to</span></span><br><span class="line">    <span class="comment"># the variable sha1_to_look_for.</span></span><br><span class="line">    sha1_pass = Digest::SHA1.hexdigest(passphrase)</span><br><span class="line">    sha1_excerpt = sha1_pass[<span class="number">0</span>...<span class="number">5</span>]</span><br><span class="line">    sha1_to_look_for = sha1_pass[<span class="number">5</span>..-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># We make the API call with our SHA-1 prefix and store the response to</span></span><br><span class="line">    <span class="comment"># the variable api_request</span></span><br><span class="line">    api_url = URI(<span class="string">"https://api.pwnedpasswords.com/range/<span class="subst">#&#123;sha1_excerpt&#125;</span>"</span>)</span><br><span class="line">    api_request = Net::HTTP.get(api_url)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># The response is text instead of JSON, needs to format the response</span></span><br><span class="line">    <span class="comment"># to a dictionary so the rest of the hash can be located easier.</span></span><br><span class="line">    <span class="comment"># =&gt; String '0018A45C4D1DEF81644B54AB7F969B88D65:21'</span></span><br><span class="line">    <span class="comment"># =&gt; Array ['0018A45C4D1DEF81644B54AB7F969B88D65:21', ...]</span></span><br><span class="line">    <span class="comment"># =&gt; 2D Array [['0018A45C4D1DEF81644B54AB7F969B88D65', '21'], ...]</span></span><br><span class="line">    <span class="comment"># =&gt; Hash &#123;'0018A45C4D1DEF81644B54AB7F969B88D65': 21, ...&#125;</span></span><br><span class="line">    striped_list = api_request.split(<span class="string">"\r\n"</span>)</span><br><span class="line">    pass_list = striped_list.map &#123; <span class="params">|hash|</span> hash.split(<span class="string">':'</span>) &#125;</span><br><span class="line">    hash_list = Hash[*pass_list.flatten!]</span><br><span class="line">    hash_list[sha1_to_look_for.upcase]</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>Now there’s a lot going on here, let’s simplify the steps:</p>
+<ol>
+<li>The passphrase should be a <strong>string</strong>, as in <em>roulette earthen garbage”</em>, but if the password was generated by <code>gen_passphrase</code> then it will return an array, only in that case we convert it to a string.</li>
+<li>We use the digest module to convert our string to SHA-1, we save the 5 characters prefix to <code>sha_excerpt</code> and the suffix to <code>sha1_to_look_for</code>.</li>
+<li>We perform a <strong>GET</strong> request to the API using the prefix of our hash. The response should be a text list as we saw previously.</li>
+<li>We have to format that list in a way that we can <strong>search</strong> for our hash suffix and have the value of how many times the password is found in datasets.</li>
+</ol>
+<p>And this is the slightly tricky part, when we receive the response from the API, it doesn’t provide us with a pretty JSON response which we can work on, it provides us with a bare list like this:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">003E7C1C94342454421573ADECD156C6AE8:2\r\n00A4DB094C56008C81D9DA2C55166F1A5BA:4\r\n00F042A842B821E2F727B0A4A3C0555E4A0:2\r\n01F14311110773C8064336D0D52736141D2:3\r\n01F6581B8152E00CBA4F8261335A78DA26F:1\r\n020290C96F182C924647A747F21681697B9:2\r\n02146D9588F55A6751CE580AA1AC6E16106:2\r\n02C2409C5E2AAC99D2937CAB31EB4677EAD:2\r\n02EFB814079D668ACF7308FAA18583D8CED:2\r\n033211C0B3B8B0EBC0BFDF2000CE0FFA166:1\r\n0378E7D9BC61CE282E9664D404505F66457:1\r\n03D801A3E713009943D0A76217278ABE2DD:3\r\n0412EEBFCB315371F4CDEAEB3AFDBEA43CD:1...</span><br></pre></td></tr></table></figure>
+
+<p>Pretty, right? (Sarcasm intended) now, I’m sure that there are better ways to convert this mess into a dictionary, but for clarity and brevity we will not get into a regex mind-boggling tricks right now. Let’s try this piece of code in IRB. First, let’s remove all the \r\n’s that we can find with <code>striped_list = api_request.split(&quot;\r\n&quot;)</code>.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="meta">irb(main):009:0&gt;</span> striped_list = api_request.split(<span class="string">"\r\n"</span>)</span><br><span class="line">=&gt; [<span class="string">"003E7C1C94342454421573ADECD156C6AE8:2"</span>, <span class="string">"00A4DB094C56008C81D9DA2C55166F1A5BA:4"</span>, <span class="string">"00F042A842B821E2F727B0A4A3C0555E4A0:2"</span>, <span class="string">"01F14311110773C8064336D0D52736141D2:3"</span>, <span class="string">"01F6581B8152E00CBA4F8261335A78DA26F:1"</span>, <span class="string">"020290C96F182C924647A747F21681697B9:2"</span>, <span class="string">"02146D9588F55A6751CE580AA1AC6E16106:2"</span>, <span class="string">"02C2409C5E2AAC99D2937CAB31EB4677EAD:2"</span>, <span class="string">"02EFB814079D668ACF7308FAA18583D8CED:2"</span>, <span class="string">"033211C0B3B8B0EBC0BFDF2000CE0FFA166:1"</span>, <span class="string">"..."</span>]</span><br></pre></td></tr></table></figure>
+
+<p>Good, now let’s map that list and create a 2D Array:</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="meta">irb(main):010:0&gt;</span> pass_list = striped_list.map &#123; <span class="params">|hash|</span> hash.split(<span class="string">':'</span>) &#125;</span><br><span class="line">=&gt; [[<span class="string">"003E7C1C94342454421573ADECD156C6AE8"</span>, <span class="string">"2"</span>], [<span class="string">"00A4DB094C56008C81D9DA2C55166F1A5BA"</span>, <span class="string">"4"</span>], [<span class="string">"00F042A842B821E2F727B0A4A3C0555E4A0"</span>, <span class="string">"2"</span>], [<span class="string">"01F14311110773C8064336D0D52736141D2"</span>, <span class="string">"3"</span>], [<span class="string">"..."</span>],</span><br><span class="line"></span><br><span class="line"><span class="comment"># This individualizes our suffixes:</span></span><br><span class="line"><span class="meta">irb(main):011:0&gt;</span> pass_list[<span class="number">0</span>]</span><br><span class="line">=&gt; [<span class="string">"003E7C1C94342454421573ADECD156C6AE8"</span>, <span class="string">"2"</span>]</span><br><span class="line"><span class="meta">irb(main):013:0&gt;</span> pass_list[<span class="number">15</span>]</span><br><span class="line">=&gt; [<span class="string">"04BC55FD524B3E42D6A732E2EA8076A9178"</span>, <span class="string">"5"</span>]</span><br></pre></td></tr></table></figure>
+
+<p>Perfect… well not quite so, let’s create a dictionary out of the 2D array.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="meta">irb(main):014:0&gt;</span> hash_list = Hash[*pass_list.flatten!]</span><br><span class="line">=&gt; &#123;<span class="string">"003E7C1C94342454421573ADECD156C6AE8"</span>=&gt;<span class="string">"2"</span>, <span class="string">"00A4DB094C56008C81D9DA2C55166F1A5BA"</span>=&gt;<span class="string">"4"</span>, <span class="string">"00F042A842B821E2F727B0A4A3C0555E4A0"</span>=&gt;<span class="string">"2"</span>, <span class="string">"01F14311110773C8064336D0D52736141D2"</span>=&gt;<span class="string">"3"</span>, <span class="string">"01F6581B8152E00CBA4F8261335A78DA26F"</span>=&gt;<span class="string">"1"</span>, <span class="string">"020290C96F182C924647A747F21681697B9"</span>=&gt;<span class="string">"2"</span>, <span class="string">"02146D9588F55A6751CE580AA1AC6E16106"</span>=&gt;<span class="string">"2"</span>, <span class="string">"02C2409C5E2AAC99D2937CAB31EB4677EAD"</span>=&gt;<span class="string">"2"</span>, <span class="string">"02EFB814079D668ACF7308FAA18583D8CED"</span>=&gt;<span class="string">"2"</span>, <span class="string">"033211C0B3B8B0EBC0BFDF2000CE0FFA166"</span>=&gt;<span class="string">"1"</span>, <span class="string">"0378E7D9BC61CE282E9664D404505F66457"</span>=&gt;<span class="string">"1"</span>, <span class="string">"03D801A3E713009943D0A76217278ABE2DD"</span>=&gt;<span class="string">"3"</span>, <span class="string">"0412EEBFCB315371F4CDEAEB3AFDBEA43CD"</span>=&gt;<span class="string">"1"</span>, <span class="string">"0422590C0BC43132207FF55FD78717074A4"</span>=&gt;<span class="string">"2"</span>, <span class="string">"04487E63244F1E2E868870AF5AE42ED8F1D"</span>=&gt;<span class="string">"2"</span>, <span class="string">"04BC55FD524B3E42D6A732E2EA8076A9178"</span>=&gt;<span class="string">"5"</span>, <span class="string">"051394B2B64EF899A10064E2A068924A46C"</span>=&gt;<span class="string">"2"</span>, <span class="string">"05AB0063CC2A0C1B857329D914932DF7C5B"</span>=&gt;<span class="string">"1"</span>, <span class="string">"06AD55DDE7997263212B916CDA2D9439924"</span>=&gt;<span class="string">"4"</span>, <span class="string">"083C47463AAF42031B31DDA54E2F68DC807"</span>=&gt;<span class="string">"1"</span>, <span class="string">"08765B6BDFAF683851AF48258A042D591C1"</span>=&gt;<span class="string">"2"</span>, <span class="string">"099FC9301DB35018687F5BEB5254530020A"</span>=&gt;<span class="string">"2"</span>, <span class="string">"09B30BF127F929D1D9CD946E84C7F7E8FBF"</span>=&gt;<span class="string">"4"</span>, <span class="string">"09D44DA6F15D940BFB19315A0C54CEAECBF"</span>=&gt;<span class="string">"5"</span>, <span class="string">"0A649886EE897919604D2D8F35384ECC90F"</span>=&gt;<span class="string">"3"</span>, <span class="string">"0C720EC0E1BED69EE7DE19C3EA4326E3DFF"</span>=&gt;<span class="string">"7"</span>, <span class="string">"0C9279D46756FDA6911146D2245A013C4F4"</span>=&gt;<span class="string">"3"</span>, <span class="string">"..."</span>,</span><br></pre></td></tr></table></figure>
+<p>Isn’t that better? Now we can search the suffix of our hash within the variable <code>hash_list</code> effortlessly:</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="meta">irb(main):015:0&gt;</span> hash_list[sha1_to_look_for.upcase]</span><br><span class="line">=&gt; <span class="string">"216221"</span></span><br></pre></td></tr></table></figure>
+
+<p>It’s working! And right now that’s what we need to know, either way we can refactor it anytime later. Let’s load our module into IRB and let’s check some passwords.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="meta">irb(main):001:0&gt;</span> require <span class="string">'dmp'</span></span><br><span class="line">=&gt; true</span><br><span class="line"><span class="meta">irb(main):002:0&gt;</span> Dmp.check_pwned(<span class="string">'passw0rd'</span>)</span><br><span class="line">=&gt; <span class="string">"216221"</span></span><br><span class="line"><span class="meta">irb(main):003:0&gt;</span> Dmp.check_pwned(<span class="string">'iloveyou'</span>)</span><br><span class="line">=&gt; <span class="string">"1593388"</span></span><br><span class="line"><span class="meta">irb(main):004:0&gt;</span> Dmp.check_pwned(<span class="string">'coding dose dot com'</span>)</span><br><span class="line">=&gt; nil</span><br></pre></td></tr></table></figure>
+
+<p>As you can see, the password <em>‘passw0rd’</em> was found in <strong>216221</strong> dictionaries (or leaks), <em>iloveyou</em> was found in <strong>1593388</strong> and, fortunately, <em>coding dose dot com</em> was not found in any dataset, which makes it as secure against dictionary attacks at the moment.</p>
+<h2 id="Asserting-secure-passwords"><a href="#Asserting-secure-passwords" class="headerlink" title="Asserting secure passwords"></a>Asserting secure passwords</h2><p>This is the last test unit we’re going to perform here. More precisely we are going to check if a password is secure, we know that <em>coding dose dot com</em> is secure enough so we can test it and our gem should not flag this password as insecure. Let’s fill out the test right now.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_secure_pass</span></span></span><br><span class="line">  <span class="comment"># check_pwned should not flag this passphrase</span></span><br><span class="line">  vuln_count = Dmp.check_pwned(<span class="string">'iloveyou'</span>)</span><br><span class="line">  assert_nil vuln_count</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>What we’re doing here is pretty much the same as with our previous test and the keyword <code>refute_nil</code>, but this time <code>vuln_count</code> should be <code>nil</code> because our secure password should not be found in any dataset on the HIBP API. Right now we want to see the test fail, so we have set the password as <em>‘iloveyou’</em>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bundle <span class="built_in">exec</span> rake <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --- SNIP ---</span></span><br><span class="line"></span><br><span class="line">        Expected <span class="comment"># encoding: ASCII-8BIT</span></span><br><span class="line">        <span class="string">"1593388"</span> to be nil.</span><br><span class="line"></span><br><span class="line"><span class="comment"># --- SNIP ---</span></span><br></pre></td></tr></table></figure>
+
+<p>There we see our test failing, now let’s make it pass changing the password to <em>‘coding dose dot com’</em> and we should see that our test pass without any issue.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bundle <span class="built_in">exec</span> rake <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">Started with run options --seed 24537</span><br><span class="line"></span><br><span class="line">  4/4: [==========================================================================] 100% Time: 00:00:00, Time: 00:00:00</span><br><span class="line"></span><br><span class="line">Finished <span class="keyword">in</span> 0.53177s</span><br><span class="line">4 tests, 6 assertions, 0 failures, 0 errors, 0 skips</span><br></pre></td></tr></table></figure>
+
+<h2 id="Refactoring-our-tests"><a href="#Refactoring-our-tests" class="headerlink" title="Refactoring our tests"></a>Refactoring our tests</h2><p>There’s one issue with our test that can be very easily fixed. Let’s take a closer look at the last test.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DmpTest</span> &lt; Minitest::Test</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># -- CODE SNIPPED --</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">test_secure_pass</span></span></span><br><span class="line">    <span class="comment"># check_pwned should not flag this passphrase</span></span><br><span class="line">    vuln_count = Dmp.check_pwned(<span class="string">'coding dose dot com'</span>)</span><br><span class="line">    assert_nil vuln_count</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>If there’s one issue that bothers me, is that we’re not <em>actually</em> testing the core functionality of our gem. Why are we testing for a hard coded passphrase (<em>‘coding dose dot com’</em>) if our gem CAN generate one for us? We could even change our test like this and it could work perfectly fine!</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DmpTest</span> &lt; Minitest::Test</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># -- CODE SNIPPED --</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">test_secure_pass</span></span></span><br><span class="line">    <span class="comment"># check_pwned should not flag this passphrase</span></span><br><span class="line">    safe_pass = Dmp.gen_passphrase(<span class="number">7</span>)</span><br><span class="line">    vuln_count = Dmp.check_pwned(safe_pass)</span><br><span class="line">    assert_nil vuln_count</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>This is perfectly fine, however, what about if we make more tests and we need to generate more passwords? We would have to generate a new passphrase in every test and this would affect performance and it wouldn’t be <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank" rel="noopener">DRY</a> code.</p>
+<p>In order to avoid repetition and make our lives way easier, we can write a <code>setup</code> method, in which we can create an instance variable that holds our generated secure password, along with an insecure one, in order to reuse it in many tests.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DmpTest</span> &lt; Minitest::Test</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">setup</span></span></span><br><span class="line">    @unsafe_pass = <span class="string">'passw0rd'</span></span><br><span class="line">    @safe_pass = Dmp.gen_passphrase(pass_length = <span class="number">12</span>)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># -- CODE SNIPPED --</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">test_vulnerable_pass</span></span></span><br><span class="line">    <span class="comment"># check_pwned should flag this password</span></span><br><span class="line">    vuln_count = Dmp.check_pwned(@unsafe_pass)</span><br><span class="line">    refute_nil vuln_count</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">test_secure_pass</span></span></span><br><span class="line">    <span class="comment"># check_pwned should not flag this passphrase</span></span><br><span class="line">    vuln_count = Dmp.check_pwned(@safe_pass)</span><br><span class="line">    assert_nil vuln_count</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>Now if we run our tests everything should work correctly and we can reuse this passwords without having to declare them in each test.</p>
+<h1 id="Command-Line-Interface-CLI-and-publishing-our-gem-in-RubyGems"><a href="#Command-Line-Interface-CLI-and-publishing-our-gem-in-RubyGems" class="headerlink" title="Command Line Interface (CLI) and publishing our gem in RubyGems"></a>Command Line Interface (CLI) and publishing our gem in RubyGems</h1><h2 id="Creating-our-CLI-with-Thor"><a href="#Creating-our-CLI-with-Thor" class="headerlink" title="Creating our CLI with Thor"></a>Creating our CLI with Thor</h2><p>Now that we have created the core functions of our gem, we can actually create a nice CLI interface. Luckily, this is made easier with the framework called <a href="http://whatisthor.com/" target="_blank" rel="noopener">Thor</a>.</p>
+<blockquote>
+<p>Thor is a toolkit for building powerful command-line interfaces. It is used in Bundler, Vagrant, Rails and others.</p>
+</blockquote>
+<p>I invite you to go into the website and read a bit about Thor so you understand how the framework works, but don’t worry, it’s actually pretty simple and straight forward. To begin with, we’re going to create the file in which we’re going to construct our CLI.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Create the filename cli.rb under lib/dmp/</span></span><br><span class="line">$ touch lib/dmp/cli.rb</span><br></pre></td></tr></table></figure>
+
+<p>Now that we have created our file, let’s recall our project description:</p>
+<ol>
+<li>We want our gem to generate a passphrase.</li>
+<li>We want our gem to check this passphrase with the HIBP to test if it’s secure.</li>
+<li>And we also want an option to automatically copy this passphrase to the clipboard.</li>
+</ol>
+<p>Ideally, we want to recreate this behavior:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ dmp gen 4 --hibp --clipboard</span><br><span class="line">- Passphrase: cobweb desolate pushy mulled</span><br><span class="line">- Copied to clipboard.</span><br><span class="line">- Password was not found <span class="keyword">in</span> a dataset.</span><br></pre></td></tr></table></figure>
+
+<p>Now, I love colors in my terminal, so we’ll add colors to our output, in fact, I want to have every word in the passphrase with a random color. But let’s not get ahead of ourselves and add a little bit of code to our CLI to get started, open the file.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment"># lib/dmp/cli.rb</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">require</span> <span class="string">'thor'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'dmp'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'colorize'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'clipboard'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Dmp</span></span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">CLI</span> &lt; Thor</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>This is the bare minimum that we need to get our CLI started, however, when we try to execute our gem in a terminal using bundler, it doesn’t detect it. This is because we need to define our executable file in our gem before we proceed.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Create the file exe/dmp</span></span><br><span class="line">$ mkdir exe</span><br><span class="line">$ touch exe/dmp</span><br><span class="line"></span><br><span class="line"><span class="comment"># Make dmp executable</span></span><br><span class="line">$ chmod +x exe/dmp</span><br></pre></td></tr></table></figure>
+
+<p>Please, notice that our <code>dmp</code> file does not have any extension, this is intended. Let’s open this file and fill it with some code.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env ruby</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'dmp/cli'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Dmp::CLI.start</span><br></pre></td></tr></table></figure>
+
+<p>In order for bundler to detect our new executable, we must integrate it into our version control with git.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -am <span class="string">"Add CLI with Thor"</span></span><br></pre></td></tr></table></figure>
+
+<p>After that, let’s update our gems</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># the command 'bundle' automatically updates and install your gems</span></span><br><span class="line">$ bundle</span><br><span class="line">Using rake 10.5.0</span><br><span class="line">Using ansi 1.5.0</span><br><span class="line">Using builder 3.2.3</span><br><span class="line">Using bundler 1.17.2</span><br><span class="line">Using clipboard 1.3.3</span><br><span class="line">Using colorize 0.8.1</span><br><span class="line">Using thor 0.20.3</span><br><span class="line">Using dmp 0.1.0 from <span class="built_in">source</span> at `.`</span><br><span class="line">Using irb 1.0.0</span><br><span class="line">Using minitest 5.11.3</span><br><span class="line">Using ruby-progressbar 1.10.0</span><br><span class="line">Using minitest-reporters 1.3.6</span><br><span class="line">Bundle complete! 6 Gemfile dependencies, 12 gems now installed.</span><br><span class="line">Use `bundle info [gemname]` to see <span class="built_in">where</span> a bundled gem is installed.</span><br></pre></td></tr></table></figure>
+
+<p>And finally we can see that our CLI comes to life.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bundle <span class="built_in">exec</span> dmp</span><br><span class="line">Commands:</span><br><span class="line">  dmp <span class="built_in">help</span> [COMMAND]  <span class="comment"># Describe available commands or one specific command</span></span><br></pre></td></tr></table></figure>
+
+<p>But we’re missing all the functionality that we want to create though, also there’s no description on what our program do, let’s try to fix this by adding a description and also three tasks to our CLI.</p>
+<p>These tasks will be <code>gen_pass</code> which we’ll use to generate passphrases, <code>check_pass</code> that will check if a passphrase or password is found in a HIBP dataset and lastly an <code>about</code> task which will be used to describe information about the program and the author of it, alright? Let’s do it.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">'thor'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'dmp'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'colorize'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'clipboard'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Dmp</span></span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">CLI</span> &lt; Thor</span></span><br><span class="line">    desc <span class="string">'gen [length]'</span>, <span class="string">'Generate a passphrase of the desired length.'</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">gen_pass</span>;</span> <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    desc <span class="string">'check'</span>, <span class="string">'Check if a password/passphrase is vulnerable.'</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">check_pass</span>;</span> <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    desc <span class="string">'about'</span>, <span class="string">'Displays version number and information'</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">about</span>;</span> <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>Now, we have added empty tasks, and that’s O.K. for now, we will fill them one by one, but if we execute our gem we will see that new tasks were added.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bundle <span class="built_in">exec</span> dmp</span><br><span class="line">Commands:</span><br><span class="line">  dmp about           <span class="comment"># Displays version number and information</span></span><br><span class="line">  dmp check           <span class="comment"># Check if a password/passphrase is vulnerable.</span></span><br><span class="line">  dmp gen [length]    <span class="comment"># Generate a passphrase of the desired length.</span></span><br><span class="line">  dmp <span class="built_in">help</span> [COMMAND]  <span class="comment"># Describe available commands or one specific command</span></span><br></pre></td></tr></table></figure>
+
+<p>Let’s code the task <code>gen</code> first. I want to add two options to the <code>gen</code> command, when I generate a passphrase of my desired length, I want to automatically copy the new passphrase to the clipboard, and also I want to check if the passphrase shows up in a HIBP database, which would make it insecure. We can add these optional functionality to our <code>gen</code> command using the keyword <code>method_option</code>.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">'thor'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'dmp'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'colorize'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'clipboard'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Dmp</span></span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">CLI</span> &lt; Thor</span></span><br><span class="line">    desc <span class="string">'gen [length]'</span>, <span class="string">'Generate a passphrase of the desired length.'</span></span><br><span class="line">    method_option <span class="symbol">:clipboard</span>,</span><br><span class="line">                  <span class="symbol">aliases:</span> <span class="string">'-c'</span>,</span><br><span class="line">                  <span class="symbol">type:</span> <span class="symbol">:boolean</span>,</span><br><span class="line">                  <span class="symbol">desc:</span> <span class="string">'Copy passphrase to clipboard.'</span></span><br><span class="line">    method_option <span class="symbol">:hibp</span>,</span><br><span class="line">                  <span class="symbol">aliases:</span> <span class="string">'-H'</span>,</span><br><span class="line">                  <span class="symbol">type:</span> <span class="symbol">:boolean</span>,</span><br><span class="line">                  <span class="symbol">desc:</span> <span class="string">'Check if passphrase is vulnerable in HIBP database.'</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">gen_pass</span><span class="params">(pass_length = <span class="number">7</span>)</span></span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>We can see that we have added the option <code>clipboard</code> which will be activated using the alias <code>-c</code>, this option is <em>boolean</em> which will be treated as a flag and has it’s own description, the same goes to the <code>hibp</code> option. We can see this reflected when we check the help command in our gem.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bundle <span class="built_in">exec</span> dmp <span class="built_in">help</span> gen</span><br><span class="line">Usage:</span><br><span class="line">  dmp gen [length]</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  -c, [--clipboard], [--no-clipboard]  <span class="comment"># Copy passphrase to clipboard.</span></span><br><span class="line">  -H, [--hibp], [--no-hibp]            <span class="comment"># Check if passphrase is vulnerable in HIBP database.</span></span><br><span class="line"></span><br><span class="line">Generate a passphrase of the desired length.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Dmp</span></span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">CLI</span> &lt; Thor</span></span><br><span class="line">    <span class="comment"># -- CODE SNIPPED --</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">gen_pass</span><span class="params">(pass_length = <span class="number">7</span>)</span></span></span><br><span class="line">      <span class="comment"># Force our length value to be an integer</span></span><br><span class="line">      new_passphrase = Dmp.gen_passphrase(pass_length.to_i)</span><br><span class="line"></span><br><span class="line">      <span class="comment"># If our options :clipboard and :hibp are true, then proceeds</span></span><br><span class="line">      <span class="comment"># to copy the contents of the passphrase to the clipboard</span></span><br><span class="line">      <span class="comment"># and check if the passphrase is vulnerable.</span></span><br><span class="line">      Clipboard.copy(new_passphrase.join(<span class="string">' '</span>)) <span class="keyword">if</span> options[<span class="symbol">:clipboard</span>]</span><br><span class="line">      dataset_count = Dmp.check_pwned(new_passphrase) <span class="keyword">if</span> options[<span class="symbol">:hibp</span>]</span><br><span class="line"></span><br><span class="line">      <span class="comment"># To add colors, first we store the available colors in a variable</span></span><br><span class="line">      <span class="comment"># but we eliminate the color black which makes some words to be</span></span><br><span class="line">      <span class="comment"># unreadable in the terminal. After that, we map the passphrase list</span></span><br><span class="line">      <span class="comment"># and assign a random color to each one of them.</span></span><br><span class="line">      colors = String.colors</span><br><span class="line">      colors.delete(<span class="symbol">:black</span>) <span class="comment"># black color looks ugly in the terminal</span></span><br><span class="line">      new_passphrase.map! <span class="keyword">do</span> <span class="params">|phrase|</span></span><br><span class="line">        random_color = colors.sample</span><br><span class="line">        phrase.colorize(random_color)</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># We add default messages in case our options are activated. A green bold</span></span><br><span class="line">      <span class="comment"># message when the user wants to copy the passphrase, another one if the</span></span><br><span class="line">      <span class="comment"># passphrase is safe, and a red bold one if the passphrase is vulnerable.</span></span><br><span class="line">      copy_msg = <span class="string">'- Copied to clipboard.'</span>.bold.green</span><br><span class="line">      vuln_pass_msg = <span class="string">"- WARNING: Passphrase appears in <span class="subst">#&#123;dataset_count&#125;</span> datasets!"</span>.red.bold</span><br><span class="line">      safe_pass_msg = <span class="string">'- Password was not found in a dataset.'</span>.green.bold</span><br><span class="line"></span><br><span class="line">      <span class="comment"># Bold the title passphrase and then join the passphrase to make it a string.</span></span><br><span class="line">      puts <span class="string">'- Passphrase: '</span>.bold + new_passphrase.join(<span class="string">' '</span>)</span><br><span class="line"></span><br><span class="line">      <span class="comment"># If the clipboard option is active then display the clipboard message</span></span><br><span class="line">      puts copy_msg <span class="keyword">if</span> options[<span class="symbol">:clipboard</span>]</span><br><span class="line">      <span class="comment"># If the option :hibp is True then check if the pass is found in a dataset.</span></span><br><span class="line">      <span class="comment"># If dataset_cout is not nil then display vuln_pass_msg, else display</span></span><br><span class="line">      <span class="comment"># the safe_pass_msg.</span></span><br><span class="line">      puts dataset_count ? vuln_pass_msg : safe_pass_msg <span class="keyword">if</span> options[<span class="symbol">:hibp</span>]</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># -- CODE SNIPPED --</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>Looks a little bit long because all of the comments there, I only wrote them from clarity but you can leave them behind so you don’t have your code so cluttered. The good news is that we have completed our first task! It should be executed flawlessly. Let’s check it out.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bundle <span class="built_in">exec</span> dmp gen</span><br><span class="line">- Passphrase: molecular lubricate press net plank crook subpanel</span><br><span class="line"></span><br><span class="line">$ bundle <span class="built_in">exec</span> dmp gen 3</span><br><span class="line">- Passphrase: preppy dividing epidural</span><br><span class="line"></span><br><span class="line">$ bundle <span class="built_in">exec</span> dmp gen 3 -c -H</span><br><span class="line">- Passphrase: jaunt nurture reason</span><br><span class="line">- Copied to clipboard.</span><br><span class="line">- Password was not found <span class="keyword">in</span> a dataset.</span><br><span class="line"></span><br><span class="line">$ bundle <span class="built_in">exec</span> dmp gen 1 -H</span><br><span class="line">- Passphrase: capacity</span><br><span class="line">- WARNING: Passphrase appears <span class="keyword">in</span> 1879 datasets!</span><br></pre></td></tr></table></figure>
+
+<p>Awesome! Our gem works as expected, with all of the functionality we intended for it. Now, let’s fill out the next task, which would be <code>check_pass</code>. This task will not generate a passphrase, instead it will check for a password or passphrase that we currently have.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Dmp</span></span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">CLI</span> &lt; Thor</span></span><br><span class="line">    <span class="comment"># -- CODE SNIPPED --</span></span><br><span class="line"></span><br><span class="line">    desc <span class="string">'check'</span>, <span class="string">'Check if a password/passphrase is vulnerable.'</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">check_pass</span></span></span><br><span class="line">      puts <span class="string">"Enter your password, press ENTER when you're done."</span></span><br><span class="line">      password = ask(<span class="string">'Password (hidden):'</span>.yellow, <span class="symbol">echo:</span> <span class="literal">false</span>)</span><br><span class="line">      (puts <span class="string">"Aborted."</span>.red.bold; exit) <span class="keyword">if</span> password.empty?</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      dataset_count = Dmp.check_pwned(password)</span><br><span class="line">      vuln_msg = <span class="string">"Your password appears in <span class="subst">#&#123;dataset_count&#125;</span> datasets!"</span>.red.bold</span><br><span class="line">      safe_msg = <span class="string">"Your password was not found in a dataset."</span>.green.bold</span><br><span class="line">      puts dataset_count ? vuln_msg : safe_msg</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># -- CODE SNIPPED --</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>As we can see, this task is very simple and short, one thing that we can highlight is the fact that we can <code>ask</code> for a password without disclose it in the terminal, for security reasons of course. We can do this with the <code>ask</code> method followed by <code>echo: false</code> if we want to turn off the echo when people type in.</p>
+<p>Now that our <code>check_pass</code> method is finished, let’s try it out on the console.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bundle <span class="built_in">exec</span> dmp check</span><br><span class="line">Enter your password, press ENTER when you<span class="string">'re done.</span></span><br><span class="line"><span class="string">Password (hidden): Your password was not found in a dataset.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">$ bundle exec dmp check</span></span><br><span class="line"><span class="string">Enter your password, press ENTER when you'</span>re <span class="keyword">done</span>.</span><br><span class="line">Password (hidden): Your password appears <span class="keyword">in</span> 15996 datasets!</span><br></pre></td></tr></table></figure>
+
+<p>There we go! For the final task, let’s fill in the <code>about</code> task. For old times sake (and a little bit of cockiness) we’ll add a little banner when we call the <code>about</code> task.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Dmp</span></span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">CLI</span> &lt; Thor</span></span><br><span class="line">    <span class="comment"># -- CODE SNIPPED --</span></span><br><span class="line"></span><br><span class="line">    desc <span class="string">'about'</span>, <span class="string">'Displays version number and information'</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">about</span></span></span><br><span class="line">      puts Dmp::BANNER.bold.red</span><br><span class="line">      puts <span class="string">'version: '</span>.bold + Dmp::VERSION.green</span><br><span class="line">      puts <span class="string">'author: '</span>.bold + <span class="string">'@__franccesco'</span>.green</span><br><span class="line">      puts <span class="string">'homepage: '</span>.bold + <span class="string">'https://github.com/franccesco/dmp'</span>.green</span><br><span class="line">      puts <span class="string">'learn more: '</span>.bold + <span class="string">'https://codingdose.info'</span>.green</span><br><span class="line">      puts <span class="comment"># extra line, somehow I like them.</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># -- CODE SNIPPED --</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>We can see that we display the banner first, and a few details about ourselves and the program there like version, homepage, author and you can add as much as you want. But we haven’t declared a <code>BANNER</code> yet. So let’s do that, shall we? Let’s open up our version file in <code>lib/dmp/version.rb</code> and add our banner there.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Dmp</span></span></span><br><span class="line">  VERSION = <span class="string">"0.1.0"</span></span><br><span class="line">  BANNER = <span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string"> ____    __  __   ____</span></span><br><span class="line"><span class="string">|  _ \  |  \/  | |  _ \</span></span><br><span class="line"><span class="string">| | | | | |\/| | | |_) |</span></span><br><span class="line"><span class="string">| |_| | | |  | | |  __/</span></span><br><span class="line"><span class="string">|____/  |_|  |_| |_|</span></span><br><span class="line"><span class="string">               '</span><span class="string">''</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>There we go, now let’s test our <code>about</code> task.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bundle <span class="built_in">exec</span> dmp about</span><br><span class="line"> ____    __  __   ____</span><br><span class="line">|  _ \  |  \/  | |  _ \</span><br><span class="line">| | | | | |\/| | | |_) |</span><br><span class="line">| |_| | | |  | | |  __/</span><br><span class="line">|____/  |_|  |_| |_|</span><br><span class="line"></span><br><span class="line">version: 0.1.0</span><br><span class="line">author: @__franccesco</span><br><span class="line">homepage: https://github.com/franccesco/dmp</span><br><span class="line">learn more: https://codingdose.info</span><br></pre></td></tr></table></figure>
+
+<p>Cool, right?! Now we have a fully functional gem! Let’s save our final changes into git.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git commit -am <span class="string">"Complete CLI tasks"</span></span><br><span class="line">[develop ba6f18e] Complete CLI tasks</span><br><span class="line"> 2 files changed, 57 insertions(+), 4 deletions(-)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Managing-versions-with-gem-release"><a href="#Managing-versions-with-gem-release" class="headerlink" title="Managing versions with gem-release"></a>Managing versions with gem-release</h2><p>I assume you’re going to refactor this gem, which you should do! There’s a lot of dirty code in it, right? I’m not doing that in this article though. But once you do, you will probably add more features or maybe remove some of them (like the colors for example), and when that happens, you would like to reflect this changes by <em>bumping</em> your version number.</p>
+<p>I use the <a href="https://semver.org/" target="_blank" rel="noopener"><strong>Semantic Versioning</strong></a>, you should check it out if you don’t know about it. If you made a change and you want to bump your version number, you would have to do it manually opening the <code>version.rb</code> file and then committing your changes. However, we can do this way more easily with the <code>gem-release</code> extension. Let’s install it right now.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ gem install gem-release</span><br><span class="line">Fetching gem-release-2.0.1.gem</span><br><span class="line">Successfully installed gem-release-2.0.1</span><br><span class="line">Parsing documentation <span class="keyword">for</span> gem-release-2.0.1</span><br><span class="line">Installing ri documentation <span class="keyword">for</span> gem-release-2.0.1</span><br><span class="line">Done installing documentation <span class="keyword">for</span> gem-release after 0 seconds</span><br><span class="line">1 gem installed</span><br></pre></td></tr></table></figure>
+
+<p>Now, I want to make a little change to our gem, I don’t want to write <code>dmp gen</code> each time I want to generate a new passphrase, I want it to do it by default! Luckily, we can do this with the keyword <code>default_task</code>. Let’s open up our CLI.</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Dmp</span></span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">CLI</span> &lt; Thor</span></span><br><span class="line">    default_task <span class="symbol">:gen_pass</span></span><br><span class="line">    <span class="comment"># -- CODE SNIPPED --</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>Now let’s check and commit our change.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bundle <span class="built_in">exec</span> dmp</span><br><span class="line">- Passphrase: whinny capitol balsamic colt washout lend cradling</span><br><span class="line"></span><br><span class="line">$ git commit -am <span class="string">"Add default task to CLI"</span></span><br></pre></td></tr></table></figure>
+
+<p>After we have committed our changes, we can go ahead and bump our version number. As we might know, we should bump a minor version as we added functionality to our gem.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ gem bump --version minor</span><br><span class="line"></span><br><span class="line">Bumping dmp from version 0.1.0 to 0.2.0</span><br><span class="line">Changing version <span class="keyword">in</span> lib/dmp/version.rb from 0.1.0 to 0.2.0</span><br><span class="line"></span><br><span class="line">Staging lib/dmp/version.rb</span><br><span class="line">$ git add lib/dmp/version.rb</span><br><span class="line"></span><br><span class="line">Creating commit</span><br><span class="line">$ git commit -m <span class="string">"Bump dmp to 0.2.0"</span></span><br><span class="line">[develop b54f1f4] Bump dmp to 0.2.0</span><br><span class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</span><br><span class="line"></span><br><span class="line">All is good, thanks my friend.</span><br></pre></td></tr></table></figure>
+
+<p>As you can see, the <code>gem-release</code> bumps our minor version and also <em>commits</em> our bump change in a single pass. After we have made all of our changes, it is a good idea to publish or gem so other people can download it and use it!</p>
+<h2 id="Publishing-our-gem"><a href="#Publishing-our-gem" class="headerlink" title="Publishing our gem"></a>Publishing our gem</h2><p>Publishing our gem its <em>really</em> easy. For this you should go to <a href="https://rubygems.org/" target="_blank" rel="noopener">Rubygems.org</a> and sign up with an email and password, as you will need to authenticate in order to manage your uploaded gems. Here’s how you do it.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># First we build our gem with our gem specifications</span></span><br><span class="line">$ gem build dmp.gemspec</span><br><span class="line">  Successfully built RubyGem</span><br><span class="line">  Name: dmp</span><br><span class="line">  Version: 0.1.0</span><br><span class="line">  File: dmp-0.1.0.gem</span><br></pre></td></tr></table></figure>
+
+<p>After we have built our gem, it’s time to publish it.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ gem push dmp-0.1.0.gem</span><br><span class="line">Enter your RubyGems.org credentials.</span><br><span class="line">Don<span class="string">'t have an account yet? Create one at https://rubygems.org/sign_up</span></span><br><span class="line"><span class="string">   Email:   gem_author@example</span></span><br><span class="line"><span class="string">Password:</span></span><br><span class="line"><span class="string">Signed in.</span></span><br><span class="line"><span class="string">Pushing gem to RubyGems.org...</span></span><br><span class="line"><span class="string">Successfully registered gem: dmp-0.1.0.gem</span></span><br></pre></td></tr></table></figure>
+
+<p>And that’s it! Your gem is available to the public, you can try this yourself by installing your gem hosted on the rubygems servers.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ gem install dmp</span><br><span class="line">Fetching dmp-0.2.4.gem</span><br><span class="line">Successfully installed dmp-0.2.4</span><br><span class="line">Parsing documentation <span class="keyword">for</span> dmp-0.2.4</span><br><span class="line">Installing ri documentation <span class="keyword">for</span> dmp-0.2.4</span><br><span class="line">Done installing documentation <span class="keyword">for</span> dmp after 0 seconds</span><br><span class="line">1 gem installed</span><br><span class="line"></span><br><span class="line">$ dmp about</span><br><span class="line"> ____    __  __   ____</span><br><span class="line">|  _ \  |  \/  | |  _ \</span><br><span class="line">| | | | | |\/| | | |_) |</span><br><span class="line">| |_| | | |  | | |  __/</span><br><span class="line">|____/  |_|  |_| |_|</span><br><span class="line"></span><br><span class="line">version: 0.2.4</span><br><span class="line">author: @__franccesco</span><br><span class="line">homepage: https://github.com/franccesco/dmp</span><br><span class="line">learn more: https://codingdose.info</span><br></pre></td></tr></table></figure>
+
+<h1 id=""><a href="#" class="headerlink" title=""></a><a href=""></a></h1><h2 id="EOF"><a href="#EOF" class="headerlink" title="EOF"></a>EOF</h2><p>This was quite a ride right? If you have any questions then let me know in the comments bellow. Thank you for reading this article and I appreciate your time and efforts if you have followed this tutorial.</p>
+<p>You can checkout the code for DMP in the github repository here: <a href="https://github.com/franccesco/dmp" target="_blank" rel="noopener">https://github.com/franccesco/dmp</a><br>And also you can check out the gem at RubyGems.org: <a href="https://rubygems.org/gems/dmp" target="_blank" rel="noopener">https://rubygems.org/gems/dmp</a></p>
+<p>If you feel that you need to rewrite the dirty code or make things your way, then who am I to stop you? Go do it! I’m sure you’ll do a hell of a job! :)</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What’s-a-ruby-gem"><span class="toc-number">1.</span> <span class="toc-text">What’s a ruby gem?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-install-a-gem"><span class="toc-number">2.</span> <span class="toc-text">How to install a gem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dependency-issues"><span class="toc-number">3.</span> <span class="toc-text">Dependency issues</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bundler-comes-to-the-rescue"><span class="toc-number">4.</span> <span class="toc-text">Bundler comes to the rescue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Require-gems-in-your-Gemfile"><span class="toc-number">5.</span> <span class="toc-text">Require gems in your Gemfile</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Creating-our-project"><span class="toc-number"></span> <span class="toc-text">Creating our project</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Project-description"><span class="toc-number">1.</span> <span class="toc-text">Project description</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating-a-gem-with-bundler"><span class="toc-number">2.</span> <span class="toc-text">Creating a gem with bundler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Friendlier-reports-with-minitest-reports"><span class="toc-number">3.</span> <span class="toc-text">Friendlier reports with minitest-reports</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HaveIBeenPwned-API"><span class="toc-number">4.</span> <span class="toc-text">HaveIBeenPwned API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Generating-a-secure-passphrase"><span class="toc-number">5.</span> <span class="toc-text">Generating a secure passphrase</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Checking-passphrases-with-HIBP-API"><span class="toc-number">6.</span> <span class="toc-text">Checking passphrases with HIBP API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Asserting-secure-passwords"><span class="toc-number">7.</span> <span class="toc-text">Asserting secure passwords</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Refactoring-our-tests"><span class="toc-number">8.</span> <span class="toc-text">Refactoring our tests</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Command-Line-Interface-CLI-and-publishing-our-gem-in-RubyGems"><span class="toc-number"></span> <span class="toc-text">Command Line Interface (CLI) and publishing our gem in RubyGems</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating-our-CLI-with-Thor"><span class="toc-number">1.</span> <span class="toc-text">Creating our CLI with Thor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Managing-versions-with-gem-release"><span class="toc-number">2.</span> <span class="toc-text">Managing versions with gem-release</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Publishing-our-gem"><span class="toc-number">3.</span> <span class="toc-text">Publishing our gem</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number"></span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#EOF"><span class="toc-number">1.</span> <span class="toc-text">EOF</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/&text=How to Create a Ruby Gem With Bundler" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/&title=How to Create a Ruby Gem With Bundler" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/&is_video=false&description=How to Create a Ruby Gem With Bundler" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to Create a Ruby Gem With Bundler&body=Check out this article: http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/&title=How to Create a Ruby Gem With Bundler" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/&title=How to Create a Ruby Gem With Bundler" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/&title=How to Create a Ruby Gem With Bundler" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/&title=How to Create a Ruby Gem With Bundler" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/&name=How to Create a Ruby Gem With Bundler&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Franccesco Orozco
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-114371181-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'codingdose';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+

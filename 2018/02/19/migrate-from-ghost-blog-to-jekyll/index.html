@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="flattr:id" content="jj5n1v">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Jekyll requirementsJekyll is a Ruby gem, so before installing Jekyll you have to install Ruby, I recommend that you install Ruby with RVM. Installationgem install jekyll bundler  Create a sitejekyll n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Migrate From Ghost Blog to Jekyll">
+<meta property="og:url" content="http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/index.html">
+<meta property="og:site_name" content="CodingDose()">
+<meta property="og:description" content="Jekyll requirementsJekyll is a Ruby gem, so before installing Jekyll you have to install Ruby, I recommend that you install Ruby with RVM. Installationgem install jekyll bundler  Create a sitejekyll n">
+<meta property="article:published_time" content="2018-02-20T05:41:56.000Z">
+<meta property="article:modified_time" content="2020-10-07T04:23:15.860Z">
+<meta property="article:author" content="Franccesco Orozco">
+<meta property="article:tag" content="jekyll">
+<meta property="article:tag" content="ghost">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Migrate From Ghost Blog to Jekyll</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1481923801760340",
+        enable_page_level_ads: true
+      });
+    </script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CodingDose()" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/02/20/pipenv-development-workflow/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/02/18/sort-a-dictionary-with-python/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/&text=Migrate From Ghost Blog to Jekyll" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/&title=Migrate From Ghost Blog to Jekyll" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/&is_video=false&description=Migrate From Ghost Blog to Jekyll" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Migrate From Ghost Blog to Jekyll&body=Check out this article: http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/&title=Migrate From Ghost Blog to Jekyll" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/&title=Migrate From Ghost Blog to Jekyll" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/&title=Migrate From Ghost Blog to Jekyll" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/&title=Migrate From Ghost Blog to Jekyll" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/&name=Migrate From Ghost Blog to Jekyll&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Jekyll-requirements"><span class="toc-number">1.</span> <span class="toc-text">Jekyll requirements</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-number">1.1.</span> <span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-a-site"><span class="toc-number">1.2.</span> <span class="toc-text">Create a site</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Export-Ghost-posts"><span class="toc-number">1.3.</span> <span class="toc-text">Export Ghost posts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-jekyll-ghost-importer"><span class="toc-number">1.4.</span> <span class="toc-text">Install jekyll_ghost_importer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Import-posts-with-jekyll-ghost-importer"><span class="toc-number">1.5.</span> <span class="toc-text">Import posts with jekyll_ghost_importer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Generate-and-run-Jekyll"><span class="toc-number">1.6.</span> <span class="toc-text">Generate and run Jekyll</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Migrate From Ghost Blog to Jekyll
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Franccesco Orozco</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-02-20T05:41:56.000Z" itemprop="datePublished">2018-02-19</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/ghost/" rel="tag">ghost</a>, <a class="tag-link" href="/tags/jekyll/" rel="tag">jekyll</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Jekyll-requirements"><a href="#Jekyll-requirements" class="headerlink" title="Jekyll requirements"></a>Jekyll requirements</h1><p>Jekyll is a <strong>Ruby</strong> gem, so before installing Jekyll you have to install Ruby, I recommend that you install Ruby with <a href="https://rvm.io/" target="_blank" rel="noopener">RVM</a>.</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gem install jekyll bundler</span><br></pre></td></tr></table></figure>
+
+<h2 id="Create-a-site"><a href="#Create-a-site" class="headerlink" title="Create a site"></a>Create a site</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jekyll new example_blog</span><br></pre></td></tr></table></figure>
+
+<h2 id="Export-Ghost-posts"><a href="#Export-Ghost-posts" class="headerlink" title="Export Ghost posts"></a>Export Ghost posts</h2><p>Go to <a href="https://yoursite.com/ghost/settings/labs" target="_blank" rel="noopener">https://yoursite.com/ghost/settings/labs</a> and download the <strong><em>Export JSON File</em></strong>, lets save it as <code>mybackup.json</code></p>
+<h2 id="Install-jekyll-ghost-importer"><a href="#Install-jekyll-ghost-importer" class="headerlink" title="Install jekyll_ghost_importer"></a>Install jekyll_ghost_importer</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gem install jekyll_ghost_importer</span><br></pre></td></tr></table></figure>
+
+<h2 id="Import-posts-with-jekyll-ghost-importer"><a href="#Import-posts-with-jekyll-ghost-importer" class="headerlink" title="Import posts with jekyll_ghost_importer"></a>Import posts with jekyll_ghost_importer</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd example_blog</span><br><span class="line">jekyll_ghost_importer &#x2F;path&#x2F;to&#x2F;mybackup.json</span><br></pre></td></tr></table></figure>
+
+<h2 id="Generate-and-run-Jekyll"><a href="#Generate-and-run-Jekyll" class="headerlink" title="Generate and run Jekyll"></a>Generate and run Jekyll</h2><p>Once posts have been imported, lets generate and run Jekyll</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jekyll generate</span><br><span class="line">jekyll serve --watch --livereload</span><br></pre></td></tr></table></figure>
+
+<p>The flag <code>--watch</code> monitors our files and restarts the server upon changes and <code>--livereload</code> refresh the browser.</p>
+<p>Now we should be able to see our posts:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Configuration file: &#x2F;home&#x2F;franccesco&#x2F;workspace&#x2F;example_blog&#x2F;_config.yml</span><br><span class="line">            Source: &#x2F;home&#x2F;franccesco&#x2F;workspace&#x2F;example_blog</span><br><span class="line">       Destination: &#x2F;home&#x2F;franccesco&#x2F;workspace&#x2F;example_blog&#x2F;_site</span><br><span class="line"> Incremental build: disabled. Enable with --incremental</span><br><span class="line">      Generating... </span><br><span class="line">                    done in 0.799 seconds.</span><br><span class="line"> Auto-regeneration: enabled for &#39;&#x2F;home&#x2F;franccesco&#x2F;workspace&#x2F;example_blog&#39;</span><br><span class="line">    Server address: http:&#x2F;&#x2F;127.0.0.1:4000&#x2F;</span><br><span class="line">LiveReload address: http:&#x2F;&#x2F;127.0.0.1:35729  Server running... press ctrl-c to stop.</span><br></pre></td></tr></table></figure>
+
+<p>Remember to edit <code>_config.yml</code> to edit your new blog’s name and description.</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Jekyll-requirements"><span class="toc-number">1.</span> <span class="toc-text">Jekyll requirements</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-number">1.1.</span> <span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-a-site"><span class="toc-number">1.2.</span> <span class="toc-text">Create a site</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Export-Ghost-posts"><span class="toc-number">1.3.</span> <span class="toc-text">Export Ghost posts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-jekyll-ghost-importer"><span class="toc-number">1.4.</span> <span class="toc-text">Install jekyll_ghost_importer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Import-posts-with-jekyll-ghost-importer"><span class="toc-number">1.5.</span> <span class="toc-text">Import posts with jekyll_ghost_importer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Generate-and-run-Jekyll"><span class="toc-number">1.6.</span> <span class="toc-text">Generate and run Jekyll</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/&text=Migrate From Ghost Blog to Jekyll" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/&title=Migrate From Ghost Blog to Jekyll" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/&is_video=false&description=Migrate From Ghost Blog to Jekyll" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Migrate From Ghost Blog to Jekyll&body=Check out this article: http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/&title=Migrate From Ghost Blog to Jekyll" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/&title=Migrate From Ghost Blog to Jekyll" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/&title=Migrate From Ghost Blog to Jekyll" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/&title=Migrate From Ghost Blog to Jekyll" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/&name=Migrate From Ghost Blog to Jekyll&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Franccesco Orozco
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-114371181-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'codingdose';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+

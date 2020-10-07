@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="flattr:id" content="jj5n1v">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="I encourage developers to see the value of unit testing; I urge them to get into the habit of writing structured tests alongside their code.— CodingHorror  I was reading about Unit Testing and found">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unit Testing With Python: An Introduction">
+<meta property="og:url" content="http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/index.html">
+<meta property="og:site_name" content="CodingDose()">
+<meta property="og:description" content="I encourage developers to see the value of unit testing; I urge them to get into the habit of writing structured tests alongside their code.— CodingHorror  I was reading about Unit Testing and found">
+<meta property="article:published_time" content="2018-03-27T21:25:01.000Z">
+<meta property="article:modified_time" content="2020-10-07T04:23:15.861Z">
+<meta property="article:author" content="Franccesco Orozco">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Unit Testing With Python: An Introduction</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1481923801760340",
+        enable_page_level_ads: true
+      });
+    </script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CodingDose()" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/03/29/return-a-list-of-files-and-absolute-path-with-python/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/03/22/supress-print-output-in-python/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/&text=Unit Testing With Python: An Introduction" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/&title=Unit Testing With Python: An Introduction" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/&is_video=false&description=Unit Testing With Python: An Introduction" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Unit Testing With Python: An Introduction&body=Check out this article: http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/&title=Unit Testing With Python: An Introduction" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/&title=Unit Testing With Python: An Introduction" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/&title=Unit Testing With Python: An Introduction" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/&title=Unit Testing With Python: An Introduction" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/&name=Unit Testing With Python: An Introduction&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unit-Testing-a-Method"><span class="toc-number">1.</span> <span class="toc-text">Unit Testing a Method</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Inspecting-the-Test"><span class="toc-number">2.</span> <span class="toc-text">Inspecting the Test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Testing-a-Class"><span class="toc-number">3.</span> <span class="toc-text">Testing a Class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Refactoring-our-Unit-Test"><span class="toc-number">4.</span> <span class="toc-text">Refactoring our Unit Test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Unit Testing With Python: An Introduction
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">CodingDose()</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-03-27T21:25:01.000Z" itemprop="datePublished">2018-03-27</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/python/" rel="tag">python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>I encourage developers to see the value of unit testing; I urge them to get into the habit of writing structured tests alongside their code.<br>— <a href="https://blog.codinghorror.com/i-pity-the-fool-who-doesnt-write-unit-tests/" target="_blank" rel="noopener">CodingHorror</a></p>
+</blockquote>
+<p>I was reading about Unit Testing and found a blog entry in CodingHorror called <em><a href="https://blog.codinghorror.com/i-pity-the-fool-who-doesnt-write-unit-tests/" target="_blank" rel="noopener">I Pity The Fool Who Doesn’t Write Unit Tests</a></em>, and guess what, <strong>he’s right</strong>.</p>
+<p>Sadly, I’ve encountered a lot of people who doesn’t write tests for their code, and have a <a href="https://www.agilealliance.org/glossary/continuous-integration" target="_blank" rel="noopener">CI System</a> (Travis, Jenkins, Gitlab, etc.) only to test the syntax of the code with flake8 or pycodestyle, or the result of calling the software without returning an exception… this is <strong><em>wrong</em></strong>, you’re not testing anything there.</p>
+<p>You should be able to test your code to ensure that you’re getting the expected output and then have the confidence to refactor or write new functions without the fear of breaking anything.</p>
+<p>There is <em>value</em> in testing, and <strong>I’m not talking about religiously test <em>first</em> code <em>later</em></strong>, for me that’s a personal matter, all that I’m saying is that <strong>your code won’t have the quality it needs without testing.</strong> So stop neglecting Unit Testing and I invite you to read the CodingHorror blog post.</p>
+<p>Let’s jump right into it with a primer for python.</p>
+<h2 id="Unit-Testing-a-Method"><a href="#Unit-Testing-a-Method" class="headerlink" title="Unit Testing a Method"></a>Unit Testing a Method</h2><p>Honestly, you should <strong><em>write a failing test</em></strong> first, then <strong><em>write just the necessary code</em></strong> to make it work, and lastly <strong><em>refactor</em></strong>, from now on just rinse and repeat. But as we’re still learning how to code I’ll write the code first and let’s test it later.</p>
+<p>We’re going to write a module called <code>say_hi.pi</code> that has a function called <code>salute(name)</code> which takes a <code>name</code> as a single argument and returns <code>Hello, &lt;name&gt;!</code>. Here’s our code for <code>say_hi.py</code>:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">salute</span><span class="params">(name)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Hello, &#123;&#125;!'</span>.format(name)</span><br></pre></td></tr></table></figure>
+
+<p>Now let’s write a test called <code>test_say_hi.py</code> for this module to ensure that our code always return the desired string:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">from</span> say_hi <span class="keyword">import</span> salute</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestSayHi</span><span class="params">(unittest.TestCase)</span>:</span></span><br><span class="line">    <span class="string">"""Class for testing say_hi.py"""</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_salute</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Test salute() function."""</span></span><br><span class="line">        self.assertEqual(salute(<span class="string">'Anne'</span>), <span class="string">'Hello, Anne!'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure>
+
+<p>Seems a bit long, huh? We’ll break it later, for now let’s see if our code works:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ python test_say_hi.py</span><br></pre></td></tr></table></figure>
+<p>Aaand guess what?:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 test in 0.000s</span><br><span class="line"></span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+
+<p>It works correctly, so what is happening in that test? Let’s break it down.</p>
+<h2 id="Inspecting-the-Test"><a href="#Inspecting-the-Test" class="headerlink" title="Inspecting the Test"></a>Inspecting the Test</h2><ol>
+<li><p>First we import the <strong>unittest</strong> module that will let us write tests for our code:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Now we import the function <code>salute</code> from the python file <code>say_hi.py</code> that we just wrote.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> say_hi <span class="keyword">import</span> salute</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>We create a new class that inherits from <code>unittest.TestCase</code>, we’re are making a new test case class that will hold our methods to test our <code>say_hi.py</code> functions.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestSayHi</span><span class="params">(unittest.TestCase)</span>:</span></span><br><span class="line">    <span class="string">"""Class for testing say_hi.py"""</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Now we define our first class method, this method will test our function <code>salute</code>, and this is the important part, what are we doing with <code>self.assertEqual</code>? We are making a comparison here, we are asking our test: <em>The function <code>salute(&#39;Anne&#39;)</code> <strong>should</strong> return exactly: <code>Hello, Anne!</code>, if it’s not the same, then complain!</em></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_salute</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">"""Test salute() function."""</span></span><br><span class="line">    self.assertEqual(salute(<span class="string">'Anne'</span>), <span class="string">'Hello, Anne!'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Lastly this line here is in charge of executing or Unit Tests if it’s called directly as a standalone program.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Testing-a-Class"><a href="#Testing-a-Class" class="headerlink" title="Testing a Class"></a>Testing a Class</h2><p>Now that we have the hang of it, let’s create our own class, it shouldn’t be hard at all.</p>
+<p>Let’s create a <code>Raccoon</code> class with a name (because, <em>why not?</em>) and a <code>rabid</code> status of <code>False</code>… because we don’t want a rabid raccoon.</p>
+<p>Tha <em>only</em> thing that is going to change is that we are making things the <em>“right way”</em> now. We’re making a <em>Test first</em>, then we <em>write code</em>, and finally we <em>refactor</em>, so let’s dive directly into the unit test.</p>
+<p><code>test_raccoon.py</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">from</span> raccoon <span class="keyword">import</span> Raccoon</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestRabidRaccoon</span><span class="params">(unittest.TestCase)</span>:</span></span><br><span class="line">    <span class="string">"""Test if raccoon class."""</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_raccoon_health</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Test if the raccoon is rabid or not."""</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># let's name our favorite raccoon 'Helga'</span></span><br><span class="line">        helga = Raccoon(<span class="string">'helga'</span>)</span><br><span class="line">        self.assertEqual(helga.rabid, <span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure>
+
+<p>Now let’s execute our test and let’s see how our tests <em>guide us</em> to write our code:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ python test_raccoon.py</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"test_raccoon.py"</span>, line 2, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    from raccoon import Raccoon</span><br><span class="line">ImportError: cannot import name <span class="string">'Raccoon'</span></span><br></pre></td></tr></table></figure>
+<p>Our test complains that there’s no such module called <code>Raccoon</code>, of course there isn’t one because we haven’t created one, so let’s do it:</p>
+<p><code>racoon.py</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Raccoon</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.rabid = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>Now, we execute our test again:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ python test_raccoon.py</span><br><span class="line">.</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 <span class="built_in">test</span> <span class="keyword">in</span> 0.000s</span><br><span class="line"></span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+
+<p>And we find out that it’s all alright, now it’s time to refactor, as we haven’t written almost anything, we should add at least documentation to our class without the fear of breaking anything, <strong>unit tests got our backs.</strong></p>
+<p><code>racoon.py</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">"""Module holding Raccoon class."""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Raccoon</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""Class simulating a rabid Raccoon."""</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        <span class="string">"""Initialize attributes."""</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.rabid = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>We added simple docstrings to our module, let’s see if we didn’t break anything:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ python test_raccoon.py</span><br><span class="line">.</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 <span class="built_in">test</span> <span class="keyword">in</span> 0.000s</span><br><span class="line"></span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+
+<h2 id="Refactoring-our-Unit-Test"><a href="#Refactoring-our-Unit-Test" class="headerlink" title="Refactoring our Unit Test"></a>Refactoring our Unit Test</h2><p>Our test could’ve been better and we need to refactor it, because there are minor details that we should implement, let’s introduce the <strong>setUp</strong> method.</p>
+<p>First of all, if our test is going to use the name <code>Helga</code> multiple times, then we should define a <strong>setUp</strong> method so we can define our name only one time to avoid repetition, we do this <em>inside</em> our <em>Test Case</em> class <code>TestRabidRaccoon</code>. Also we’re changing <code>assertEqual</code> for a more appropriate a shorter way to check for <code>False</code> which is <code>assertFalse</code>:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">from</span> raccoon <span class="keyword">import</span> Raccoon</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestRabidRaccoon</span><span class="params">(unittest.TestCase)</span>:</span></span><br><span class="line">    <span class="string">"""Test if raccoon class."""</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setUp</span><span class="params">(self)</span>:</span></span><br><span class="line">      <span class="string">"""Setup variables that we're going to use across our class"""</span></span><br><span class="line">        self.name = <span class="string">'Helga'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_raccoon_health</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Test if the raccoon is rabid or not."""</span></span><br><span class="line">        <span class="comment"># let's pass the previously defined name in setUp</span></span><br><span class="line">        helga = Raccoon(self.name)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># change assertEqual for a more proper method to check False</span></span><br><span class="line">        self.assertFalse(helga.rabid)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 test in 0.000s</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line">[Finished in 0.167s]</span><br></pre></td></tr></table></figure>
+<p>It runs as expected. There are other assertion methods that you can use to test your code, here’s a short list:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>assertEqual(A, B)</strong></td>
+<td align="left">Check if A is equal to B</td>
+</tr>
+<tr>
+<td align="left"><strong>assertNotEqual(A, B)</strong></td>
+<td align="left">Check if A is <em>not</em> equal to B</td>
+</tr>
+<tr>
+<td align="left"><strong>assertTrue(A)</strong></td>
+<td align="left">Check if A is returns <strong>True</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>assertFalse(A)</strong></td>
+<td align="left">Check if A returns <strong>False</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>assertIn(<em>item</em>, <em>list</em>)</strong></td>
+<td align="left">Check if <em>item</em> is in <em>list</em></td>
+</tr>
+<tr>
+<td align="left"><strong>assertNotIn(<em>item</em>, <em>list</em>)</strong></td>
+<td align="left">Check if <em>item</em> is <em>not</em> in <em>list</em></td>
+</tr>
+</tbody></table>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This is enough to get you started, there’s a <em>lot</em> of value in testing, and you should do it, you’ll become a better developer and you’ll also adopt good practices, if you’re barely starting coding then you will be able to <strong>use your test as a guidance</strong> because you will be <em>forced</em> to think <em>what</em> you want your code to do <em>first</em> before actually code it.</p>
+<p>If you are an experienced developer  then <strong>you will catch bugs easier</strong>, you’ll have <strong>confidence when you’re refactoring</strong> your code, <strong>things are less likely to break</strong>, and you will be able to <strong>implement new features exactly as you want them</strong>.</p>
+<p>So, code first and test later, or test first and code later, that’s <strong>OK</strong> for me, <em>as long as you are testing it.</em></p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unit-Testing-a-Method"><span class="toc-number">1.</span> <span class="toc-text">Unit Testing a Method</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Inspecting-the-Test"><span class="toc-number">2.</span> <span class="toc-text">Inspecting the Test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Testing-a-Class"><span class="toc-number">3.</span> <span class="toc-text">Testing a Class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Refactoring-our-Unit-Test"><span class="toc-number">4.</span> <span class="toc-text">Refactoring our Unit Test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/&text=Unit Testing With Python: An Introduction" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/&title=Unit Testing With Python: An Introduction" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/&is_video=false&description=Unit Testing With Python: An Introduction" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Unit Testing With Python: An Introduction&body=Check out this article: http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/&title=Unit Testing With Python: An Introduction" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/&title=Unit Testing With Python: An Introduction" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/&title=Unit Testing With Python: An Introduction" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/&title=Unit Testing With Python: An Introduction" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/&name=Unit Testing With Python: An Introduction&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Franccesco Orozco
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-114371181-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'codingdose';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+

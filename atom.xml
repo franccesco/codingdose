@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>CodingDose()</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://codingdose.info/"/>
+  <updated>2020-10-07T22:23:52.696Z</updated>
+  <id>http://codingdose.info/</id>
+  
+  <author>
+    <name>Franccesco Orozco</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Monitoring Nginx With @Sherlog/cli</title>
+    <link href="http://codingdose.info/2020/10/07/monitoring-nginx-with-sherlog/"/>
+    <id>http://codingdose.info/2020/10/07/monitoring-nginx-with-sherlog/</id>
+    <published>2020-10-07T22:20:23.000Z</published>
+    <updated>2020-10-07T22:23:52.696Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Logs play a very important role throughout the entire life cycle of an application development as well as troubleshooting and
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Python Logging Basics: Why Is It Important and How to Use It?</title>
+    <link href="http://codingdose.info/2020/06/27/Logging-Events-in-Python/"/>
+    <id>http://codingdose.info/2020/06/27/Logging-Events-in-Python/</id>
+    <published>2020-06-27T15:45:41.000Z</published>
+    <updated>2020-10-07T04:23:15.857Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;If you find yourself having troubles debugging your code, or wondering what went wrong, then you should start logging events in your
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to Save Dictionaries, Lists, Tuples and Other Objects With Pickle</title>
+    <link href="http://codingdose.info/2019/06/26/Save-your-dictionaries-lists-tuples-and-other-objects-with-Pickle/"/>
+    <id>http://codingdose.info/2019/06/26/Save-your-dictionaries-lists-tuples-and-other-objects-with-Pickle/</id>
+    <published>2019-06-26T22:21:45.000Z</published>
+    <updated>2020-10-07T04:23:15.857Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;/assets/images/pickle/carbon.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Sometimes you just want to save a dictionary, a list, a string, or anything into a
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Develop and Publish Your Python Packages With Poetry</title>
+    <link href="http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/"/>
+    <id>http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/</id>
+    <published>2019-06-16T17:20:44.000Z</published>
+    <updated>2020-10-07T04:23:15.859Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I’ve been trying to publish my packages to &lt;a href=&quot;http://pypi.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;PyPi&lt;/a&gt; so people can access my
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to Easily Use a Progress Bar in Python</title>
+    <link href="http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/"/>
+    <id>http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/</id>
+    <published>2019-06-16T02:40:39.000Z</published>
+    <updated>2020-10-07T04:23:15.859Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;img src=&quot;/assets/images/progressbars/carbon.png&quot;&gt;
+
+&lt;p&gt;We’ve all been there, your code is performing a job and it’s going to take a while.
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages</title>
+    <link href="http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/"/>
+    <id>http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/</id>
+    <published>2019-06-09T02:24:14.000Z</published>
+    <updated>2020-10-07T04:23:15.859Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I know, I know… I should be writing about creating a full fledge super complex blog with Jekyll + GitHub Pages at no cost with your own
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="ruby" scheme="http://codingdose.info/tags/ruby/"/>
+    
+      <category term="github" scheme="http://codingdose.info/tags/github/"/>
+    
+      <category term="jekyll" scheme="http://codingdose.info/tags/jekyll/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to Create a Ruby Gem With Bundler</title>
+    <link href="http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/"/>
+    <id>http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/</id>
+    <published>2019-03-06T18:44:08.000Z</published>
+    <updated>2020-10-07T04:23:15.857Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I’ve been writing and focusing on Python lately and I’ve been wanting to make more content about Ruby. Ruby was my very first language
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="ruby" scheme="http://codingdose.info/tags/ruby/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Generate and Verify Your Commits With GPG in Github</title>
+    <link href="http://codingdose.info/2018/08/06/Generate-and-sign-your-commits-with-GPG-in-Github/"/>
+    <id>http://codingdose.info/2018/08/06/Generate-and-sign-your-commits-with-GPG-in-Github/</id>
+    <published>2018-08-07T01:47:29.000Z</published>
+    <updated>2020-10-07T04:23:15.856Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Why-you-should&quot;&gt;&lt;a href=&quot;#Why-you-should&quot; class=&quot;headerlink&quot; title=&quot;Why you should?&quot;&gt;&lt;/a&gt;Why you should?&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Using
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="git" scheme="http://codingdose.info/tags/git/"/>
+    
+      <category term="linux" scheme="http://codingdose.info/tags/linux/"/>
+    
+      <category term="gpg" scheme="http://codingdose.info/tags/gpg/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Change Flask Root Folder for Templates and Static Files</title>
+    <link href="http://codingdose.info/2018/05/12/change-flask-root-folder/"/>
+    <id>http://codingdose.info/2018/05/12/change-flask-root-folder/</id>
+    <published>2018-05-12T19:55:57.000Z</published>
+    <updated>2020-10-07T04:23:15.858Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Today I was facing a problem, I didn’t know how to change Flask root directory. Flask by default look for templates and static files
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Deploy a Flask Project to Heroku</title>
+    <link href="http://codingdose.info/2018/05/10/deploy-a-flask-project-to-heroku/"/>
+    <id>http://codingdose.info/2018/05/10/deploy-a-flask-project-to-heroku/</id>
+    <published>2018-05-11T03:26:58.000Z</published>
+    <updated>2020-10-07T04:23:15.859Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;/assets/images/thumbnails/flaskapp.png&quot; alt=&quot;Flask App&quot;&gt;&lt;/p&gt;
+&lt;p&gt;I was suddenly in the need of deploying a very basic Flask API
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IP Challenge: Part 3-5</title>
+    <link href="http://codingdose.info/2018/05/05/ipchallenge-part-3/"/>
+    <id>http://codingdose.info/2018/05/05/ipchallenge-part-3/</id>
+    <published>2018-05-06T04:02:07.000Z</published>
+    <updated>2020-10-07T04:23:15.860Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;So far we have setup our empty class and have initialized our folders &lt;code&gt;modules&lt;/code&gt; as a python package, so far so good. This
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+      <category term="challenge" scheme="http://codingdose.info/tags/challenge/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IP Challenge: Part 2</title>
+    <link href="http://codingdose.info/2018/05/03/ipchallenge-part-2/"/>
+    <id>http://codingdose.info/2018/05/03/ipchallenge-part-2/</id>
+    <published>2018-05-03T18:00:44.000Z</published>
+    <updated>2020-10-07T04:23:15.860Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Last entry we learned how to set up our work environment, a minimal project structure, we installed the required packages and also we
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+      <category term="challenge" scheme="http://codingdose.info/tags/challenge/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IP Challenge: Part 1</title>
+    <link href="http://codingdose.info/2018/05/02/Challenge-IPInfo-io-Class/"/>
+    <id>http://codingdose.info/2018/05/02/Challenge-IPInfo-io-Class/</id>
+    <published>2018-05-03T00:18:55.000Z</published>
+    <updated>2020-10-07T04:23:15.856Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I’m back! and I have brought the newbies out there a very simple challenge so you can learn just a &lt;em&gt;bit&lt;/em&gt; about python classes,
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+      <category term="challenge" scheme="http://codingdose.info/tags/challenge/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Announcement About the Lack of Activity</title>
+    <link href="http://codingdose.info/2018/05/01/announcement-about-lack-of-activity/"/>
+    <id>http://codingdose.info/2018/05/01/announcement-about-lack-of-activity/</id>
+    <published>2018-05-01T17:26:20.000Z</published>
+    <updated>2020-10-07T04:23:15.858Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Hello! Sorry that I have not written new posts, if you haven’t seen the news, well… Nicaragua is currently on a heavy political crisis
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="announcement" scheme="http://codingdose.info/tags/announcement/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Case Scenario: Import Variables From a Web Site - Python</title>
+    <link href="http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/"/>
+    <id>http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/</id>
+    <published>2018-04-17T17:03:45.000Z</published>
+    <updated>2020-10-07T04:23:15.858Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Before-we-start-A-short-disclaimer&quot;&gt;&lt;a href=&quot;#Before-we-start-A-short-disclaimer&quot; class=&quot;headerlink&quot; title=&quot;Before we start: A
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Create Multiple Directories With Makedirs - Python</title>
+    <link href="http://codingdose.info/2018/04/17/create-multiple-directories-with-makedirs-Python/"/>
+    <id>http://codingdose.info/2018/04/17/create-multiple-directories-with-makedirs-Python/</id>
+    <published>2018-04-17T14:43:51.000Z</published>
+    <updated>2020-10-07T04:23:15.859Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;You don’t need a bunch of &lt;em&gt;if’s&lt;/em&gt; and &lt;em&gt;else if’s&lt;/em&gt; to create an array of directories in python, just the good ol’
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to Handle a Deque in Python</title>
+    <link href="http://codingdose.info/2018/04/14/Deques-in-Python/"/>
+    <id>http://codingdose.info/2018/04/14/Deques-in-Python/</id>
+    <published>2018-04-14T21:14:58.000Z</published>
+    <updated>2020-10-07T04:23:15.856Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Deques are a great way to handle memory efficient appends to a list-like object, it is a special module that allows you to handle list
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Create a Basic Api With Flask</title>
+    <link href="http://codingdose.info/2018/04/07/create-a-basic-api-with-flask/"/>
+    <id>http://codingdose.info/2018/04/07/create-a-basic-api-with-flask/</id>
+    <published>2018-04-08T04:20:50.000Z</published>
+    <updated>2020-10-07T04:23:15.858Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;What-is-Flask&quot;&gt;&lt;a href=&quot;#What-is-Flask&quot; class=&quot;headerlink&quot; title=&quot;What is Flask?&quot;&gt;&lt;/a&gt;What is Flask?&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Flask is a
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Create and Object With Namedtuple</title>
+    <link href="http://codingdose.info/2018/04/07/Create-and-object-with-namedtuple/"/>
+    <id>http://codingdose.info/2018/04/07/Create-and-object-with-namedtuple/</id>
+    <published>2018-04-07T19:21:03.000Z</published>
+    <updated>2020-10-07T04:23:15.856Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Namedtuples are a subclass of &lt;em&gt;typename&lt;/em&gt; which allow us to create objects (or classes) with tuple-like attributes, it’s easy to
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Return a List of Files and Folders With Glob</title>
+    <link href="http://codingdose.info/2018/03/29/return-a-list-of-files-and-absolute-path-with-python/"/>
+    <id>http://codingdose.info/2018/03/29/return-a-list-of-files-and-absolute-path-with-python/</id>
+    <published>2018-03-30T01:20:39.000Z</published>
+    <updated>2020-10-07T04:23:15.860Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;There’s a great library added in Python 3.5 that lets you return a list of filenames and folders called &lt;code&gt;glob&lt;/code&gt;, here’s how to
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+      <category term="snippet" scheme="http://codingdose.info/tags/snippet/"/>
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="flattr:id" content="jj5n1v">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="So far we have setup our empty class and have initialized our folders modules as a python package, so far so good. This challenge is going to cover:  Class Creation and Initialization Object Represent">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IP Challenge: Part 3-5">
+<meta property="og:url" content="http://codingdose.info/2018/05/05/ipchallenge-part-3/index.html">
+<meta property="og:site_name" content="CodingDose()">
+<meta property="og:description" content="So far we have setup our empty class and have initialized our folders modules as a python package, so far so good. This challenge is going to cover:  Class Creation and Initialization Object Represent">
+<meta property="article:published_time" content="2018-05-06T04:02:07.000Z">
+<meta property="article:modified_time" content="2020-10-07T04:23:15.860Z">
+<meta property="article:author" content="Franccesco Orozco">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="challenge">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>IP Challenge: Part 3-5</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1481923801760340",
+        enable_page_level_ads: true
+      });
+    </script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CodingDose()" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/05/10/deploy-a-flask-project-to-heroku/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/05/03/ipchallenge-part-2/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2018/05/05/ipchallenge-part-3/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2018/05/05/ipchallenge-part-3/&text=IP Challenge: Part 3-5" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2018/05/05/ipchallenge-part-3/&title=IP Challenge: Part 3-5" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2018/05/05/ipchallenge-part-3/&is_video=false&description=IP Challenge: Part 3-5" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=IP Challenge: Part 3-5&body=Check out this article: http://codingdose.info/2018/05/05/ipchallenge-part-3/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2018/05/05/ipchallenge-part-3/&title=IP Challenge: Part 3-5" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2018/05/05/ipchallenge-part-3/&title=IP Challenge: Part 3-5" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2018/05/05/ipchallenge-part-3/&title=IP Challenge: Part 3-5" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2018/05/05/ipchallenge-part-3/&title=IP Challenge: Part 3-5" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2018/05/05/ipchallenge-part-3/&name=IP Challenge: Part 3-5&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Class-Creation-and-Initialization"><span class="toc-number">1.</span> <span class="toc-text">Class Creation and Initialization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Instructions"><span class="toc-number">1.1.</span> <span class="toc-text">Instructions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Walkthrough"><span class="toc-number">1.2.</span> <span class="toc-text">Walkthrough</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Object-Representation-and-Iteration"><span class="toc-number">2.</span> <span class="toc-text">Object Representation and Iteration</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Instructions-1"><span class="toc-number">2.1.</span> <span class="toc-text">Instructions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Walkthrough-1"><span class="toc-number">2.2.</span> <span class="toc-text">Walkthrough</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code-Documentation"><span class="toc-number">3.</span> <span class="toc-text">Code Documentation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Instructions-2"><span class="toc-number">3.1.</span> <span class="toc-text">Instructions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Walkthrough-2"><span class="toc-number">3.2.</span> <span class="toc-text">Walkthrough</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        IP Challenge: Part 3-5
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Franccesco Orozco</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-05-06T04:02:07.000Z" itemprop="datePublished">2018-05-05</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/challenge/" rel="tag">challenge</a>, <a class="tag-link" href="/tags/python/" rel="tag">python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>So far we have setup our empty class and have initialized our folders <code>modules</code> as a python package, so far so good. This challenge is going to cover:</p>
+<ul>
+<li><a href="https://github.com/franccesco/ipchallenge/wiki/Challenge-%233:-Initializing-a-Class" target="_blank" rel="noopener">Class Creation and Initialization</a></li>
+<li><a href="https://github.com/franccesco/ipchallenge/wiki/Challenge-%234:-Object-Representation-and-Iteration" target="_blank" rel="noopener">Object Representation and Iteration</a></li>
+</ul>
+<p>Let’s jump right into it.</p>
+<hr>
+<h2 id="Class-Creation-and-Initialization"><a href="#Class-Creation-and-Initialization" class="headerlink" title="Class Creation and Initialization"></a>Class Creation and Initialization</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Test Trigger:</span><br><span class="line">pipenv run python -m unittest tests&#x2F;test_challenge_3.py -f</span><br></pre></td></tr></table></figure>
+
+<h3 id="Instructions"><a href="#Instructions" class="headerlink" title="Instructions"></a>Instructions</h3><ul>
+<li>Import the package requests. Beware: It is more beneficial to load only the packages that you need, in this case you will need the method <code>get</code> <strong>from</strong> <code>requests</code> package.</li>
+<li>Modify your IPInfo class inside <code>ipinfo.py</code> and define your <em>initialization</em> module. This initialization will require only <strong>one</strong> parameter of type <em>string</em> and will be called <code>ip</code>.</li>
+<li>Create a <strong>Class Attribute</strong> named <code>ip_data</code>. This class attribute will requests a json response from the public API <a href="https://ipinfo.io/IP_NUMBER/json" target="_blank" rel="noopener">https://ipinfo.io/IP_NUMBER/json</a> where <code>IP_NUMBER</code> is equal to the initialization parameter <code>ip</code>. To challenge yourself, try to make this JSON request in a single line.</li>
+</ul>
+<h3 id="Walkthrough"><a href="#Walkthrough" class="headerlink" title="Walkthrough"></a>Walkthrough</h3><p>To make this work we will first import the <code>requests</code> package and modify our class <code>IPInfo</code>, we will add an initialization method that makes a <strong>GET</strong> request to a desired IP.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> requests <span class="keyword">import</span> get <span class="keyword">as</span> rget</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IPInfo</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, ip)</span>:</span></span><br><span class="line">        self.ip_data = rget(<span class="string">f'https://ipinfo.io/<span class="subst">&#123;ip&#125;</span>/json'</span>).json()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>As you can see, we first imported the method <code>get</code> from the package <code>requests</code> and give it the alias of <code>rget</code> because <em>“get”</em> is too generic.</li>
+<li>Then we write an initialization method in our class <strong>IPInfo</strong> and store the contents of the given requests into our variable <code>ip_data</code></li>
+</ul>
+<p>This is enough to make the challenge #3 pass.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 test in 0.543s</span><br><span class="line"></span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Object-Representation-and-Iteration"><a href="#Object-Representation-and-Iteration" class="headerlink" title="Object Representation and Iteration"></a>Object Representation and Iteration</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Test Trigger:</span><br><span class="line">pipenv run python -m unittest tests&#x2F;test_challenge_4.py -f</span><br></pre></td></tr></table></figure>
+
+<h3 id="Instructions-1"><a href="#Instructions-1" class="headerlink" title="Instructions"></a>Instructions</h3><ul>
+<li>Change the object representation of your class to return <code>Geolocation information of IP_ADDR</code> where <strong><code>IP_ADDR</code></strong> is equal to the IP address of the requested JSON data stored in <code>self.ip_data</code></li>
+<li>Create a iterable method that allows iteration in your class. <strong>For</strong> every <strong>key and value</strong> stored in the dictionary <code>self.ip_data</code> you should <strong>yield</strong> a <code>(key, value)</code> tuple, e.g: <code>(&#39;ip&#39;, &#39;8.8.8.8&#39;)</code>. This way you should be able to <em>yield</em> a generator.</li>
+</ul>
+<h3 id="Walkthrough-1"><a href="#Walkthrough-1" class="headerlink" title="Walkthrough"></a>Walkthrough</h3><p>Let’s add the special module <code>__repr__</code> to change the representation of our class, and an <code>__iter__</code> module to enable iteration in our class.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IPInfo</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f"Geolocation information of <span class="subst">&#123;self.ip_data[<span class="string">'ip'</span>]&#125;</span>"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> key, value <span class="keyword">in</span> self.ip_data.items():</span><br><span class="line">            <span class="keyword">yield</span> key, value</span><br></pre></td></tr></table></figure>
+
+<p>With this we have completed challenge 4.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">..</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 2 tests in 0.817s</span><br><span class="line"></span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+
+<p>We can check how this works in the python interpreter.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> modules <span class="keyword">import</span> IPInfo</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ip_data = IPInfo(<span class="string">'8.8.8.8'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ip_data</span><br><span class="line">Geolocation information of <span class="number">8.8</span><span class="number">.8</span><span class="number">.8</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> data, value <span class="keyword">in</span> ip_data:</span><br><span class="line"><span class="meta">... </span>    print(<span class="string">f'<span class="subst">&#123;data.capitalize()&#125;</span>: <span class="subst">&#123;value.capitalize()&#125;</span>'</span>)</span><br><span class="line">...</span><br><span class="line">Ip: <span class="number">8.8</span><span class="number">.8</span><span class="number">.8</span></span><br><span class="line">Hostname: Google-public-dns-a.google.com</span><br><span class="line">City: Mountain view</span><br><span class="line">Region: California</span><br><span class="line">Country: Us</span><br><span class="line">Loc: <span class="number">37.3860</span>,<span class="number">-122.0840</span></span><br><span class="line">Postal: <span class="number">94035</span></span><br><span class="line">Phone: <span class="number">650</span></span><br><span class="line">Org: As15169 google llc</span><br></pre></td></tr></table></figure>
+
+<p>See how easy it was? Let’s move on to challenge 5.</p>
+<hr>
+<h2 id="Code-Documentation"><a href="#Code-Documentation" class="headerlink" title="Code Documentation"></a>Code Documentation</h2><p>This is one of the easiest one, it’s all about documentation, we should document our code, modules, and packages with <strong>docstrings.</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Test Trigger:</span><br><span class="line">pipenv run python -m unittest tests&#x2F;test_challenge_5.py -f</span><br></pre></td></tr></table></figure>
+
+<h3 id="Instructions-2"><a href="#Instructions-2" class="headerlink" title="Instructions"></a>Instructions</h3><ul>
+<li>You should always <strong>document</strong> your modules, classes and method definition with triple quoted strings, following the PEP8 recommendations on <strong>Docstrings</strong>. To see the modules, packages, and classes that you should document try running <code>pydocstyle</code>.</li>
+</ul>
+<h3 id="Walkthrough-2"><a href="#Walkthrough-2" class="headerlink" title="Walkthrough"></a>Walkthrough</h3><p>If we run <strong>pydocstyle</strong> we will encounter the following errors:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">modules&#x2F;__init__.py:1 at module level:</span><br><span class="line">        D104: Missing docstring in public package</span><br><span class="line">modules&#x2F;ipinfo.py:1 at module level:</span><br><span class="line">        D100: Missing docstring in public module</span><br><span class="line">modules&#x2F;ipinfo.py:3 in public class &#96;IPInfo&#96;:</span><br><span class="line">        D101: Missing docstring in public class</span><br><span class="line">modules&#x2F;ipinfo.py:4 in public method &#96;__init__&#96;:</span><br><span class="line">        D107: Missing docstring in __init__</span><br><span class="line">modules&#x2F;ipinfo.py:7 in public method &#96;__repr__&#96;:</span><br><span class="line">        D105: Missing docstring in magic method</span><br><span class="line">modules&#x2F;ipinfo.py:10 in public method &#96;__iter__&#96;:</span><br><span class="line">        D105: Missing docstring in magic method</span><br></pre></td></tr></table></figure>
+
+<p>That means that we need to document these packages and modules, this is a very good practice that you have to maintain.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># __init__.py</span></span><br><span class="line"><span class="string">"""Initialize modules folder as a package."""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> .ipinfo <span class="keyword">import</span> IPInfo</span><br><span class="line"></span><br><span class="line">__all__ = [<span class="string">'IPInfo'</span>]</span><br></pre></td></tr></table></figure>
+
+<p>Also we should document our <strong>ipinfo.py</strong> module, class and methods.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">"""Module that handles IPInfo classes and methods."""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> requests <span class="keyword">import</span> get <span class="keyword">as</span> rget</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IPInfo</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""Handles ipinfo.io communication and data."""</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, ip)</span>:</span></span><br><span class="line">        <span class="string">"""Initialize IPInfo object into with geolocation data."""</span></span><br><span class="line">        self.ip_data = rget(<span class="string">f'https://ipinfo.io/<span class="subst">&#123;ip&#125;</span>/json'</span>).json()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Return a representation of our object."""</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f"Geolocation information of <span class="subst">&#123;self.ip_data[<span class="string">'ip'</span>]&#125;</span>"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Return a key, value tuple of each data to enable iteration."""</span></span><br><span class="line">        <span class="keyword">for</span> key, value <span class="keyword">in</span> self.ip_data.items():</span><br><span class="line">            <span class="keyword">yield</span> key, value</span><br></pre></td></tr></table></figure>
+
+<p>After we document our code, the test should pass now.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 test in 0.584s</span><br><span class="line"></span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+
+<p>That’s it for this entry, we have learn how to initialize our class into a object, return a representation of our object, and we also enabled iteration in our class. See you next time.</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Class-Creation-and-Initialization"><span class="toc-number">1.</span> <span class="toc-text">Class Creation and Initialization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Instructions"><span class="toc-number">1.1.</span> <span class="toc-text">Instructions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Walkthrough"><span class="toc-number">1.2.</span> <span class="toc-text">Walkthrough</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Object-Representation-and-Iteration"><span class="toc-number">2.</span> <span class="toc-text">Object Representation and Iteration</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Instructions-1"><span class="toc-number">2.1.</span> <span class="toc-text">Instructions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Walkthrough-1"><span class="toc-number">2.2.</span> <span class="toc-text">Walkthrough</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code-Documentation"><span class="toc-number">3.</span> <span class="toc-text">Code Documentation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Instructions-2"><span class="toc-number">3.1.</span> <span class="toc-text">Instructions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Walkthrough-2"><span class="toc-number">3.2.</span> <span class="toc-text">Walkthrough</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2018/05/05/ipchallenge-part-3/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2018/05/05/ipchallenge-part-3/&text=IP Challenge: Part 3-5" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2018/05/05/ipchallenge-part-3/&title=IP Challenge: Part 3-5" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2018/05/05/ipchallenge-part-3/&is_video=false&description=IP Challenge: Part 3-5" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=IP Challenge: Part 3-5&body=Check out this article: http://codingdose.info/2018/05/05/ipchallenge-part-3/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2018/05/05/ipchallenge-part-3/&title=IP Challenge: Part 3-5" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2018/05/05/ipchallenge-part-3/&title=IP Challenge: Part 3-5" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2018/05/05/ipchallenge-part-3/&title=IP Challenge: Part 3-5" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2018/05/05/ipchallenge-part-3/&title=IP Challenge: Part 3-5" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2018/05/05/ipchallenge-part-3/&name=IP Challenge: Part 3-5&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Franccesco Orozco
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-114371181-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'codingdose';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="flattr:id" content="jj5n1v">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="We’ve all been there, your code is performing a job and it’s going to take a while. I’m an impatient guy, so it would be nice to have an ETA or a progress bar to show us. Fortunately, there are libr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Easily Use a Progress Bar in Python">
+<meta property="og:url" content="http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/index.html">
+<meta property="og:site_name" content="CodingDose()">
+<meta property="og:description" content="We’ve all been there, your code is performing a job and it’s going to take a while. I’m an impatient guy, so it would be nice to have an ETA or a progress bar to show us. Fortunately, there are libr">
+<meta property="og:image" content="http://codingdose.info/assets/images/progressbars/carbon.png">
+<meta property="article:published_time" content="2019-06-16T02:40:39.000Z">
+<meta property="article:modified_time" content="2020-10-07T04:23:15.859Z">
+<meta property="article:author" content="Franccesco Orozco">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://codingdose.info/assets/images/progressbars/carbon.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>How to Easily Use a Progress Bar in Python</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1481923801760340",
+        enable_page_level_ads: true
+      });
+    </script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CodingDose()" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/06/16/develop-and-publish-with-poetry/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/&text=How to Easily Use a Progress Bar in Python" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/&title=How to Easily Use a Progress Bar in Python" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/&is_video=false&description=How to Easily Use a Progress Bar in Python" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to Easily Use a Progress Bar in Python&body=Check out this article: http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/&title=How to Easily Use a Progress Bar in Python" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/&title=How to Easily Use a Progress Bar in Python" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/&title=How to Easily Use a Progress Bar in Python" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/&title=How to Easily Use a Progress Bar in Python" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/&name=How to Easily Use a Progress Bar in Python&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Progress"><span class="toc-number">1.</span> <span class="toc-text">Progress</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Progress-BAR"><span class="toc-number">1.1.</span> <span class="toc-text">Progress - BAR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Progress-PixelBar"><span class="toc-number">1.2.</span> <span class="toc-text">Progress - PixelBar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Progress-PixelSpinner"><span class="toc-number">1.3.</span> <span class="toc-text">Progress - PixelSpinner</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TQDM"><span class="toc-number">2.</span> <span class="toc-text">TQDM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Click"><span class="toc-number">3.</span> <span class="toc-text">Click</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ProgressBar2"><span class="toc-number">4.</span> <span class="toc-text">ProgressBar2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Clint"><span class="toc-number">5.</span> <span class="toc-text">Clint</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        How to Easily Use a Progress Bar in Python
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Franccesco Orozco</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-06-16T02:40:39.000Z" itemprop="datePublished">2019-06-15</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/python/" rel="tag">python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <img src="/assets/images/progressbars/carbon.png">
+
+<p>We’ve all been there, your code is performing a job and it’s going to take a while. I’m an impatient guy, so it would be nice to have an ETA or a progress bar to show us. Fortunately, there are libraries out there than can help us to achieve this!</p>
+<p>There’s two ways in which we can integrate a progress bar into our loops, via a <a href="https://jeffknupp.com/blog/2016/03/07/python-with-context-managers/" target="_blank" rel="noopener"><em>Context Manager</em></a> or just wrapping up an iterable object into a method.</p>
+<p>We’re going to be testing Progress, ProgressBar2, TQDM, Click and Clint, so make sure to create your testing environment with <a href="https://codingdose.info/2018/02/20/pipenv-development-workflow/">Pipenv</a>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ mkdir progressbar-testing</span><br><span class="line">$ <span class="built_in">cd</span> progressbar-testing</span><br><span class="line">$ pipenv install tqdm progressbar2 click clint</span><br></pre></td></tr></table></figure>
+
+<h2 id="Progress"><a href="#Progress" class="headerlink" title="Progress"></a><a href="https://github.com/verigak/progress/" target="_blank" rel="noopener">Progress</a></h2><p>While I was testing each library, this is one I really liked, and this is because it has a lot of progress bar styles that you can play with. We’re not going to look at <em>all</em> of them, but you can take a look at the source code and documentation if you have further questions.</p>
+<h3 id="Progress-BAR"><a href="#Progress-BAR" class="headerlink" title="Progress - BAR"></a>Progress - BAR</h3><p>This is the most basic one, is basically a progress bar that is being filled by a hash. It works pretty easily with a context manager, you can use this snippet as an example:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"><span class="keyword">from</span> progress.bar <span class="keyword">import</span> Bar</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> Bar(<span class="string">'Processing...'</span>) <span class="keyword">as</span> bar:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">        sleep(<span class="number">0.02</span>)</span><br><span class="line">        bar.next()</span><br></pre></td></tr></table></figure>
+
+<p>As you can see, in this case we only import the <code>Bar</code> class and we add a <em>label</em> to our progress bar and it automatically handles our loop. At the end of each iteration, we have to append the <code>.next()</code> method to our <code>bar</code> object so we can update the progress bar.</p>
+<p><video src="/assets/images/progressbars/progress-bar.webm" preload autoplay loop controls></video></p>
+<h3 id="Progress-PixelBar"><a href="#Progress-PixelBar" class="headerlink" title="Progress - PixelBar"></a>Progress - PixelBar</h3><p>We can achieve the same with other progress bar styles, let’s try the Pixel Bar:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"><span class="keyword">from</span> progress.bar <span class="keyword">import</span> PixelBar</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> PixelBar(<span class="string">'Processing...'</span>) <span class="keyword">as</span> bar:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">        sleep(<span class="number">0.02</span>)</span><br><span class="line">        bar.next()</span><br></pre></td></tr></table></figure>
+
+<p><video src="/assets/images/progressbars/progress-pixelbar.webm" preload autoplay loop controls></video></p>
+<h3 id="Progress-PixelSpinner"><a href="#Progress-PixelSpinner" class="headerlink" title="Progress - PixelSpinner"></a>Progress - PixelSpinner</h3><p>Sometimes you don’t know how long it might take to perform an operation. If this is the case, then you can use the Pixel Spinner to display a pixel spinner (duh!) without an actual <em>progress bar</em>.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"><span class="keyword">from</span> progress.spinner <span class="keyword">import</span> PixelSpinner</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> PixelSpinner(<span class="string">'Processing...'</span>) <span class="keyword">as</span> bar:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">        sleep(<span class="number">0.06</span>)</span><br><span class="line">        bar.next()</span><br></pre></td></tr></table></figure>
+
+<p><video src="/assets/images/progressbars/progress-pixelspinner.webm" preload autoplay loop controls></video></p>
+<p>Pretty neat right? You can read more about Progress here:</p>
+<ul>
+<li><a href="https://github.com/verigak/progress/" target="_blank" rel="noopener">Source Code</a></li>
+</ul>
+<hr>
+<h2 id="TQDM"><a href="#TQDM" class="headerlink" title="TQDM"></a><a href="https://github.com/tqdm/tqdm" target="_blank" rel="noopener">TQDM</a></h2><p><a href="https://github.com/tqdm/tqdm" target="_blank" rel="noopener">TQDM</a>, a short for <em>taqadum</em> which means <em>progress</em> in Arabic, is a very popular choice, even more for data scientist or analysts, as it provides a really fast framework with a lot of customizations and information for you to work with.</p>
+<p>It’s also smart enough to use it with barely two lines of code. Just provide an iterable to the function <code>tqdm()</code> and your good to go.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> tqdm <span class="keyword">import</span> tqdm</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> tqdm(range(<span class="number">100</span>)):</span><br><span class="line">    sleep(<span class="number">0.02</span>)</span><br></pre></td></tr></table></figure>
+
+<p>And there you go! You have a lot of information on your progress bar such as a percentage, the length of your iterable, an ETA and even <em>iterables per seconds</em>!</p>
+<p><video src="/assets/images/progressbars/tqdm.webm" preload autoplay loop controls></video></p>
+<p>You can also add a label to your progress bar, displaying each object along the way:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">from</span> tqdm <span class="keyword">import</span> tqdm</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"></span><br><span class="line"><span class="comment"># A list from A to Z wrapped around TQDM function</span></span><br><span class="line">progress_bar = tqdm(list(string.ascii_lowercase))</span><br><span class="line"><span class="keyword">for</span> letter <span class="keyword">in</span> progress_bar:</span><br><span class="line">    progress_bar.set_description(<span class="string">f'Processing <span class="subst">&#123;letter&#125;</span>...'</span>)</span><br><span class="line">    sleep(<span class="number">0.09</span>)</span><br></pre></td></tr></table></figure>
+
+<p><video src="/assets/images/progressbars/tqdm-label.webm" preload autoplay loop controls></video></p>
+<p>TQDM, from my perspective, is a really important project if you’re into Data Science or need a incredibly fast way to show progress to your operations, you can read more about it here:</p>
+<ul>
+<li><a href="https://github.com/tqdm/tqdm" target="_blank" rel="noopener">Source Code &amp; Documentation</a></li>
+<li><a href="https://github.com/tqdm/tqdm/wiki" target="_blank" rel="noopener">Wiki</a></li>
+</ul>
+<hr>
+<h2 id="Click"><a href="#Click" class="headerlink" title="Click"></a><a href="https://click.palletsprojects.com/" target="_blank" rel="noopener">Click</a></h2><p>Click is one of the best libraries out there to create a <a href="https://en.wikipedia.org/wiki/Command-line_interface" target="_blank" rel="noopener">Command Line Interface</a> to your apps or libraries. I cannot recommend it enough!</p>
+<p>It also includes a very simple progress bar as an utility, you can use it inside a context manager, just like this:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> click</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"></span><br><span class="line"><span class="comment"># Fill character is # by default, you can change it</span></span><br><span class="line"><span class="comment"># for any other char you want, or even change the color.</span></span><br><span class="line">fill_char = click.style(<span class="string">'='</span>, fg=<span class="string">'yellow'</span>)</span><br><span class="line"><span class="keyword">with</span> click.progressbar(range(<span class="number">100</span>), label=<span class="string">'Loading...'</span>, fill_char=fill_char) <span class="keyword">as</span> bar:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> bar:</span><br><span class="line">        sleep(<span class="number">0.02</span>)</span><br></pre></td></tr></table></figure>
+
+<p>You can also see that we can change the color of the progress bar meter, and we also have an ETA.</p>
+<p><video src="/assets/images/progressbars/click.webm" preload autoplay loop controls></video></p>
+<p>If you want to know more about the progress bar utility in Click, you can check it out here:</p>
+<ul>
+<li><a href="https://click.palletsprojects.com/en/7.x/utils/#showing-progress-bars" target="_blank" rel="noopener">Click - Showing Progress Bars</a></li>
+</ul>
+<hr>
+<h2 id="ProgressBar2"><a href="#ProgressBar2" class="headerlink" title="ProgressBar2"></a><a href="https://github.com/WoLpH/python-progressbar" target="_blank" rel="noopener">ProgressBar2</a></h2><p>This is also a very popular choice and one that is easy to use. It also work with widgets to calculate the current progress, such as AbsoluteETA, AdaptiveETA, AdaptiveTransferSpeed and others which are very interesting.</p>
+<p>It’s implementation is also very simple. As with TQDM, only need 2 lines of code are enough to get us started:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"><span class="keyword">from</span> progressbar <span class="keyword">import</span> progressbar</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> progressbar(range(<span class="number">100</span>)):</span><br><span class="line">    sleep(<span class="number">0.02</span>)</span><br></pre></td></tr></table></figure>
+
+<p>And yes, although you install it as <em>progressbar2</em> make sure you import it as <em>progressbar</em>. Here’s how it displays the progress bar by default.</p>
+<p><video src="/assets/images/progressbars/progressbar2.webm" preload autoplay loop controls></video></p>
+<p>You can checkout the ProgressBar2 documentation and homepage here:</p>
+<ul>
+<li><a href="https://github.com/WoLpH/python-progressbar" target="_blank" rel="noopener">Homepage</a></li>
+<li><a href="https://progressbar-2.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">Documentation</a></li>
+<li><a href="https://progressbar-2.readthedocs.io/en/latest/_modules/progressbar/widgets.html" target="_blank" rel="noopener">Widgets</a></li>
+</ul>
+<hr>
+<h2 id="Clint"><a href="#Clint" class="headerlink" title="Clint"></a><a href="https://github.com/kennethreitz/clint" target="_blank" rel="noopener">Clint</a></h2><p>And lastly we have Clint, which stands for <em><strong>C</strong> ommand <strong>L</strong> ine <strong>IN</strong> terface <strong>T</strong> ools</em>, which is not maintained anymore, but I will show it here just to pay my respects.</p>
+<p>Creating a progress bar is just as easy as we have seen with the other tools, this one doesn’t require a context manager. Here we can see a regular progress bar and a <em>Mill</em> style progress bar:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"><span class="keyword">from</span> clint.textui <span class="keyword">import</span> progress</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Clint - Regular Progress Bar'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> progress.bar(range(<span class="number">100</span>)):</span><br><span class="line">    sleep(<span class="number">0.02</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Clint - Mill Progress Bar'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> progress.mill(range(<span class="number">100</span>)):</span><br><span class="line">    sleep(<span class="number">0.02</span>)</span><br></pre></td></tr></table></figure>
+
+<p>And here you can see it in action:</p>
+<p><video src="/assets/images/progressbars/clint.webm" preload autoplay loop controls></video></p>
+<hr>
+<p>There are other libraries out there but these are the ones that I definitely recommend you to check out. Also, here’s a snippet of code that tests all of the progress bar styles and libraries that we have tested so far. Just make sure to install the appropriate libraries.</p>
+<p>You can clone it with Git:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://gist.github.com/33e56c93c3c43cf70f19ecbfc921e358.git progressbar-testing</span><br></pre></td></tr></table></figure>
+
+<script src="https://gist.github.com/franccesco/33e56c93c3c43cf70f19ecbfc921e358.js"></script>
+
+<p>Also, I should recall that all these libraries have more features than the ones that we have seen here, so make sure to check them out. Have fun!</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Progress"><span class="toc-number">1.</span> <span class="toc-text">Progress</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Progress-BAR"><span class="toc-number">1.1.</span> <span class="toc-text">Progress - BAR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Progress-PixelBar"><span class="toc-number">1.2.</span> <span class="toc-text">Progress - PixelBar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Progress-PixelSpinner"><span class="toc-number">1.3.</span> <span class="toc-text">Progress - PixelSpinner</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TQDM"><span class="toc-number">2.</span> <span class="toc-text">TQDM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Click"><span class="toc-number">3.</span> <span class="toc-text">Click</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ProgressBar2"><span class="toc-number">4.</span> <span class="toc-text">ProgressBar2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Clint"><span class="toc-number">5.</span> <span class="toc-text">Clint</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/&text=How to Easily Use a Progress Bar in Python" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/&title=How to Easily Use a Progress Bar in Python" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/&is_video=false&description=How to Easily Use a Progress Bar in Python" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to Easily Use a Progress Bar in Python&body=Check out this article: http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/&title=How to Easily Use a Progress Bar in Python" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/&title=How to Easily Use a Progress Bar in Python" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/&title=How to Easily Use a Progress Bar in Python" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/&title=How to Easily Use a Progress Bar in Python" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2019/06/15/how-to-use-a-progress-bar-in-python/&name=How to Easily Use a Progress Bar in Python&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Franccesco Orozco
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-114371181-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'codingdose';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+

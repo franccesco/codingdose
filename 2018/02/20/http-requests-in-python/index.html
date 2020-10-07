@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="flattr:id" content="jj5n1v">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Before startinglets try HTTP requests with httpbin.org to test multiple HTTP methods with requests and JSON data. We’ll see how to extract data from a JSON-encoded response (e.g. {‘key’: ‘value’}) Ins">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP Requests in Python">
+<meta property="og:url" content="http://codingdose.info/2018/02/20/http-requests-in-python/index.html">
+<meta property="og:site_name" content="CodingDose()">
+<meta property="og:description" content="Before startinglets try HTTP requests with httpbin.org to test multiple HTTP methods with requests and JSON data. We’ll see how to extract data from a JSON-encoded response (e.g. {‘key’: ‘value’}) Ins">
+<meta property="article:published_time" content="2018-02-21T01:52:45.000Z">
+<meta property="article:modified_time" content="2020-10-07T04:23:15.860Z">
+<meta property="article:author" content="Franccesco Orozco">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>HTTP Requests in Python</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1481923801760340",
+        enable_page_level_ads: true
+      });
+    </script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CodingDose()" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/02/22/Calculate-filename-SHA1-with-Ruby/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/02/20/pipenv-development-workflow/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2018/02/20/http-requests-in-python/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2018/02/20/http-requests-in-python/&text=HTTP Requests in Python" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2018/02/20/http-requests-in-python/&title=HTTP Requests in Python" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2018/02/20/http-requests-in-python/&is_video=false&description=HTTP Requests in Python" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HTTP Requests in Python&body=Check out this article: http://codingdose.info/2018/02/20/http-requests-in-python/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2018/02/20/http-requests-in-python/&title=HTTP Requests in Python" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2018/02/20/http-requests-in-python/&title=HTTP Requests in Python" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2018/02/20/http-requests-in-python/&title=HTTP Requests in Python" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2018/02/20/http-requests-in-python/&title=HTTP Requests in Python" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2018/02/20/http-requests-in-python/&name=HTTP Requests in Python&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Before-starting"><span class="toc-number">1.</span> <span class="toc-text">Before starting</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-requests-library"><span class="toc-number">1.1.</span> <span class="toc-text">Install requests library</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GET-request"><span class="toc-number">1.2.</span> <span class="toc-text">GET request</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#POST-request"><span class="toc-number">1.3.</span> <span class="toc-text">POST request</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Method-Status-Code"><span class="toc-number">1.4.</span> <span class="toc-text">Method Status Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Authentication"><span class="toc-number">1.5.</span> <span class="toc-text">Authentication</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Custom-HTTP-Headers"><span class="toc-number">1.6.</span> <span class="toc-text">Custom HTTP Headers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Putting-everything-together"><span class="toc-number">1.7.</span> <span class="toc-text">Putting everything together</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        HTTP Requests in Python
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Franccesco Orozco</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-02-21T01:52:45.000Z" itemprop="datePublished">2018-02-20</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/python/" rel="tag">python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Before-starting"><a href="#Before-starting" class="headerlink" title="Before starting"></a>Before starting</h1><p>lets try HTTP requests with <a href="https://httpbin.org/" target="_blank" rel="noopener">httpbin.org</a> to test multiple HTTP methods with <code>requests</code> and <code>JSON</code> data. We’ll see how to extract data from a JSON-encoded response (e.g. {‘key’: ‘value’})</p>
+<h2 id="Install-requests-library"><a href="#Install-requests-library" class="headerlink" title="Install requests library"></a>Install requests library</h2><p>With <code>pipenv</code> (<a href="https://codingdose.info/2018/02/20/pipenv-development-workflow/">recommended</a>):</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pipenv install requests</span><br></pre></td></tr></table></figure>
+
+<p>With <code>pip</code>:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
+
+<h2 id="GET-request"><a href="#GET-request" class="headerlink" title="GET request"></a>GET request</h2><p>Check our IP address:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># get request, response is JSON-encoded</span></span><br><span class="line">myIP = requests.get(<span class="string">'https://httpbin.org/ip'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># extract value from JSON key 'origin'</span></span><br><span class="line"><span class="comment"># &#123;'origin': '38.132.120.4'&#125;</span></span><br><span class="line">print(myIP.json()[<span class="string">'origin'</span>])</span><br></pre></td></tr></table></figure>
+
+<p>User agent:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">user_agent = requests.get(<span class="string">'https://httpbin.org/user-agent'</span>)</span><br><span class="line">print(user_agent.json()[<span class="string">'user-agent'</span>])</span><br></pre></td></tr></table></figure>
+
+<p>Time:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">time = requests.get(<span class="string">'https://now.httpbin.org/'</span>)</span><br><span class="line">print(time.json()[<span class="string">'now'</span>][<span class="string">'rfc2822'</span>])</span><br></pre></td></tr></table></figure>
+
+<p>Passing URL parameters:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">parameters = &#123;<span class="string">'param1'</span>: <span class="string">'value2'</span>, <span class="string">'param2'</span>: <span class="string">'value2'</span>&#125;</span><br><span class="line">get_params = requests.get(<span class="string">'https://httpbin.org/get'</span>, params=parameters)</span><br></pre></td></tr></table></figure>
+
+<h2 id="POST-request"><a href="#POST-request" class="headerlink" title="POST request"></a>POST request</h2><p>Post Request:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">post_data = requests.post(<span class="string">'https://httpbin.org/post'</span>, data = &#123;<span class="string">'hello'</span>: <span class="string">'world'</span>&#125;)</span><br><span class="line">print(post_data)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Method-Status-Code"><a href="#Method-Status-Code" class="headerlink" title="Method Status Code"></a>Method Status Code</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">req = requests.get(<span class="string">'https://httpbin.org/'</span>)</span><br><span class="line">req.status_code()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Authentication"><a href="#Authentication" class="headerlink" title="Authentication"></a>Authentication</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">auth = requests.get(<span class="string">'https://httpbin.org/basic-auth/user/passwd'</span>, auth=(<span class="string">'user'</span>, <span class="string">'passwd'</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="Custom-HTTP-Headers"><a href="#Custom-HTTP-Headers" class="headerlink" title="Custom HTTP Headers"></a>Custom HTTP Headers</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">my_headers = &#123;</span><br><span class="line">    <span class="string">'user-agent'</span>: <span class="string">'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'</span>,</span><br><span class="line">    <span class="string">'Referer'</span>: <span class="string">'google.com'</span>,</span><br><span class="line">    <span class="string">'Cookies'</span>: <span class="string">'AmA=Cookie!'</span>,</span><br><span class="line">&#125;</span><br><span class="line">req = requests.get(<span class="string">'https://httpbin.org/anything'</span>, headers=my_headers)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Putting-everything-together"><a href="#Putting-everything-together" class="headerlink" title="Putting everything together"></a>Putting everything together</h2><p>A script that reports an IP address geolocation, hostname and country:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">from</span> requests <span class="keyword">import</span> get <span class="keyword">as</span> GET</span><br><span class="line"></span><br><span class="line"><span class="comment"># argparse to enable passing command line arguments</span></span><br><span class="line"><span class="comment"># this is totally optional, it adds functionality</span></span><br><span class="line">parser = argparse.ArgumentParser(description=<span class="string">'Get IP information.'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'host'</span>, help=<span class="string">'host to analize.'</span>)</span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line"><span class="comment"># remote IP information</span></span><br><span class="line">ip_remote = GET(<span class="string">'http://ipinfo.io/'</span> + args.host).json()</span><br><span class="line"></span><br><span class="line"><span class="comment"># storing information in a dictionary for iteration</span></span><br><span class="line">ip_info = &#123;</span><br><span class="line">    <span class="string">'Hosname'</span>: ip_remote[<span class="string">'hostname'</span>],</span><br><span class="line">    <span class="string">'Location'</span>: <span class="string">'&#123;&#125;, &#123;&#125;'</span>.format(ip_remote[<span class="string">'region'</span>], ip_remote[<span class="string">'country'</span>]),</span><br><span class="line">    <span class="string">'Coordinates'</span>: ip_remote[<span class="string">'loc'</span>],</span><br><span class="line">    <span class="string">'Organization'</span>: ip_remote[<span class="string">'org'</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># print information about remote IP</span></span><br><span class="line">print(<span class="string">'Information for: &#123;&#125;'</span>.format(ip_remote[<span class="string">'ip'</span>]))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> key, value <span class="keyword">in</span> ip_info.items():</span><br><span class="line">    print(<span class="string">'&#123;&#125;: &#123;&#125;'</span>.format(key, value))</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Before-starting"><span class="toc-number">1.</span> <span class="toc-text">Before starting</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-requests-library"><span class="toc-number">1.1.</span> <span class="toc-text">Install requests library</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GET-request"><span class="toc-number">1.2.</span> <span class="toc-text">GET request</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#POST-request"><span class="toc-number">1.3.</span> <span class="toc-text">POST request</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Method-Status-Code"><span class="toc-number">1.4.</span> <span class="toc-text">Method Status Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Authentication"><span class="toc-number">1.5.</span> <span class="toc-text">Authentication</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Custom-HTTP-Headers"><span class="toc-number">1.6.</span> <span class="toc-text">Custom HTTP Headers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Putting-everything-together"><span class="toc-number">1.7.</span> <span class="toc-text">Putting everything together</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2018/02/20/http-requests-in-python/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2018/02/20/http-requests-in-python/&text=HTTP Requests in Python" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2018/02/20/http-requests-in-python/&title=HTTP Requests in Python" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2018/02/20/http-requests-in-python/&is_video=false&description=HTTP Requests in Python" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HTTP Requests in Python&body=Check out this article: http://codingdose.info/2018/02/20/http-requests-in-python/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2018/02/20/http-requests-in-python/&title=HTTP Requests in Python" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2018/02/20/http-requests-in-python/&title=HTTP Requests in Python" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2018/02/20/http-requests-in-python/&title=HTTP Requests in Python" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2018/02/20/http-requests-in-python/&title=HTTP Requests in Python" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2018/02/20/http-requests-in-python/&name=HTTP Requests in Python&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Franccesco Orozco
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-114371181-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'codingdose';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+

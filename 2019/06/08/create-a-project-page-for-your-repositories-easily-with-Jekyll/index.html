@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="flattr:id" content="jj5n1v">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="I know, I know… I should be writing about creating a full fledge super complex blog with Jekyll + GitHub Pages at no cost with your own domain and all. But no, there’s tons of articles out there and r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages">
+<meta property="og:url" content="http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/index.html">
+<meta property="og:site_name" content="CodingDose()">
+<meta property="og:description" content="I know, I know… I should be writing about creating a full fledge super complex blog with Jekyll + GitHub Pages at no cost with your own domain and all. But no, there’s tons of articles out there and r">
+<meta property="og:image" content="http://codingdose.info/assets/images/jekyll/jekyll_default.png">
+<meta property="og:image" content="http://codingdose.info/assets/images/jekyll/github_settings.png">
+<meta property="og:image" content="http://codingdose.info/assets/images/jekyll/chuck_page.png">
+<meta property="article:published_time" content="2019-06-09T02:24:14.000Z">
+<meta property="article:modified_time" content="2020-10-07T04:23:15.859Z">
+<meta property="article:author" content="Franccesco Orozco">
+<meta property="article:tag" content="ruby">
+<meta property="article:tag" content="github">
+<meta property="article:tag" content="jekyll">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://codingdose.info/assets/images/jekyll/jekyll_default.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1481923801760340",
+        enable_page_level_ads: true
+      });
+    </script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CodingDose()" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/06/15/how-to-use-a-progress-bar-in-python/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/&text=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/&title=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/&is_video=false&description=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages&body=Check out this article: http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/&title=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/&title=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/&title=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/&title=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/&name=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Building-our-site-with-Jekyll"><span class="toc-number">1.</span> <span class="toc-text">Building our site with Jekyll</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Configuring-Jekyll"><span class="toc-number"></span> <span class="toc-text">Configuring Jekyll</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Deploying-our-site-with-GitHub-Pages"><span class="toc-number">1.</span> <span class="toc-text">Deploying our site with GitHub Pages</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">2.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Franccesco Orozco</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-06-09T02:24:14.000Z" itemprop="datePublished">2019-06-08</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/github/" rel="tag">github</a>, <a class="tag-link" href="/tags/jekyll/" rel="tag">jekyll</a>, <a class="tag-link" href="/tags/ruby/" rel="tag">ruby</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>I know, I know… I should be writing about creating a full fledge super complex blog with Jekyll + GitHub Pages at no cost with your own domain and all. But no, there’s tons of articles out there and repos that can help you out with such task.</p>
+<p>In this case, I’m going to show you how to create a <em>project page</em> using the ever popular Jekyll and GitHub Pages so your projects can have a face, and of course, to show it of to your friends out there.</p>
+<p>So, without further ado, we should get to the point already, shall we?</p>
+<h2 id="Building-our-site-with-Jekyll"><a href="#Building-our-site-with-Jekyll" class="headerlink" title="Building our site with Jekyll"></a>Building our site with Jekyll</h2><p>Let’s say that you have a project called <a href="https://github.com/franccesco/chuck-says/" target="_blank" rel="noopener">chuck-says</a> that acts like a fortune cookie + cowsay whenever you call it in the command line.</p>
+<p>To provide our repository with a project page, we can use <strong>Jekyll</strong>, which is a tool made in Ruby that can use a combination of Markdown and Font Matter to create static websites and blogs. It’s a very easy to use site generator that can aid us with what we want to accomplish in this case. We can install it using the <code>gem</code> command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ gem install jekyll</span><br></pre></td></tr></table></figure>
+
+<p>Now, let’s go to the folder in which our project is located. There, we can create our project’s page on the folder <code>docs</code>. There’s no need to create the folder as Jekyll can do this for us:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ jekyll new docs</span><br><span class="line">Running bundle install <span class="keyword">in</span> /home/your_username/chuck-says/docs...</span><br><span class="line">  Bundler: Fetching gem metadata from https://rubygems.org/...........</span><br><span class="line">  Bundler: Fetching gem metadata from https://rubygems.org/.</span><br><span class="line">  Bundler: Resolving dependencies...</span><br><span class="line">  Bundler: Using public_suffix 3.1.0</span><br><span class="line">--- SNIP ---</span><br></pre></td></tr></table></figure>
+
+<p>After that we can see our page structure, which can be something like this:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ tree docs&#x2F;</span><br><span class="line">.</span><br><span class="line">├── 404.html</span><br><span class="line">├── about.md</span><br><span class="line">├── _config.yml</span><br><span class="line">├── Gemfile</span><br><span class="line">├── Gemfile.lock</span><br><span class="line">├── index.md</span><br><span class="line">└── _posts</span><br><span class="line">    └── 2019-06-09-welcome-to-jekyll.markdown</span><br><span class="line"></span><br><span class="line">1 directory, 7 files</span><br></pre></td></tr></table></figure>
+
+<p>Here’s a brief description of each one of them, the bold one’s, such as <strong>config.yml</strong> and <strong>index.md</strong> are the ones that we’re actually going to use!</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>404.html</td>
+<td>Not Found template</td>
+</tr>
+<tr>
+<td>about.md</td>
+<td>A short about page</td>
+</tr>
+<tr>
+<td><strong>config.yml</strong></td>
+<td>Configuration file</td>
+</tr>
+<tr>
+<td>Gemfile</td>
+<td>Dependency gem requirements and configuration</td>
+</tr>
+<tr>
+<td>Gemfile.lock</td>
+<td>Pinned gem versions</td>
+</tr>
+<tr>
+<td><strong>index.md</strong></td>
+<td>Front Page (And the one we’ll use!)</td>
+</tr>
+<tr>
+<td>posts/</td>
+<td>Folder containing blog posts (we won’t use them!)</td>
+</tr>
+</tbody></table>
+<p>As we’re not trying to create a blog (we can see how to do it on a another post), we can remove <code>about.md</code> and the <code>posts/</code> folder.</p>
+<p>Before we move on, there’s something important we need to do first! We have to add the <strong><a href="https://github.com/github/pages-gem" target="_blank" rel="noopener"><code>github-pages</code></a></strong> gem, provided by GitHub, in order to have access to themes and to ensure maximum compatibility to make our site deploy on GitHub Pages. Let’s open up <code>Gemfile</code> and add the gem as follows:</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># Main dependencies and group definitions</span></span><br><span class="line">source <span class="string">"https://rubygems.org"</span></span><br><span class="line">gem <span class="string">"jekyll"</span>, <span class="string">"~&gt; 3.8.5"</span></span><br><span class="line">gem <span class="string">"minima"</span>, <span class="string">"~&gt; 2.0"</span></span><br><span class="line">group <span class="symbol">:jekyll_plugins</span> <span class="keyword">do</span></span><br><span class="line">  gem <span class="string">"jekyll-feed"</span>, <span class="string">"~&gt; 0.6"</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">gem <span class="string">"tzinfo-data"</span>, <span class="symbol">platforms:</span> [<span class="symbol">:mingw</span>, <span class="symbol">:mswin</span>, <span class="symbol">:x64_mingw</span>, <span class="symbol">:jruby</span>]</span><br><span class="line">gem <span class="string">"wdm"</span>, <span class="string">"~&gt; 0.1.0"</span> <span class="keyword">if</span> Gem.win_platform?</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add the GitHub Pages gem</span></span><br><span class="line">gem <span class="string">'github-pages'</span>, <span class="symbol">group:</span> <span class="symbol">:jekyll_plugins</span></span><br></pre></td></tr></table></figure>
+
+<p>Now, let’s update our packages:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Remember to to this inside the /docs folder</span></span><br><span class="line">$ bundle update</span><br><span class="line">Fetching gem metadata from https://rubygems.org/..........</span><br><span class="line">Fetching gem metadata from https://rubygems.org/.</span><br><span class="line">Resolving dependencies...</span><br><span class="line">Using concurrent-ruby 1.1.5</span><br><span class="line">...</span><br><span class="line">Bundle updated!</span><br><span class="line"></span><br><span class="line">$ bundle install</span><br><span class="line">Using concurrent-ruby 1.1.5</span><br><span class="line">Using i18n 0.9.5</span><br><span class="line">...</span><br><span class="line">Bundle complete! 5 Gemfile dependencies, 85 gems now installed.</span><br><span class="line">Use `bundle info [gemname]` to see <span class="built_in">where</span> a bundled gem is installed.</span><br></pre></td></tr></table></figure>
+
+<p>To ensure that we can run our page, let’s serve it locally with the <code>serve</code> or <code>s</code> subcommand:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bundle <span class="built_in">exec</span> jekyll serve</span><br><span class="line">Configuration file: /home/your_home/workspace/chuck-says/docs/_config.yml</span><br><span class="line">            Source: /home/your_home/workspace/chuck-says/docs</span><br><span class="line">       Destination: /home/your_home/workspace/chuck-says/docs/_site</span><br><span class="line"> Incremental build: disabled. Enable with --incremental</span><br><span class="line">      Generating...</span><br><span class="line">       Jekyll Feed: Generating feed <span class="keyword">for</span> posts</span><br><span class="line">                    <span class="keyword">done</span> <span class="keyword">in</span> 0.111 seconds.</span><br><span class="line"> Auto-regeneration: enabled <span class="keyword">for</span> <span class="string">'/home/your_home/workspace/chuck-says/docs'</span></span><br><span class="line">    Server address: http://127.0.0.1:4000/</span><br><span class="line">  Server running... press ctrl-c to stop.</span><br></pre></td></tr></table></figure>
+
+<p>There you go! You can now visit <a href="http://127.0.0.1:4000/" target="_blank" rel="noopener">http://127.0.0.1:4000/</a> to see your Jekyll web page up and running!</p>
+<p><img src="/assets/images/jekyll/jekyll_default.png" alt="Default Jekyll Landing Page"></p>
+<p>Now this is great, but this looks like a blog, and we’re not trying to make a blog here, we have to perform a few tweaks to get our one-page project website come to life.</p>
+<h1 id="Configuring-Jekyll"><a href="#Configuring-Jekyll" class="headerlink" title="Configuring Jekyll"></a>Configuring Jekyll</h1><p>We got our site up and running, which is awesome, you can make blog posts! But we’re not looking for that. Instead, we want to create a one-page site for our project.</p>
+<p>To achieve this, we’re going to open up <strong><code>_config.yml</code></strong> and make a few changes, as well as changing the main theme. We will want to apply the <a href="https://github.com/pages-themes/cayman" target="_blank" rel="noopener"><strong>Cayman</strong> theme</a> for our site. Here’s the configuration file:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">Your</span> <span class="string">awesome</span> <span class="string">title</span></span><br><span class="line"><span class="attr">email:</span> <span class="string">your-email@example.com</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&gt;-</span> <span class="comment"># this means to ignore newlines until "baseurl:"</span></span><br><span class="line">  <span class="string">Write</span> <span class="string">an</span> <span class="string">awesome</span> <span class="string">description</span> <span class="string">for</span> <span class="string">your</span> <span class="string">new</span> <span class="string">site</span> <span class="string">here.</span> <span class="string">You</span> <span class="string">can</span> <span class="string">edit</span> <span class="string">this</span></span><br><span class="line">  <span class="string">line</span> <span class="string">in</span> <span class="string">_config.yml.</span> <span class="string">It</span> <span class="string">will</span> <span class="string">appear</span> <span class="string">in</span> <span class="string">your</span> <span class="string">document</span> <span class="string">head</span> <span class="string">meta</span> <span class="string">(for</span></span><br><span class="line">  <span class="string">Google</span> <span class="string">search</span> <span class="string">results)</span> <span class="string">and</span> <span class="string">in</span> <span class="string">your</span> <span class="string">feed.xml</span> <span class="string">site</span> <span class="string">description.</span></span><br><span class="line"><span class="attr">baseurl:</span> <span class="string">""</span> <span class="comment"># the subpath of your site, e.g. /blog</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">""</span> <span class="comment"># the base hostname &amp; protocol for your site, e.g. http://example.com</span></span><br><span class="line"><span class="attr">twitter_username:</span> <span class="string">jekyllrb</span></span><br><span class="line"><span class="attr">github_username:</span>  <span class="string">jekyll</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Build settings</span></span><br><span class="line"><span class="attr">markdown:</span> <span class="string">kramdown</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">minima</span></span><br><span class="line"><span class="attr">plugins:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">jekyll-feed</span></span><br></pre></td></tr></table></figure>
+
+<p>We will want to change these variables, more importantly, the <strong><code>baseurl</code></strong>. For GitHub projects, your <code>baseurl</code> will be your repository name. If you change your repository name in the future, then remember to edit this line! Let’s make our changes:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">Chuck</span> <span class="string">Says.</span></span><br><span class="line"><span class="attr">email:</span> <span class="string">franccesco@codingdose.info</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">Replace</span> <span class="string">weak</span> <span class="string">fortune</span> <span class="string">cookies</span> <span class="string">with</span> <span class="string">all-mighty</span> <span class="string">Chuck</span> <span class="string">Norris</span> <span class="string">facts.</span></span><br><span class="line"><span class="attr">baseurl:</span> <span class="string">"/chuck-says"</span> <span class="comment"># the subpath of your site, e.g. /blog</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">""</span> <span class="comment"># If you have a domain name, then you should fill this out!</span></span><br><span class="line"><span class="attr">twitter_username:</span> <span class="string">__franccesco</span></span><br><span class="line"><span class="attr">github_username:</span>  <span class="string">franccesco</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Build settings</span></span><br><span class="line"><span class="attr">markdown:</span> <span class="string">kramdown</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">jekyll-theme-cayman</span> <span class="comment"># &lt;&lt; Set the Cayman theme!</span></span><br><span class="line"><span class="attr">plugins:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">jekyll-feed</span></span><br></pre></td></tr></table></figure>
+
+<p>That was fast, right? But before we move on, it’s time for us to update the layout in our <strong><code>index.md</code></strong> file. You see, Jekyll works using a pre-defined <a href="https://jekyllrb.com/docs/layouts/" target="_blank" rel="noopener">layout</a> that wraps the page in it, these are defined in the directory <strong><code>_layouts</code></strong> in a HTML file, luckily they are added automatically in the <code>github-pages</code> gem, so you won’t have to create one.</p>
+<p>Let’s add the default layout to our <code>index.md</code> page using <a href="https://jekyllrb.com/docs/front-matter/" target="_blank" rel="noopener">Font Matter</a>. Let’s open it up and change the format; After that, we can finally fill out our page!</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="section"># You can copy and paste your `README.md` contents, or write something else!</span></span><br><span class="line"><span class="section"># Feel free to use your imagination here, just remember to respect the font matter division (`---`).</span></span><br><span class="line"></span><br><span class="line">layout: default # <span class="xml"><span class="tag">&lt;&lt; <span class="attr">Change</span> <span class="attr">this</span> <span class="attr">line</span> <span class="attr">from</span> '<span class="attr">home</span>' <span class="attr">to</span> '<span class="attr">default</span>'</span></span></span><br><span class="line"><span class="xml">---</span></span><br><span class="line"></span><br><span class="line"><span class="xml">Chuck Norris Facts, right in your terminal!</span></span><br><span class="line"></span><br><span class="line"><span class="xml">Because, who wouldn't want that? You better...</span></span><br><span class="line"></span><br><span class="line"><span class="xml">Get your day started as soon you see that sweet Chuck Norris fact of the day in your terminal; there's more than 600+ facts here, baby!</span></span><br><span class="line"><span class="xml">They're all real... allegedly.</span></span><br><span class="line"></span><br><span class="line"><span class="xml">--- SNIP ---</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Deploying-our-site-with-GitHub-Pages"><a href="#Deploying-our-site-with-GitHub-Pages" class="headerlink" title="Deploying our site with GitHub Pages"></a>Deploying our site with GitHub Pages</h2><p>After you have pushed your <code>/docs</code> folder to your repository with all of the changes we previously made, let’s configure GitHub so it can deploy our site. Fortunately, this is very easy.</p>
+<ul>
+<li>In your GitHub repository, click the <strong>Settings</strong> tab.</li>
+<li>Scroll down until you see <strong>GitHub Pages</strong>.</li>
+<li>Click the button under <strong>Source</strong> and select <strong>master branch /docs folder</strong></li>
+</ul>
+<p><img src="/assets/images/jekyll/github_settings.png"></p>
+<p>After that, you should see <strong>Your site is published at <a href="https://yourusername.github.io/your-project/" target="_blank" rel="noopener">https://yourusername.github.io/your-project/</a></strong>, it may take a few seconds to appear.</p>
+<p>After you have applied the settings, you should be able to check out your new project site at the URL that GitHub provides you.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Jekyll is a very powerful site generator. You can use it to make a blog, a CV online, your project’s sites, and it doesn’t cost a dime to host it at GitHub pages! Here’s an example of how it looks: <a href="https://franccesco.github.io/chuck-says/" target="_blank" rel="noopener">https://franccesco.github.io/chuck-says/</a></p>
+<p><a href="https://franccesco.github.io/chuck-says/" target="_blank" rel="noopener"><img src="/assets/images/jekyll/chuck_page.png"></a></p>
+<p>Pretty neat, right? You can check the example repository by clicking on the image. Also, if you’re new and you would like to make your first contribution in the GitHub community, <a href="https://github.com/franccesco/chuck-says/issues" target="_blank" rel="noopener">check out the issues pages</a>.</p>
+<hr>
+<p>I think I’ll make a post on how to create a blog using Jekyll, but we will also check out other static sites generators too. I hope you really liked the post, if you have any question then don’t hesitate to let me know.</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Building-our-site-with-Jekyll"><span class="toc-number">1.</span> <span class="toc-text">Building our site with Jekyll</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Configuring-Jekyll"><span class="toc-number"></span> <span class="toc-text">Configuring Jekyll</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Deploying-our-site-with-GitHub-Pages"><span class="toc-number">1.</span> <span class="toc-text">Deploying our site with GitHub Pages</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">2.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/&text=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/&title=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/&is_video=false&description=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages&body=Check out this article: http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/&title=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/&title=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/&title=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/&title=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/&name=Create a Project Page for Your Repos Easily With Jekyll and GitHub Pages&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Franccesco Orozco
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-114371181-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'codingdose';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="flattr:id" content="jj5n1v">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="These are my study notes on Classes and special methods. As always, if something is wrong then you can always correct me, it would help me and everybody else. Class ‘Employee’ exampleThis is the examp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Classes and Special Methods in Python">
+<meta property="og:url" content="http://codingdose.info/2018/03/18/class-inheritance-with-python/index.html">
+<meta property="og:site_name" content="CodingDose()">
+<meta property="og:description" content="These are my study notes on Classes and special methods. As always, if something is wrong then you can always correct me, it would help me and everybody else. Class ‘Employee’ exampleThis is the examp">
+<meta property="article:published_time" content="2018-03-18T17:24:18.000Z">
+<meta property="article:modified_time" content="2020-10-07T04:23:15.858Z">
+<meta property="article:author" content="Franccesco Orozco">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="study notes">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Classes and Special Methods in Python</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1481923801760340",
+        enable_page_level_ads: true
+      });
+    </script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CodingDose()" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/03/22/supress-print-output-in-python/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/03/09/get-a-download-size-with-Requests/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2018/03/18/class-inheritance-with-python/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2018/03/18/class-inheritance-with-python/&text=Classes and Special Methods in Python" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2018/03/18/class-inheritance-with-python/&title=Classes and Special Methods in Python" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2018/03/18/class-inheritance-with-python/&is_video=false&description=Classes and Special Methods in Python" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Classes and Special Methods in Python&body=Check out this article: http://codingdose.info/2018/03/18/class-inheritance-with-python/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2018/03/18/class-inheritance-with-python/&title=Classes and Special Methods in Python" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2018/03/18/class-inheritance-with-python/&title=Classes and Special Methods in Python" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2018/03/18/class-inheritance-with-python/&title=Classes and Special Methods in Python" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2018/03/18/class-inheritance-with-python/&title=Classes and Special Methods in Python" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2018/03/18/class-inheritance-with-python/&name=Classes and Special Methods in Python&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Class-‘Employee’-example"><span class="toc-number">1.</span> <span class="toc-text">Class ‘Employee’ example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Initializing-a-class-with-init"><span class="toc-number">2.</span> <span class="toc-text">Initializing a class with __init__</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Changing-the-String-representation-with-repr"><span class="toc-number">3.</span> <span class="toc-text">Changing the String representation with __repr__</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adding-more-functionality-to-our-class"><span class="toc-number">4.</span> <span class="toc-text">Adding more functionality to our class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Inheritance"><span class="toc-number">5.</span> <span class="toc-text">Inheritance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Changing-our-values-directly"><span class="toc-number">6.</span> <span class="toc-text">Changing our values directly</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other-Special-Methods"><span class="toc-number">7.</span> <span class="toc-text">Other Special Methods</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set-attributes-to-a-Class"><span class="toc-number">8.</span> <span class="toc-text">Set attributes to a Class</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Classes and Special Methods in Python
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Franccesco Orozco</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-03-18T17:24:18.000Z" itemprop="datePublished">2018-03-18</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/python/" rel="tag">python</a>, <a class="tag-link" href="/tags/study-notes/" rel="tag">study notes</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>These are my study notes on Classes and special methods. As always, if something is wrong then you can always correct me, it would help me and everybody else.</p>
+<h2 id="Class-‘Employee’-example"><a href="#Class-‘Employee’-example" class="headerlink" title="Class ‘Employee’ example"></a>Class ‘Employee’ example</h2><p>This is the example class that we’re going to use, a class <code>Employee</code> which we will inherit from to create more classes like <code>Manager</code> and <code>Supervisor</code>:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""Class simulating an Employee with basic attributes."""</span></span><br><span class="line"></span><br><span class="line">    total_employees = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, rate, position)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.rate = rate</span><br><span class="line">        self.owed = <span class="number">0</span></span><br><span class="line">        self.position = position</span><br><span class="line">        Employee.total_employees += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>Let’s break this up a little bit, we’re creating the class <code>Employee</code> that holds a variable <code>total_employee</code> and every time we <em>initialize</em> our class we will add a <code>+1</code> to our total employee number. This initialization of this class will require a <code>name</code>, <code>rate</code> and <code>position</code>. Remember that the keyword <em>self</em> refers to the class <em>itself</em>, these variables are shared in the whole class. So far, so good.</p>
+<p>Save this code as <em>class_example.py</em> and import it in python:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> class_example <span class="keyword">import</span> Employee</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>employee1 = Employee(<span class="string">'Anne'</span>, <span class="number">20</span>, <span class="string">'manager'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>employee1.name</span><br><span class="line"><span class="string">'Anne'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>employee1.rate</span><br><span class="line"><span class="number">20</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>employee1.position</span><br><span class="line"><span class="string">'manager'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Now we can instantiate our class in <code>employee1</code> and inspect the employee’s name, rate and position.</p>
+<h2 id="Initializing-a-class-with-init"><a href="#Initializing-a-class-with-init" class="headerlink" title="Initializing a class with __init__"></a>Initializing a class with <code>__init__</code></h2><p>This method let us initialize an <em>instance</em> of our class <strong>Employee</strong> with <code>x = Class(Args)</code>. This way, every time we want time instantiate an object then we have to pass parameters that will act as attributes to out class object. you can see en the last line that every time we initialize our class it will bump the number of <code>total_employees</code>, let’s check this out:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> class_example <span class="keyword">import</span> Employee</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>emp1 = Employee(<span class="string">'Anne'</span>, <span class="number">20</span>, <span class="string">'manager'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Employee.total_employees</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>emp2 = Employee(<span class="string">'John'</span>, <span class="number">25</span>, <span class="string">'supervisor'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Employee.total_employees</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>emp3 = Employee(<span class="string">'Fran'</span>, <span class="number">30</span>, <span class="string">'developer'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Employee.total_employees</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>See? Every time a new employee is created, the number of employees goes up.</p>
+<h2 id="Changing-the-String-representation-with-repr"><a href="#Changing-the-String-representation-with-repr" class="headerlink" title="Changing the String representation with __repr__"></a>Changing the String representation with <code>__repr__</code></h2><p>If we check the string representation of our class then we will have something like this:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>emp1</span><br><span class="line">&lt;class_example.Employee object at <span class="number">0x7f3809baec50</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>To give a more accurate description of our object, we can change the default representation to a string that describe the initialized class more appropriately re-defining the <code>__repr__</code> method:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""Class simulating an Employee with basic attributes."""</span></span><br><span class="line"></span><br><span class="line">    total_employees = <span class="number">0</span></span><br><span class="line">    -- SNIP --</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Employee object with basic attributes'</span></span><br></pre></td></tr></table></figure>
+
+<p>Now we can check again to see how our string representation gets displayed:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>emp1</span><br><span class="line">Employee object <span class="keyword">with</span> basic attributes</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Adding-more-functionality-to-our-class"><a href="#Adding-more-functionality-to-our-class" class="headerlink" title="Adding more functionality to our class"></a>Adding more functionality to our class</h2><p>Let’s add hours worked to our employee and how much do we owe to our employee:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span><span class="params">(object)</span>:</span></span><br><span class="line">    -- SNIP --</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_hours_worked</span><span class="params">(self, total_hours)</span>:</span></span><br><span class="line">        self.owed = total_hours * self.rate</span><br><span class="line">        print(<span class="string">'&#123;&#125; work hours where added to &#123;&#125;'</span>.format(total_hours, self.name))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pay</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Employee &#123;&#125; was paid with &#123;&#125; USD'</span>.format(self.name, self.owed))</span><br><span class="line">        self.owed = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>with <code>Employee.add_hours_worked(total_hours)</code> method we calculate how much we have to pay to our employee based on the <code>total_hours</code> he has worked. And with the method <code>pay()</code> we let our user know that we have payed the owed amount to our employee and now we owe nothing to him until he has completed more working hours.</p>
+<h2 id="Inheritance"><a href="#Inheritance" class="headerlink" title="Inheritance"></a>Inheritance</h2><p>Now that we have defined a very generic Employee, we’re going to define other classes such as <code>Developer</code> and <code>Manager</code> that inherits the same properties and methods of the class <code>Employee</code> but change a few ones like the string representation and rate, also let’s add a bonus to his payment.</p>
+<p>We’re rewriting <code>add_working_hours()</code> to add a bonus system, if this developer has worked more than 150 hours in a month then a bonus will be added, but we’re not rewriting the whole method,</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Developer</span><span class="params">(Employee)</span>:</span></span><br><span class="line">    <span class="string">"""Employee in charge of development and bug-crushing activities."""</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, rate, position)</span>:</span></span><br><span class="line">        super().__init__(name, rate, position)</span><br><span class="line">        self.bonus = <span class="number">300</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__doc__</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_working_hours</span><span class="params">(self, total_hours)</span>:</span></span><br><span class="line">        self.owed = total_hours * self.rate</span><br><span class="line">        <span class="keyword">if</span> total_hours &gt; <span class="number">150</span>:</span><br><span class="line">            self.owed += self.bonus</span><br><span class="line">        print(<span class="string">'&#123;&#125; work hours were added to &#123;&#125;'</span>.format(total_hours, self.name))</span><br></pre></td></tr></table></figure>
+
+<p>This method let us inherits all variables, initializing values and even methods, but what have we changed here exactly? Well, we added a <strong>bonus</strong> of 300 USD as initialization attribute, also we changed the string representation to the special method <code>__doc__</code>, this means that whenever we inspect the our object, it will return the <em>docstring</em> as our representation:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp = Developer(<span class="string">'Anne'</span>, <span class="number">20</span>, <span class="string">'developer'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp</span><br><span class="line">Employee <span class="keyword">in</span> charge of development <span class="keyword">and</span> bug-crushing activities.</span><br></pre></td></tr></table></figure>
+
+<p>We also modified <code>add_hours_worked()</code> and added a simple control flow</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line">        <span class="keyword">if</span> total_hours &gt; <span class="number">150</span>:</span><br><span class="line">            self.owed += self.bonus</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>As you can see here, if our developer has reached more than 150 hours, he can have a bonification of 300USD to his payment, we can see that in action:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp = Developer(<span class="string">'Anne'</span>, <span class="number">20</span>, <span class="string">'developer'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp2 = Developer(<span class="string">'Johnny'</span>, <span class="number">20</span>, <span class="string">'developer'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp.add_hours_worked(<span class="number">160</span>)</span><br><span class="line"><span class="number">160</span> work hours where added to Anne</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp2.add_hours_worked(<span class="number">130</span>)</span><br><span class="line"><span class="number">130</span> work hours where added to Johnny</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp.pay()</span><br><span class="line">Employee Anne was paid <span class="keyword">with</span> <span class="number">3500</span> USD</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp2.pay()</span><br><span class="line">Employee Johnny was paid <span class="keyword">with</span> <span class="number">2600</span> USD</span><br></pre></td></tr></table></figure>
+
+<p>The developer ‘Anne’ and ‘Johnny’ earn 20 USD per hour of work, as ‘Anne’ reaches 160 hours of work in her month then she can have a bonification (<em>160 * 20 + 300 = <strong>3500</strong></em>), ‘Johnny’ instead, worked only 130 hours this month, he cannot have his bonification (<em>130 * 20 = <strong>2600</strong></em>).</p>
+<p>But have you realized that we payed our <em>Developers</em> and we didn’t set a <code>pay()</code> method to our <code>Developer</code> class? This is because we inherits the methods found in <code>Employee</code> class so we don’t need to rewrite them.</p>
+<h2 id="Changing-our-values-directly"><a href="#Changing-our-values-directly" class="headerlink" title="Changing our values directly"></a>Changing our values directly</h2><p>We can change our class values directly, for example, if we want to change our employee’s names we can do that easily with:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp = Developer(<span class="string">'Anne'</span>, <span class="number">20</span>, <span class="string">'developer'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp.name = <span class="string">'Not Anne'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp.name</span><br><span class="line"><span class="string">'Not Anne'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Other-Special-Methods"><a href="#Other-Special-Methods" class="headerlink" title="Other Special Methods"></a>Other Special Methods</h2><p><code>Class.__getattrib__(attribute)</code> to return the attribute of a class, beware though, this is the same as <code>Class.attribute</code> which is shorter:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp.__getattribute__(<span class="string">'rate'</span>)</span><br><span class="line"><span class="number">20</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp.rate</span><br><span class="line"><span class="number">20</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Class.__dict__</code> to return a dictionary of the Class’ attributes:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp.__dict__</span><br><span class="line">&#123;<span class="string">'name'</span>: <span class="string">'not anne'</span>, <span class="string">'rate'</span>: <span class="number">20</span>, <span class="string">'owed'</span>: <span class="number">0</span>, <span class="string">'position'</span>: <span class="string">'developer'</span>, <span class="string">'bonus'</span>: <span class="number">300</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Class.__module__</code> to return the module that holds that Class:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp.__module__</span><br><span class="line"><span class="string">'class_example'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Set-attributes-to-a-Class"><a href="#Set-attributes-to-a-Class" class="headerlink" title="Set attributes to a Class"></a>Set attributes to a Class</h2><p>Setting an attribute to our class is easy: <code>Class.new_attribute = value</code>.<br>Let’s set the attribute <code>active</code> so we can know if our employee <code>Developer</code> is currently active:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> class_example <span class="keyword">import</span> *</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp = Developer(<span class="string">'Anne'</span>, <span class="number">20</span>, <span class="string">'developer'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp.active = <span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dev_emp.active</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>These are my study notes for today, any questions feel free to ask.<br>Here’s the full code used in the examples:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""Class simulating an Employee with basic attributes."""</span></span><br><span class="line">    total_employees = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, rate, position)</span>:</span></span><br><span class="line"></span><br><span class="line">        self.name = name</span><br><span class="line">        self.rate = rate</span><br><span class="line">        self.owed = <span class="number">0</span></span><br><span class="line">        self.position = position</span><br><span class="line">        Employee.total_employees += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_working_hours</span><span class="params">(self, total_hours)</span>:</span></span><br><span class="line">        self.owed = total_hours * self.rate</span><br><span class="line">        print(<span class="string">'&#123;&#125; work hours where added to &#123;&#125;'</span>.format(total_hours, self.name))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pay</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Employee &#123;&#125; was paid with &#123;&#125;USD'</span>.format(self.name, self.owed))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__doc__</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Developer</span><span class="params">(Employee)</span>:</span></span><br><span class="line">    <span class="string">"""Employee in charge of development and bug-crushing activities."""</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, rate, position)</span>:</span></span><br><span class="line">        super().__init__(name, rate, position)</span><br><span class="line">        self.bonus = <span class="number">300</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__doc__</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_working_hours</span><span class="params">(self, total_hours)</span>:</span></span><br><span class="line">        self.owed = total_hours * self.rate</span><br><span class="line">        <span class="keyword">if</span> total_hours &gt; <span class="number">150</span>:</span><br><span class="line">            self.owed += self.bonus</span><br><span class="line">        print(<span class="string">'&#123;&#125; work hours were added to &#123;&#125;'</span>.format(total_hours, self.name))</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Class-‘Employee’-example"><span class="toc-number">1.</span> <span class="toc-text">Class ‘Employee’ example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Initializing-a-class-with-init"><span class="toc-number">2.</span> <span class="toc-text">Initializing a class with __init__</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Changing-the-String-representation-with-repr"><span class="toc-number">3.</span> <span class="toc-text">Changing the String representation with __repr__</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adding-more-functionality-to-our-class"><span class="toc-number">4.</span> <span class="toc-text">Adding more functionality to our class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Inheritance"><span class="toc-number">5.</span> <span class="toc-text">Inheritance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Changing-our-values-directly"><span class="toc-number">6.</span> <span class="toc-text">Changing our values directly</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other-Special-Methods"><span class="toc-number">7.</span> <span class="toc-text">Other Special Methods</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set-attributes-to-a-Class"><span class="toc-number">8.</span> <span class="toc-text">Set attributes to a Class</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2018/03/18/class-inheritance-with-python/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2018/03/18/class-inheritance-with-python/&text=Classes and Special Methods in Python" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2018/03/18/class-inheritance-with-python/&title=Classes and Special Methods in Python" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2018/03/18/class-inheritance-with-python/&is_video=false&description=Classes and Special Methods in Python" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Classes and Special Methods in Python&body=Check out this article: http://codingdose.info/2018/03/18/class-inheritance-with-python/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2018/03/18/class-inheritance-with-python/&title=Classes and Special Methods in Python" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2018/03/18/class-inheritance-with-python/&title=Classes and Special Methods in Python" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2018/03/18/class-inheritance-with-python/&title=Classes and Special Methods in Python" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2018/03/18/class-inheritance-with-python/&title=Classes and Special Methods in Python" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2018/03/18/class-inheritance-with-python/&name=Classes and Special Methods in Python&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Franccesco Orozco
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-114371181-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'codingdose';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+

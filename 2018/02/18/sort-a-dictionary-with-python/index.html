@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="flattr:id" content="jj5n1v">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Dicionary Example:dictionary &#x3D; &amp;#123;&#39;one&#39;: 1, &#39;two&#39;: 2, &#39;three&#39;: 3, &#39;four&#39;: 4, &#39;five&#39;: 5&amp;#125;  Sorting methodsSort keyssorted(dictionary)&gt;&gt; [&#39;five&#39;, &#39;four&#39;, &#39;one&#39;, &#39;three&#39;, &#39;two&#39;]  Sort keys b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sort a Dictionary With Python">
+<meta property="og:url" content="http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/index.html">
+<meta property="og:site_name" content="CodingDose()">
+<meta property="og:description" content="Dicionary Example:dictionary &#x3D; &amp;#123;&#39;one&#39;: 1, &#39;two&#39;: 2, &#39;three&#39;: 3, &#39;four&#39;: 4, &#39;five&#39;: 5&amp;#125;  Sorting methodsSort keyssorted(dictionary)&gt;&gt; [&#39;five&#39;, &#39;four&#39;, &#39;one&#39;, &#39;three&#39;, &#39;two&#39;]  Sort keys b">
+<meta property="article:published_time" content="2018-02-19T01:31:07.000Z">
+<meta property="article:modified_time" content="2020-10-07T04:23:15.861Z">
+<meta property="article:author" content="Franccesco Orozco">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Sort a Dictionary With Python</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1481923801760340",
+        enable_page_level_ads: true
+      });
+    </script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CodingDose()" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/02/19/migrate-from-ghost-blog-to-jekyll/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/02/18/Hello-all/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/&text=Sort a Dictionary With Python" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/&title=Sort a Dictionary With Python" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/&is_video=false&description=Sort a Dictionary With Python" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Sort a Dictionary With Python&body=Check out this article: http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/&title=Sort a Dictionary With Python" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/&title=Sort a Dictionary With Python" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/&title=Sort a Dictionary With Python" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/&title=Sort a Dictionary With Python" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/&name=Sort a Dictionary With Python&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Dicionary-Example"><span class="toc-number">1.</span> <span class="toc-text">Dicionary Example:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sorting-methods"><span class="toc-number">2.</span> <span class="toc-text">Sorting methods</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sort-keys"><span class="toc-number">2.1.</span> <span class="toc-text">Sort keys</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sort-keys-by-value"><span class="toc-number">2.2.</span> <span class="toc-text">Sort keys by value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sort-values"><span class="toc-number">2.3.</span> <span class="toc-text">Sort values</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reverse-sorting-with-reverse-True"><span class="toc-number">2.4.</span> <span class="toc-text">Reverse sorting with reverse&#x3D;True</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Sort a Dictionary With Python
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Franccesco Orozco</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-02-19T01:31:07.000Z" itemprop="datePublished">2018-02-18</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/python/" rel="tag">python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Dicionary-Example"><a href="#Dicionary-Example" class="headerlink" title="Dicionary Example:"></a>Dicionary Example:</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dictionary = &#123;<span class="string">'one'</span>: <span class="number">1</span>, <span class="string">'two'</span>: <span class="number">2</span>, <span class="string">'three'</span>: <span class="number">3</span>, <span class="string">'four'</span>: <span class="number">4</span>, <span class="string">'five'</span>: <span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Sorting-methods"><a href="#Sorting-methods" class="headerlink" title="Sorting methods"></a>Sorting methods</h2><h3 id="Sort-keys"><a href="#Sort-keys" class="headerlink" title="Sort keys"></a>Sort keys</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sorted(dictionary)</span><br><span class="line">&gt;&gt; [<span class="string">'five'</span>, <span class="string">'four'</span>, <span class="string">'one'</span>, <span class="string">'three'</span>, <span class="string">'two'</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Sort-keys-by-value"><a href="#Sort-keys-by-value" class="headerlink" title="Sort keys by value"></a>Sort keys by value</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sorted(dictionary, key=dictionary.__getitem__)</span><br><span class="line">&gt;&gt; [<span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'three'</span>, <span class="string">'four'</span>, <span class="string">'five'</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Sort-values"><a href="#Sort-values" class="headerlink" title="Sort values"></a>Sort values</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sorted(dictionary.values())</span><br><span class="line">&gt;&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Reverse-sorting-with-reverse-True"><a href="#Reverse-sorting-with-reverse-True" class="headerlink" title="Reverse sorting with reverse=True"></a>Reverse sorting with <code>reverse=True</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sorted(dictionary, key=dictionary.__getitem__, reverse=<span class="literal">True</span>)</span><br><span class="line">&gt;&gt; [<span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'three'</span>, <span class="string">'four'</span>, <span class="string">'five'</span>]</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Dicionary-Example"><span class="toc-number">1.</span> <span class="toc-text">Dicionary Example:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sorting-methods"><span class="toc-number">2.</span> <span class="toc-text">Sorting methods</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sort-keys"><span class="toc-number">2.1.</span> <span class="toc-text">Sort keys</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sort-keys-by-value"><span class="toc-number">2.2.</span> <span class="toc-text">Sort keys by value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sort-values"><span class="toc-number">2.3.</span> <span class="toc-text">Sort values</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reverse-sorting-with-reverse-True"><span class="toc-number">2.4.</span> <span class="toc-text">Reverse sorting with reverse&#x3D;True</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/&text=Sort a Dictionary With Python" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/&title=Sort a Dictionary With Python" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/&is_video=false&description=Sort a Dictionary With Python" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Sort a Dictionary With Python&body=Check out this article: http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/&title=Sort a Dictionary With Python" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/&title=Sort a Dictionary With Python" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/&title=Sort a Dictionary With Python" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/&title=Sort a Dictionary With Python" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/&name=Sort a Dictionary With Python&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Franccesco Orozco
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-114371181-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'codingdose';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+

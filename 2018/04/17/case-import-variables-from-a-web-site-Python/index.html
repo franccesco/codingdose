@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="flattr:id" content="jj5n1v">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Before we start: A short disclaimerDon’t do this. Don’t go there importing random code you found on the internet into your code because that can be dangerous and code would be injected into your machi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Case Scenario: Import Variables From a Web Site - Python">
+<meta property="og:url" content="http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/index.html">
+<meta property="og:site_name" content="CodingDose()">
+<meta property="og:description" content="Before we start: A short disclaimerDon’t do this. Don’t go there importing random code you found on the internet into your code because that can be dangerous and code would be injected into your machi">
+<meta property="og:image" content="http://codingdose.info/assets/images/import_val_case/conv1.png">
+<meta property="og:image" content="http://codingdose.info/assets/images/import_val_case/impval1.png">
+<meta property="og:image" content="http://codingdose.info/assets/images/import_val_case/impval2.png">
+<meta property="article:published_time" content="2018-04-17T17:03:45.000Z">
+<meta property="article:modified_time" content="2020-10-07T04:23:15.858Z">
+<meta property="article:author" content="Franccesco Orozco">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://codingdose.info/assets/images/import_val_case/conv1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Case Scenario: Import Variables From a Web Site - Python</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1481923801760340",
+        enable_page_level_ads: true
+      });
+    </script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CodingDose()" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/05/01/announcement-about-lack-of-activity/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/04/17/create-multiple-directories-with-makedirs-Python/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/&text=Case Scenario: Import Variables From a Web Site - Python" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/&title=Case Scenario: Import Variables From a Web Site - Python" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/&is_video=false&description=Case Scenario: Import Variables From a Web Site - Python" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Case Scenario: Import Variables From a Web Site - Python&body=Check out this article: http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/&title=Case Scenario: Import Variables From a Web Site - Python" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/&title=Case Scenario: Import Variables From a Web Site - Python" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/&title=Case Scenario: Import Variables From a Web Site - Python" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/&title=Case Scenario: Import Variables From a Web Site - Python" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/&name=Case Scenario: Import Variables From a Web Site - Python&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Before-we-start-A-short-disclaimer"><span class="toc-number">1.</span> <span class="toc-text">Before we start: A short disclaimer</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution-1-Create-a-module-containing-the-variable-name"><span class="toc-number">1.1.</span> <span class="toc-text">Solution #1: Create a module containing the variable name</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution-2-A-Regular-Expression-to-Match-the-List-Items"><span class="toc-number">1.2.</span> <span class="toc-text">Solution #2: A Regular Expression to Match the List Items</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python-Discord"><span class="toc-number">2.</span> <span class="toc-text">Python Discord</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Case Scenario: Import Variables From a Web Site - Python
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Franccesco Orozco</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-04-17T17:03:45.000Z" itemprop="datePublished">2018-04-17</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/python/" rel="tag">python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Before-we-start-A-short-disclaimer"><a href="#Before-we-start-A-short-disclaimer" class="headerlink" title="Before we start: A short disclaimer"></a>Before we start: A short disclaimer</h1><p><strong>Don’t do this.</strong> Don’t go there importing random code you found on the internet into <em>your</em> code because that can be dangerous and code would be injected into your machine or a client’s machine and <strong>you don’t want that.</strong> Remember to <em>always</em> have your code and modules in a <strong>version control</strong> system and that you have complete knowledge of what you’re loading.</p>
+<hr>
+<p>Today I was talking with some of the guys in a Discord server about python, called <a href="https://pythondiscord.com/" target="_blank" rel="noopener"><strong>Python Discord</strong></a> (which I definitely recommend you to check out!), and stumbled upon a guy who was requesting assistance.</p>
+<p><img src="/assets/images/import_val_case/conv1.png" alt="Help"><br>(Yeah… I’m <strong>theinquisitor.</strong>)</p>
+<p>What he wanted to do was to <strong>import a variable that contains a list object,</strong> which is perfectly fine, the only issue was that the variable was <strong>in a web page called <a href="https://dumptext.com/Ai9Ww8j4/raw/" target="_blank" rel="noopener">dumptext.com</a>.</strong></p>
+<p><img src="/assets/images/import_val_case/impval1.png" alt="List Snippet"></p>
+<p>And to make things worst, when you inspect the web page’s source code you find that the text isn’t even <em>raw</em> text, I don’t know <strong><em>why</em></strong> would anyone add a <em>raw</em> button that doesn’t even return <em>raw</em> text.</p>
+<p><img src="/assets/images/import_val_case/impval2.png" alt="List Snippet"></p>
+<p>This is a <strong>bad idea</strong>, but hey: <em>I like to solve problems</em>, and we will work with this scenario just for the fun of it, so let’s start with <strong>Solution #1.</strong></p>
+<h2 id="Solution-1-Create-a-module-containing-the-variable-name"><a href="#Solution-1-Create-a-module-containing-the-variable-name" class="headerlink" title="Solution #1: Create a module containing the variable name"></a>Solution #1: Create a module containing the variable name</h2><p>The first solution will consist in:</p>
+<ol>
+<li><strong>Request</strong> the web page HTML’s source code.</li>
+<li><strong>Parse</strong> the HTML code with BeautifulSoup</li>
+<li><strong>Extract</strong> the contents inside the HTML’s <code>&lt;pre&gt;&lt;/pre&gt;</code> tags which contains the list we want.</li>
+<li><strong>Save</strong> the list into a module called <code>wordlist.py</code> that we can import.</li>
+<li><strong>Import</strong> the variable <code>words</code> from our newly created <code>wordlist.py</code> module.</li>
+</ol>
+<p>Before we start, we have to create an empty module first that will hold our data:<br><code>wordlist.py</code></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ touch wordlist.py</span><br></pre></td></tr></table></figure>
+
+<p>Now we proceed to create our main python code called:<br><code>solution1.py</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">"""Solution 1."""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> importlib <span class="keyword">import</span> reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># our module containing the variable with the list object</span></span><br><span class="line"><span class="keyword">import</span> wordlist</span><br><span class="line"></span><br><span class="line"><span class="comment"># request the HTML source and extract the text inside the '&lt;pre&gt;&lt;/pre&gt;' tags.</span></span><br><span class="line">dumptext_data = requests.get(<span class="string">'https://dumptext.com/Ai9Ww8j4/raw/'</span>).text</span><br><span class="line">parsed_dumptext_html = BeautifulSoup(dumptext_data, <span class="string">'html.parser'</span>)</span><br><span class="line">scraped_list = parsed_dumptext_html.pre.text</span><br><span class="line"></span><br><span class="line"><span class="comment"># save the contents of the scraped_list into a module</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'wordlist.py'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> wordlist_object:</span><br><span class="line">    wordlist_object.write(scraped_list)</span><br><span class="line"></span><br><span class="line"><span class="comment"># reload the module to import the variable 'words'</span></span><br><span class="line">reload(wordlist)</span><br><span class="line"></span><br><span class="line"><span class="comment"># now we can use the variable words everywhere we want.</span></span><br><span class="line">words = wordlist.words</span><br><span class="line">print(type(words))</span><br><span class="line">print(words)</span><br></pre></td></tr></table></figure>
+
+<p>Now, we are familiar with the packages <code>requests</code> and <code>BeautifulSoup</code>, but what about <code>importlib</code>? Well, <code>importlib</code> have a lot of utilities for our <em>imports</em>. In this case we imported the module <code>reload()</code> from <code>importlib</code> that allows us to <em>reload</em> a previous imported module, fresh as new, <strong>including the newly created variable holding our list</strong>. Remember that PEP8 recommends adding your imports at the top of the file, following your docstring, not in the middle of the file.</p>
+<p>Let’s see if our solution works well:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ python solution1.py</span><br><span class="line">&lt;class <span class="string">'list'</span>&gt;</span><br><span class="line">[<span class="string">'aah'</span>, <span class="string">'aal'</span>, <span class="string">'aas'</span>, <span class="string">'aba'</span>, <span class="string">'abo'</span>, <span class="string">'abs'</span>, <span class="string">'aby'</span>, <span class="string">'ace'</span>, <span class="string">'act'</span>, <span class="string">'add'</span>, <span class="string">'ado'</span>, <span class="string">'ads'</span>, <span class="string">'adz'</span>, <span class="string">'aff'</span>, <span class="string">'aft'</span>, <span class="string">'aga'</span>, <span class="string">'age'</span>, <span class="string">'ago'</span>, <span class="string">'ags'</span>, <span class="string">'aha'</span>, <span class="string">'ahi'</span>, <span class="string">'ahs'</span>, <span class="string">'aid'</span>, <span class="string">'ail'</span>, <span class="string">'aim'</span>, <span class="string">'ain'</span>, <span class="string">'air'</span>, <span class="string">'ais'</span>, <span class="string">'ait'</span>, <span class="string">'ala'</span>, <span class="string">'alb'</span>, <span class="string">'ale'</span>, <span class="string">'all'</span>, <span class="string">'alp'</span>, <span class="string">'als'</span>, <span class="string">'alt'</span>, <span class="string">'ama'</span>, <span class="string">'ami'</span>, <span class="string">'amp'</span>, <span class="string">'amu'</span>, <span class="string">'ana'</span>, <span class="string">'and'</span>, <span class="string">'ane'</span>, <span class="string">'ani'</span>, <span class="string">'ant'</span>, <span class="string">'any'</span>, ...]</span><br></pre></td></tr></table></figure>
+<p><strong>It works!</strong>, we can see that our it is an object from the class <em>list</em> and it prints successfully.</p>
+<p>There’s only one thing… <strong><em>we shouldn’t do this</em></strong>. Importing random code from the Internet is not a great option, believe me. You could do this in <em>very</em> specific scenario where you absolutely don’t have any choice, the file is read only and also <em>you</em> are the owner. If it’s a controlled file then good, but realistically I don’t see that happening, so please, avoid this solution.</p>
+<p><strong>It was fun to write though.</strong></p>
+<h2 id="Solution-2-A-Regular-Expression-to-Match-the-List-Items"><a href="#Solution-2-A-Regular-Expression-to-Match-the-List-Items" class="headerlink" title="Solution #2: A Regular Expression to Match the List Items"></a>Solution #2: A Regular Expression to Match the List Items</h2><p>This is a much better (and cleaner) solution, what we’ll do is the same scraping as before, but instead of creating and loading a module, we will pick everything inside a pair of single quotes (<code>&#39;&#39;</code>) from the parsed HTML code with a <em>regular expression</em> and add those results to a list.</p>
+<p>Let’s jump straight into the code:<br><code>solution2.py</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">"""Solution 2."""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="comment"># request the HTML source and extract the text inside the '&lt;pre&gt;&lt;/pre&gt;' tags.</span></span><br><span class="line">dumptext_data = requests.get(<span class="string">'https://dumptext.com/Ai9Ww8j4/raw/'</span>).text</span><br><span class="line">parsed_dumptext_html = BeautifulSoup(dumptext_data, <span class="string">'html.parser'</span>)</span><br><span class="line">scraped_list = parsed_dumptext_html.pre.text</span><br><span class="line"></span><br><span class="line"><span class="comment"># define a pattern that captures everything inside a pair of quotes ('')</span></span><br><span class="line">pattern = re.compile(<span class="string">r'\'(.*?)\''</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a list of items using list comprehension with all the matching items</span></span><br><span class="line">words = [word <span class="keyword">for</span> word <span class="keyword">in</span> re.findall(pattern, scraped_list)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># now we can use the variable words everywhere we want.</span></span><br><span class="line">print(type(words))</span><br><span class="line">print(words)</span><br></pre></td></tr></table></figure>
+
+<p>Let’s see if it works correctly:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ python solution2.py</span><br><span class="line">&lt;class <span class="string">'list'</span>&gt;</span><br><span class="line">[<span class="string">'aah'</span>, <span class="string">'aal'</span>, <span class="string">'aas'</span>, <span class="string">'aba'</span>, <span class="string">'abo'</span>, <span class="string">'abs'</span>, <span class="string">'aby'</span>, <span class="string">'ace'</span>, <span class="string">'act'</span>, <span class="string">'add'</span>, <span class="string">'ado'</span>, <span class="string">'ads'</span>, <span class="string">'adz'</span>, <span class="string">'aff'</span>, <span class="string">'aft'</span>, <span class="string">'aga'</span>, <span class="string">'age'</span>, <span class="string">'ago'</span>, <span class="string">'ags'</span>, <span class="string">'aha'</span>, <span class="string">'ahi'</span>, <span class="string">'ahs'</span>, <span class="string">'aid'</span>, <span class="string">'ail'</span>, <span class="string">'aim'</span>, <span class="string">'ain'</span>, <span class="string">'air'</span>, <span class="string">'ais'</span>, <span class="string">'ait'</span>, <span class="string">'ala'</span>, <span class="string">'alb'</span>, <span class="string">'ale'</span>, <span class="string">'all'</span>, <span class="string">'alp'</span>, <span class="string">'als'</span>, <span class="string">'alt'</span>, <span class="string">'ama'</span>, <span class="string">'ami'</span>, <span class="string">'amp'</span>, <span class="string">'amu'</span>, <span class="string">'ana'</span>, <span class="string">'and'</span>, <span class="string">'ane'</span>, <span class="string">'ani'</span>, <span class="string">'ant'</span>, <span class="string">'any'</span>, ...]</span><br></pre></td></tr></table></figure>
+
+<p>That’s it!, no need for stinkin’ modules and injecting random code into our code, no importing and no reloading:</p>
+<ol>
+<li>We imported the library <code>re</code> which aid us to search for strings using <em>regular expression</em> (Or <em>RegEx</em>).</li>
+<li>We use the same scraping technique as before.</li>
+<li>Now we define a RegEx pattern with <code>re.compile(r&#39;__pattern__&#39;)</code></li>
+<li>Create a List of words, where <code>word</code> is the result of all the words found in <code>re.findall(pattern, scraped_list)</code></li>
+</ol>
+<p>And that all, you can now use your <code>words</code> in a <strong><em>lot</em></strong> more safer way.</p>
+<h1 id="Python-Discord"><a href="#Python-Discord" class="headerlink" title="Python Discord"></a>Python Discord</h1><p>If you’re interested in being part of a community, then I cannot recommend you <strong>Python Discord</strong> more. It has helped me to learn so <em>much</em> about Python, people is really helpful and we’re are <em>always growing</em>.</p>
+<p>So please, be my guest and hop in this awesome community, here’s your invite: <a href="https://pythondiscord.com/invite" target="_blank" rel="noopener">https://pythondiscord.com/invite</a></p>
+<p><strong>Everyone</strong> is welcome.</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Before-we-start-A-short-disclaimer"><span class="toc-number">1.</span> <span class="toc-text">Before we start: A short disclaimer</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution-1-Create-a-module-containing-the-variable-name"><span class="toc-number">1.1.</span> <span class="toc-text">Solution #1: Create a module containing the variable name</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution-2-A-Regular-Expression-to-Match-the-List-Items"><span class="toc-number">1.2.</span> <span class="toc-text">Solution #2: A Regular Expression to Match the List Items</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python-Discord"><span class="toc-number">2.</span> <span class="toc-text">Python Discord</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/&text=Case Scenario: Import Variables From a Web Site - Python" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/&title=Case Scenario: Import Variables From a Web Site - Python" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/&is_video=false&description=Case Scenario: Import Variables From a Web Site - Python" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Case Scenario: Import Variables From a Web Site - Python&body=Check out this article: http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/&title=Case Scenario: Import Variables From a Web Site - Python" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/&title=Case Scenario: Import Variables From a Web Site - Python" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/&title=Case Scenario: Import Variables From a Web Site - Python" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/&title=Case Scenario: Import Variables From a Web Site - Python" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/&name=Case Scenario: Import Variables From a Web Site - Python&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Franccesco Orozco
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/franccesco" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-114371181-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'codingdose';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
