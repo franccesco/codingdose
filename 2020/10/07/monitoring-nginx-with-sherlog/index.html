@@ -15,7 +15,7 @@
 <meta property="og:description" content="Logs play a very important role throughout the entire life cycle of an application development as well as troubleshooting and replicating bugs on production that could lead to service interruption and">
 <meta property="og:image" content="https://dev-to-uploads.s3.amazonaws.com/i/mcz73m9ors0wmzqkw3wk.png">
 <meta property="article:published_time" content="2020-10-07T22:20:23.000Z">
-<meta property="article:modified_time" content="2020-10-07T22:23:52.696Z">
+<meta property="article:modified_time" content="2020-10-09T04:29:06.238Z">
 <meta property="article:author" content="Franccesco Orozco">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://dev-to-uploads.s3.amazonaws.com/i/mcz73m9ors0wmzqkw3wk.png">
@@ -151,16 +151,16 @@
 <p><a href="https://www.npmjs.com/package/@sherlog/cli" target="_blank" rel="noopener">@sherlog/cli</a> requires <code>node &gt;= 12</code>.</p>
 <p>For this example, I’m using <a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">nvm</a> to install the minimum required version</p>
 <p>Run the following commands in your terminal:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm install v12.16.1</span><br><span class="line">npm install -g @sherlog&#x2F;cli</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nvm install v12.16.1</span><br><span class="line">$ npm install -g @sherlog/cli</span><br></pre></td></tr></table></figure>
 
 <p>Initialize the project</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sherlog init</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sherlog init</span><br></pre></td></tr></table></figure>
 
 <p>The previous command generates a <code>.sherlog</code> config file in your current working directory (no biggie, just another JSON). Fill in the blanks. Once configured, it should look similar to this.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;hostname&quot;: &quot;192.168.10.108&quot;,</span><br><span class="line">  &quot;backpressure&quot;: 1000,</span><br><span class="line">  &quot;chunks&quot;: 500,</span><br><span class="line">  &quot;compression&quot;: true,</span><br><span class="line">  &quot;files&quot;: [&#123;</span><br><span class="line">    &quot;metric&quot;: &quot;nginx&quot;,</span><br><span class="line">    &quot;file&quot;: &quot;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log&quot;,</span><br><span class="line">    &quot;eventType&quot;: &quot;http&quot;,</span><br><span class="line">    &quot;timezone&quot;: &quot;UTC&quot;,</span><br><span class="line">    &quot;fromBeginning&quot;: true</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"hostname"</span>: <span class="string">"192.168.10.108"</span>,</span><br><span class="line">  <span class="attr">"backpressure"</span>: <span class="number">1000</span>,</span><br><span class="line">  <span class="attr">"chunks"</span>: <span class="number">500</span>,</span><br><span class="line">  <span class="attr">"compression"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"files"</span>: [&#123;</span><br><span class="line">    <span class="attr">"metric"</span>: <span class="string">"nginx"</span>,</span><br><span class="line">    <span class="attr">"file"</span>: <span class="string">"/var/log/nginx/access.log"</span>,</span><br><span class="line">    <span class="attr">"eventType"</span>: <span class="string">"http"</span>,</span><br><span class="line">    <span class="attr">"timezone"</span>: <span class="string">"UTC"</span>,</span><br><span class="line">    <span class="attr">"fromBeginning"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>This file can be committed to your repository to speed up the process next time you need to check your logs on different environments. Lets go ahead and start the service.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sherlog start</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sherlog start</span><br></pre></td></tr></table></figure>
 
 <p>This will output the following in your terminal</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Sherlog listening on:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   - Dashboard:   http:&#x2F;&#x2F;localhost:8000</span><br><span class="line">   - Local:       ws:&#x2F;&#x2F;localhost:8000</span><br><span class="line">   - Network:     ws:&#x2F;&#x2F;192.168.10.108:8000</span><br></pre></td></tr></table></figure>
@@ -170,23 +170,23 @@
 <p>Now you can navigate through your logs as if you were watching a YouTube video going back and forth in case you missed something.</p>
 <p><a href="https://www.npmjs.com/package/@sherlog/cli" target="_blank" rel="noopener">@sherlog/cli</a> supports the following default log formats out of the box:</p>
 <ul>
-<li>apache2<ul>
-<li>http</li>
-<li>error</li>
+<li><strong>Apache2</strong><ul>
+<li>HTTP</li>
+<li>Error</li>
 </ul>
 </li>
-<li>monolog (e.g. Laravel)</li>
-<li>mysql<ul>
-<li>general</li>
+<li><strong>Monolog</strong> (e.g. Laravel)</li>
+<li><strong>Mysql</strong><ul>
+<li>General</li>
 </ul>
 </li>
-<li>nginx<ul>
-<li>http</li>
-<li>error</li>
+<li><strong>Nginx</strong><ul>
+<li>HTTP</li>
+<li>Error</li>
 </ul>
 </li>
-<li>php-fpm</li>
-<li>redis</li>
+<li><strong>PHP-fpm</strong></li>
+<li><strong>Redis</strong></li>
 </ul>
 <p>That’s it for now folks, if you wish to get updates about <strong>@sherlog/cli</strong> and possible use cases you can follow me on Twitter <a href="https://twitter.com/Brucelampson" target="_blank" rel="noopener">@Brucelampson</a> or feel free to submit a pull request to the project on GitHub <a href="https://github.com/sherl0g/cli" target="_blank" rel="noopener">sherl0g</a></p>
 
