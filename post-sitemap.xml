@@ -24,6 +24,14 @@
     </url>
 
     <url>
+        <loc>http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/</loc>
+        <lastmod>2020-10-07T04:23:15.861Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://codingdose.info/2018/03/05/scraping-web-data-with-requests-and-beautifulsoup/</loc>
         <lastmod>2020-10-07T04:23:15.861Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -40,24 +48,8 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/</loc>
-        <lastmod>2020-10-07T04:23:15.861Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/</loc>
         <lastmod>2020-10-07T04:23:15.861Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/2018/05/03/ipchallenge-part-2/</loc>
-        <lastmod>2020-10-07T04:23:15.860Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -72,7 +64,15 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/</loc>
+        <loc>http://codingdose.info/2018/02/27/manage-python-versions-with-pyenv/</loc>
+        <lastmod>2020-10-07T04:23:15.860Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/2018/05/03/ipchallenge-part-2/</loc>
         <lastmod>2020-10-07T04:23:15.860Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -88,7 +88,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/02/27/manage-python-versions-with-pyenv/</loc>
+        <loc>http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/</loc>
         <lastmod>2020-10-07T04:23:15.860Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -128,14 +128,6 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/</loc>
-        <lastmod>2020-10-07T04:23:15.859Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://codingdose.info/2018/05/10/deploy-a-flask-project-to-heroku/</loc>
         <lastmod>2020-10-07T04:23:15.859Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -145,6 +137,14 @@
 
     <url>
         <loc>http://codingdose.info/2018/03/09/get-a-download-size-with-Requests/</loc>
+        <lastmod>2020-10-07T04:23:15.859Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/</loc>
         <lastmod>2020-10-07T04:23:15.859Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -184,14 +184,6 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/04/07/create-a-basic-api-with-flask/</loc>
-        <lastmod>2020-10-07T04:23:15.858Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://codingdose.info/2018/05/12/change-flask-root-folder/</loc>
         <lastmod>2020-10-07T04:23:15.858Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -208,7 +200,23 @@
     </url>
 
     <url>
+        <loc>http://codingdose.info/2018/04/07/create-a-basic-api-with-flask/</loc>
+        <lastmod>2020-10-07T04:23:15.858Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://codingdose.info/2018/02/28/How-to-securely-store-sensitive-configuration-with-dotenv/</loc>
+        <lastmod>2020-10-07T04:23:15.857Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/2018/03/01/How-to-send-a-tweet-with-Python-using-Tweepy/</loc>
         <lastmod>2020-10-07T04:23:15.857Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -224,7 +232,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/03/01/How-to-send-a-tweet-with-Python-using-Tweepy/</loc>
+        <loc>http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/</loc>
         <lastmod>2020-10-07T04:23:15.857Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -248,15 +256,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/</loc>
-        <lastmod>2020-10-07T04:23:15.857Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/2018/04/07/Create-and-object-with-namedtuple/</loc>
+        <loc>http://codingdose.info/2018/05/02/Challenge-IPInfo-io-Class/</loc>
         <lastmod>2020-10-07T04:23:15.856Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -264,7 +264,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/05/02/Challenge-IPInfo-io-Class/</loc>
+        <loc>http://codingdose.info/2018/04/07/Create-and-object-with-namedtuple/</loc>
         <lastmod>2020-10-07T04:23:15.856Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -280,7 +280,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/08/06/Generate-and-sign-your-commits-with-GPG-in-Github/</loc>
+        <loc>http://codingdose.info/2018/02/18/Hello-all/</loc>
         <lastmod>2020-10-07T04:23:15.856Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -288,7 +288,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/02/18/Hello-all/</loc>
+        <loc>http://codingdose.info/2018/08/06/Generate-and-sign-your-commits-with-GPG-in-Github/</loc>
         <lastmod>2020-10-07T04:23:15.856Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
