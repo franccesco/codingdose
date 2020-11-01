@@ -24,6 +24,14 @@
     </url>
 
     <url>
+        <loc>http://codingdose.info/2018/03/05/scraping-web-data-with-requests-and-beautifulsoup/</loc>
+        <lastmod>2020-10-07T04:23:15.861Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/</loc>
         <lastmod>2020-10-07T04:23:15.861Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -33,14 +41,6 @@
 
     <url>
         <loc>http://codingdose.info/2018/03/22/supress-print-output-in-python/</loc>
-        <lastmod>2020-10-07T04:23:15.861Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/2018/03/05/scraping-web-data-with-requests-and-beautifulsoup/</loc>
         <lastmod>2020-10-07T04:23:15.861Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -72,7 +72,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/02/27/manage-python-versions-with-pyenv/</loc>
+        <loc>http://codingdose.info/2018/05/05/ipchallenge-part-3/</loc>
         <lastmod>2020-10-07T04:23:15.860Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -80,7 +80,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/05/05/ipchallenge-part-3/</loc>
+        <loc>http://codingdose.info/2018/02/27/manage-python-versions-with-pyenv/</loc>
         <lastmod>2020-10-07T04:23:15.860Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -96,7 +96,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/03/29/return-a-list-of-files-and-absolute-path-with-python/</loc>
+        <loc>http://codingdose.info/2018/02/20/pipenv-development-workflow/</loc>
         <lastmod>2020-10-07T04:23:15.860Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -104,7 +104,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/02/20/pipenv-development-workflow/</loc>
+        <loc>http://codingdose.info/2018/03/29/return-a-list-of-files-and-absolute-path-with-python/</loc>
         <lastmod>2020-10-07T04:23:15.860Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -160,22 +160,6 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/05/01/announcement-about-lack-of-activity/</loc>
-        <lastmod>2020-10-07T04:23:15.858Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/2018/05/12/change-flask-root-folder/</loc>
-        <lastmod>2020-10-07T04:23:15.858Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://codingdose.info/2018/02/25/accessors-in-ruby/</loc>
         <lastmod>2020-10-07T04:23:15.858Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -184,7 +168,23 @@
     </url>
 
     <url>
+        <loc>http://codingdose.info/2018/05/01/announcement-about-lack-of-activity/</loc>
+        <lastmod>2020-10-07T04:23:15.858Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/</loc>
+        <lastmod>2020-10-07T04:23:15.858Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/2018/05/12/change-flask-root-folder/</loc>
         <lastmod>2020-10-07T04:23:15.858Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -232,7 +232,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2020/06/27/Logging-Events-in-Python/</loc>
+        <loc>http://codingdose.info/2018/02/23/Initialize-Rails-and-Deploy-to-Heroku/</loc>
         <lastmod>2020-10-07T04:23:15.857Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -240,7 +240,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/02/23/Initialize-Rails-and-Deploy-to-Heroku/</loc>
+        <loc>http://codingdose.info/2020/06/27/Logging-Events-in-Python/</loc>
         <lastmod>2020-10-07T04:23:15.857Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -250,14 +250,6 @@
     <url>
         <loc>http://codingdose.info/2019/06/26/Save-your-dictionaries-lists-tuples-and-other-objects-with-Pickle/</loc>
         <lastmod>2020-10-07T04:23:15.857Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/2018/04/07/Create-and-object-with-namedtuple/</loc>
-        <lastmod>2020-10-07T04:23:15.856Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -280,7 +272,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/02/18/Hello-all/</loc>
+        <loc>http://codingdose.info/2018/04/07/Create-and-object-with-namedtuple/</loc>
         <lastmod>2020-10-07T04:23:15.856Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -289,6 +281,14 @@
 
     <url>
         <loc>http://codingdose.info/2018/08/06/Generate-and-sign-your-commits-with-GPG-in-Github/</loc>
+        <lastmod>2020-10-07T04:23:15.856Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/2018/02/18/Hello-all/</loc>
         <lastmod>2020-10-07T04:23:15.856Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

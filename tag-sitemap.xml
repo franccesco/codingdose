@@ -59,14 +59,14 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/tags/Ruby/</loc>
+        <loc>http://codingdose.info/tags/announcement/</loc>
         <lastmod>2020-10-07T04:23:15.858Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://codingdose.info/tags/announcement/</loc>
+        <loc>http://codingdose.info/tags/Ruby/</loc>
         <lastmod>2020-10-07T04:23:15.858Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -75,6 +75,13 @@
     <url>
         <loc>http://codingdose.info/tags/rails/</loc>
         <lastmod>2020-10-07T04:23:15.857Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/welcome/</loc>
+        <lastmod>2020-10-07T04:23:15.856Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -95,13 +102,6 @@
 
     <url>
         <loc>http://codingdose.info/tags/git/</loc>
-        <lastmod>2020-10-07T04:23:15.856Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/tags/welcome/</loc>
         <lastmod>2020-10-07T04:23:15.856Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
