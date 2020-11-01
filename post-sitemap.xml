@@ -32,7 +32,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/</loc>
+        <loc>http://codingdose.info/2018/03/22/supress-print-output-in-python/</loc>
         <lastmod>2020-10-07T04:23:15.861Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -40,7 +40,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/03/22/supress-print-output-in-python/</loc>
+        <loc>http://codingdose.info/2018/02/18/sort-a-dictionary-with-python/</loc>
         <lastmod>2020-10-07T04:23:15.861Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -56,6 +56,14 @@
     </url>
 
     <url>
+        <loc>http://codingdose.info/2018/05/03/ipchallenge-part-2/</loc>
+        <lastmod>2020-10-07T04:23:15.860Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://codingdose.info/2018/02/20/http-requests-in-python/</loc>
         <lastmod>2020-10-07T04:23:15.860Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -64,7 +72,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/05/03/ipchallenge-part-2/</loc>
+        <loc>http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/</loc>
         <lastmod>2020-10-07T04:23:15.860Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -88,14 +96,6 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/02/19/migrate-from-ghost-blog-to-jekyll/</loc>
-        <lastmod>2020-10-07T04:23:15.860Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://codingdose.info/2018/02/20/pipenv-development-workflow/</loc>
         <lastmod>2020-10-07T04:23:15.860Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -112,14 +112,6 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/</loc>
-        <lastmod>2020-10-07T04:23:15.859Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://codingdose.info/2018/04/17/create-multiple-directories-with-makedirs-Python/</loc>
         <lastmod>2020-10-07T04:23:15.859Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -128,7 +120,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/05/10/deploy-a-flask-project-to-heroku/</loc>
+        <loc>http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/</loc>
         <lastmod>2020-10-07T04:23:15.859Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -137,6 +129,14 @@
 
     <url>
         <loc>http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/</loc>
+        <lastmod>2020-10-07T04:23:15.859Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/2018/05/10/deploy-a-flask-project-to-heroku/</loc>
         <lastmod>2020-10-07T04:23:15.859Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -160,14 +160,6 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/02/25/accessors-in-ruby/</loc>
-        <lastmod>2020-10-07T04:23:15.858Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://codingdose.info/2018/05/01/announcement-about-lack-of-activity/</loc>
         <lastmod>2020-10-07T04:23:15.858Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -176,7 +168,23 @@
     </url>
 
     <url>
+        <loc>http://codingdose.info/2018/02/25/accessors-in-ruby/</loc>
+        <lastmod>2020-10-07T04:23:15.858Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/</loc>
+        <lastmod>2020-10-07T04:23:15.858Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/2018/04/07/create-a-basic-api-with-flask/</loc>
         <lastmod>2020-10-07T04:23:15.858Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -200,31 +208,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2018/04/07/create-a-basic-api-with-flask/</loc>
-        <lastmod>2020-10-07T04:23:15.858Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/</loc>
-        <lastmod>2020-10-07T04:23:15.857Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://codingdose.info/2018/02/28/How-to-securely-store-sensitive-configuration-with-dotenv/</loc>
-        <lastmod>2020-10-07T04:23:15.857Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/2018/03/01/How-to-send-a-tweet-with-Python-using-Tweepy/</loc>
         <lastmod>2020-10-07T04:23:15.857Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -240,7 +224,7 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/2020/06/27/Logging-Events-in-Python/</loc>
+        <loc>http://codingdose.info/2018/03/01/How-to-send-a-tweet-with-Python-using-Tweepy/</loc>
         <lastmod>2020-10-07T04:23:15.857Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -256,6 +240,30 @@
     </url>
 
     <url>
+        <loc>http://codingdose.info/2020/06/27/Logging-Events-in-Python/</loc>
+        <lastmod>2020-10-07T04:23:15.857Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/</loc>
+        <lastmod>2020-10-07T04:23:15.857Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/2018/04/07/Create-and-object-with-namedtuple/</loc>
+        <lastmod>2020-10-07T04:23:15.856Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://codingdose.info/2018/05/02/Challenge-IPInfo-io-Class/</loc>
         <lastmod>2020-10-07T04:23:15.856Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -265,14 +273,6 @@
 
     <url>
         <loc>http://codingdose.info/2018/04/14/Deques-in-Python/</loc>
-        <lastmod>2020-10-07T04:23:15.856Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/2018/04/07/Create-and-object-with-namedtuple/</loc>
         <lastmod>2020-10-07T04:23:15.856Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
