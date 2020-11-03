@@ -3,8 +3,169 @@
 
 
     <url>
+        <loc>http://codingdose.info/tags/opinion/</loc>
+        <lastmod>2020-11-03T05:28:08.380Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/data-science/</loc>
+        <lastmod>2020-11-03T05:28:08.380Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://codingdose.info/tags/python/</loc>
-        <lastmod>2020-10-07T04:23:15.861Z</lastmod>
+        <lastmod>2020-11-02T00:30:19.366Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/web-development/</loc>
+        <lastmod>2020-11-02T00:30:04.140Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/classes/</loc>
+        <lastmod>2020-11-02T00:29:52.939Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/file-management/</loc>
+        <lastmod>2020-11-02T00:29:27.149Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/packaging/</loc>
+        <lastmod>2020-11-02T00:29:03.093Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/bundler/</loc>
+        <lastmod>2020-11-02T00:29:03.093Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/ruby/</loc>
+        <lastmod>2020-11-02T00:29:03.093Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/jekyll/</loc>
+        <lastmod>2020-11-02T00:27:15.617Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/github/</loc>
+        <lastmod>2020-11-02T00:27:15.617Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/linux/</loc>
+        <lastmod>2020-11-02T00:27:03.868Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/gpg/</loc>
+        <lastmod>2020-11-02T00:27:03.868Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/git/</loc>
+        <lastmod>2020-11-02T00:27:03.868Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/poetry/</loc>
+        <lastmod>2020-11-01T19:54:30.768Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/logging/</loc>
+        <lastmod>2020-11-01T19:52:17.824Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/javascript/</loc>
+        <lastmod>2020-11-01T19:46:53.274Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/project/</loc>
+        <lastmod>2020-11-01T19:46:53.274Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/guest/</loc>
+        <lastmod>2020-11-01T19:46:53.274Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/flask/</loc>
+        <lastmod>2020-11-01T19:45:05.550Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/crazy/</loc>
+        <lastmod>2020-11-01T19:44:38.393Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/web-scraping/</loc>
+        <lastmod>2020-11-01T19:44:38.393Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/cryptography/</loc>
+        <lastmod>2020-11-01T19:43:10.353Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://codingdose.info/tags/accessors/</loc>
+        <lastmod>2020-11-01T19:42:46.890Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -24,85 +185,8 @@
     </url>
 
     <url>
-        <loc>http://codingdose.info/tags/jekyll/</loc>
-        <lastmod>2020-10-07T04:23:15.860Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/tags/challenge/</loc>
-        <lastmod>2020-10-07T04:23:15.860Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/tags/github/</loc>
-        <lastmod>2020-10-07T04:23:15.859Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/tags/ruby/</loc>
-        <lastmod>2020-10-07T04:23:15.859Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/tags/study-notes/</loc>
-        <lastmod>2020-10-07T04:23:15.858Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/tags/Ruby/</loc>
-        <lastmod>2020-10-07T04:23:15.858Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/tags/announcement/</loc>
-        <lastmod>2020-10-07T04:23:15.858Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://codingdose.info/tags/rails/</loc>
         <lastmod>2020-10-07T04:23:15.857Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/tags/gpg/</loc>
-        <lastmod>2020-10-07T04:23:15.856Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/tags/linux/</loc>
-        <lastmod>2020-10-07T04:23:15.856Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/tags/git/</loc>
-        <lastmod>2020-10-07T04:23:15.856Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://codingdose.info/tags/welcome/</loc>
-        <lastmod>2020-10-07T04:23:15.856Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

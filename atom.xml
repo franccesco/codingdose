@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://codingdose.info/"/>
-  <updated>2020-10-09T04:29:06.238Z</updated>
+  <updated>2020-11-03T05:28:08.380Z</updated>
   <id>http://codingdose.info/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>The 4 Hard Truths Data Science Blogs Don&#39;t Teach You About</title>
+    <link href="http://codingdose.info/2020/11/02/data-science-reality/"/>
+    <id>http://codingdose.info/2020/11/02/data-science-reality/</id>
+    <published>2020-11-03T00:55:01.000Z</published>
+    <updated>2020-11-03T05:28:08.380Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;I’m angry.&lt;/strong&gt; Yes, I’m angry at &lt;em&gt;data science blogs&lt;/em&gt;. Which is weird, because data science is blooming right now
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="data science" scheme="http://codingdose.info/tags/data-science/"/>
+    
+      <category term="opinion" scheme="http://codingdose.info/tags/opinion/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Monitoring Nginx With @Sherlog/cli</title>
     <link href="http://codingdose.info/2020/10/07/monitoring-nginx-with-sherlog/"/>
     <id>http://codingdose.info/2020/10/07/monitoring-nginx-with-sherlog/</id>
     <published>2020-10-07T22:20:23.000Z</published>
-    <updated>2020-10-09T04:29:06.238Z</updated>
+    <updated>2020-11-01T19:46:53.274Z</updated>
     
     <summary type="html">
     
@@ -37,6 +64,12 @@
     
     
     
+      <category term="guest" scheme="http://codingdose.info/tags/guest/"/>
+    
+      <category term="project" scheme="http://codingdose.info/tags/project/"/>
+    
+      <category term="javascript" scheme="http://codingdose.info/tags/javascript/"/>
+    
   </entry>
   
   <entry>
@@ -44,7 +77,7 @@
     <link href="http://codingdose.info/2020/06/27/Logging-Events-in-Python/"/>
     <id>http://codingdose.info/2020/06/27/Logging-Events-in-Python/</id>
     <published>2020-06-27T15:45:41.000Z</published>
-    <updated>2020-10-07T04:23:15.857Z</updated>
+    <updated>2020-11-01T19:52:17.824Z</updated>
     
     <summary type="html">
     
@@ -52,7 +85,9 @@
       
         
         
-          &lt;p&gt;If you find yourself having troubles debugging your code, or wondering what went wrong, then you should start logging events in your
+          &lt;!-- Start of Unsplash Embed Code - Full-width (Embed code by @BirdyOz)--&gt;
+&lt;div style=&quot;width:100%; margin: 20px auto;&quot;&gt;
+    &lt;img
         
       
     
@@ -61,6 +96,8 @@
     
     
       <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+      <category term="logging" scheme="http://codingdose.info/tags/logging/"/>
     
   </entry>
   
@@ -95,7 +132,7 @@
     <link href="http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/"/>
     <id>http://codingdose.info/2019/06/16/develop-and-publish-with-poetry/</id>
     <published>2019-06-16T17:20:44.000Z</published>
-    <updated>2020-10-07T04:23:15.859Z</updated>
+    <updated>2020-11-01T19:54:30.768Z</updated>
     
     <summary type="html">
     
@@ -103,7 +140,9 @@
       
         
         
-          &lt;p&gt;I’ve been trying to publish my packages to &lt;a href=&quot;http://pypi.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;PyPi&lt;/a&gt; so people can access my
+          &lt;!-- Start of Unsplash Embed Code - Full-width (Embed code by @BirdyOz)--&gt;
+&lt;div style=&quot;width:100%; margin: 20px auto;&quot;&gt;
+    &lt;img
         
       
     
@@ -112,6 +151,10 @@
     
     
       <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+      <category term="packaging" scheme="http://codingdose.info/tags/packaging/"/>
+    
+      <category term="poetry" scheme="http://codingdose.info/tags/poetry/"/>
     
   </entry>
   
@@ -147,7 +190,7 @@
     <link href="http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/"/>
     <id>http://codingdose.info/2019/06/08/create-a-project-page-for-your-repositories-easily-with-Jekyll/</id>
     <published>2019-06-09T02:24:14.000Z</published>
-    <updated>2020-10-07T04:23:15.859Z</updated>
+    <updated>2020-11-02T00:27:15.617Z</updated>
     
     <summary type="html">
     
@@ -155,7 +198,9 @@
       
         
         
-          &lt;p&gt;I know, I know… I should be writing about creating a full fledge super complex blog with Jekyll + GitHub Pages at no cost with your own
+          &lt;!-- Start of Unsplash Embed Code - Full-width (Embed code by @BirdyOz)--&gt;
+&lt;div style=&quot;width:100%; margin: 20px auto;&quot;&gt;
+    &lt;img
         
       
     
@@ -176,7 +221,7 @@
     <link href="http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/"/>
     <id>http://codingdose.info/2019/03/06/How-to-create-a-Ruby-gem-with-Bundler/</id>
     <published>2019-03-06T18:44:08.000Z</published>
-    <updated>2020-10-07T04:23:15.857Z</updated>
+    <updated>2020-11-02T00:29:03.093Z</updated>
     
     <summary type="html">
     
@@ -184,7 +229,9 @@
       
         
         
-          &lt;p&gt;I’ve been writing and focusing on Python lately and I’ve been wanting to make more content about Ruby. Ruby was my very first language
+          &lt;!-- Start of Unsplash Embed Code - Full-width (Embed code by @BirdyOz)--&gt;
+&lt;div style=&quot;width:100%; margin: 20px auto;&quot;&gt;
+    &lt;img
         
       
     
@@ -194,6 +241,10 @@
     
       <category term="ruby" scheme="http://codingdose.info/tags/ruby/"/>
     
+      <category term="bundler" scheme="http://codingdose.info/tags/bundler/"/>
+    
+      <category term="packaging" scheme="http://codingdose.info/tags/packaging/"/>
+    
   </entry>
   
   <entry>
@@ -201,7 +252,7 @@
     <link href="http://codingdose.info/2018/08/06/Generate-and-sign-your-commits-with-GPG-in-Github/"/>
     <id>http://codingdose.info/2018/08/06/Generate-and-sign-your-commits-with-GPG-in-Github/</id>
     <published>2018-08-07T01:47:29.000Z</published>
-    <updated>2020-10-07T04:23:15.856Z</updated>
+    <updated>2020-11-02T00:27:03.868Z</updated>
     
     <summary type="html">
     
@@ -209,8 +260,9 @@
       
         
         
-          &lt;h1 id=&quot;Why-you-should&quot;&gt;&lt;a href=&quot;#Why-you-should&quot; class=&quot;headerlink&quot; title=&quot;Why you should?&quot;&gt;&lt;/a&gt;Why you should?&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;Using
+          &lt;!-- Start of Unsplash Embed Code - Full-width (Embed code by @BirdyOz)--&gt;
+&lt;div style=&quot;width:100%; margin: 20px auto;&quot;&gt;
+    &lt;img
         
       
     
@@ -220,9 +272,11 @@
     
       <category term="git" scheme="http://codingdose.info/tags/git/"/>
     
-      <category term="linux" scheme="http://codingdose.info/tags/linux/"/>
+      <category term="github" scheme="http://codingdose.info/tags/github/"/>
     
       <category term="gpg" scheme="http://codingdose.info/tags/gpg/"/>
+    
+      <category term="linux" scheme="http://codingdose.info/tags/linux/"/>
     
   </entry>
   
@@ -231,7 +285,7 @@
     <link href="http://codingdose.info/2018/05/12/change-flask-root-folder/"/>
     <id>http://codingdose.info/2018/05/12/change-flask-root-folder/</id>
     <published>2018-05-12T19:55:57.000Z</published>
-    <updated>2020-10-07T04:23:15.858Z</updated>
+    <updated>2020-11-01T19:45:05.550Z</updated>
     
     <summary type="html">
     
@@ -247,7 +301,9 @@
     
     
     
-      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+      <category term="flask" scheme="http://codingdose.info/tags/flask/"/>
+    
+      <category term="web-development" scheme="http://codingdose.info/tags/web-development/"/>
     
   </entry>
   
@@ -256,7 +312,7 @@
     <link href="http://codingdose.info/2018/05/10/deploy-a-flask-project-to-heroku/"/>
     <id>http://codingdose.info/2018/05/10/deploy-a-flask-project-to-heroku/</id>
     <published>2018-05-11T03:26:58.000Z</published>
-    <updated>2020-10-07T04:23:15.859Z</updated>
+    <updated>2020-11-02T00:30:04.140Z</updated>
     
     <summary type="html">
     
@@ -275,120 +331,16 @@
     
       <category term="python" scheme="http://codingdose.info/tags/python/"/>
     
-  </entry>
-  
-  <entry>
-    <title>IP Challenge: Part 3-5</title>
-    <link href="http://codingdose.info/2018/05/05/ipchallenge-part-3/"/>
-    <id>http://codingdose.info/2018/05/05/ipchallenge-part-3/</id>
-    <published>2018-05-06T04:02:07.000Z</published>
-    <updated>2020-10-07T04:23:15.860Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;So far we have setup our empty class and have initialized our folders &lt;code&gt;modules&lt;/code&gt; as a python package, so far so good. This
-        
-      
-    
-    </summary>
-    
-    
-    
-      <category term="challenge" scheme="http://codingdose.info/tags/challenge/"/>
-    
-      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+      <category term="web-development" scheme="http://codingdose.info/tags/web-development/"/>
     
   </entry>
   
   <entry>
-    <title>IP Challenge: Part 2</title>
-    <link href="http://codingdose.info/2018/05/03/ipchallenge-part-2/"/>
-    <id>http://codingdose.info/2018/05/03/ipchallenge-part-2/</id>
-    <published>2018-05-03T18:00:44.000Z</published>
-    <updated>2020-10-07T04:23:15.860Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Last entry we learned how to set up our work environment, a minimal project structure, we installed the required packages and also we
-        
-      
-    
-    </summary>
-    
-    
-    
-      <category term="challenge" scheme="http://codingdose.info/tags/challenge/"/>
-    
-      <category term="python" scheme="http://codingdose.info/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IP Challenge: Part 1</title>
-    <link href="http://codingdose.info/2018/05/02/Challenge-IPInfo-io-Class/"/>
-    <id>http://codingdose.info/2018/05/02/Challenge-IPInfo-io-Class/</id>
-    <published>2018-05-03T00:18:55.000Z</published>
-    <updated>2020-10-07T04:23:15.856Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;I’m back! and I have brought the newbies out there a very simple challenge so you can learn just a &lt;em&gt;bit&lt;/em&gt; about python classes,
-        
-      
-    
-    </summary>
-    
-    
-    
-      <category term="challenge" scheme="http://codingdose.info/tags/challenge/"/>
-    
-      <category term="python" scheme="http://codingdose.info/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Announcement About the Lack of Activity</title>
-    <link href="http://codingdose.info/2018/05/01/announcement-about-lack-of-activity/"/>
-    <id>http://codingdose.info/2018/05/01/announcement-about-lack-of-activity/</id>
-    <published>2018-05-01T17:26:20.000Z</published>
-    <updated>2020-10-07T04:23:15.858Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Hello! Sorry that I have not written new posts, if you haven’t seen the news, well… Nicaragua is currently on a heavy political crisis
-        
-      
-    
-    </summary>
-    
-    
-    
-      <category term="announcement" scheme="http://codingdose.info/tags/announcement/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Case Scenario: Import Variables From a Web Site - Python</title>
+    <title>Importing Variables From a Web Site</title>
     <link href="http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/"/>
     <id>http://codingdose.info/2018/04/17/case-import-variables-from-a-web-site-Python/</id>
     <published>2018-04-17T17:03:45.000Z</published>
-    <updated>2020-10-07T04:23:15.858Z</updated>
+    <updated>2020-11-01T19:44:38.393Z</updated>
     
     <summary type="html">
     
@@ -396,7 +348,9 @@
       
         
         
-          &lt;h1 id=&quot;Before-we-start-A-short-disclaimer&quot;&gt;&lt;a href=&quot;#Before-we-start-A-short-disclaimer&quot; class=&quot;headerlink&quot; title=&quot;Before we start: A
+          &lt;!-- Start of Unsplash Embed Code - Full-width (Embed code by @BirdyOz)--&gt;
+&lt;div style=&quot;width:100%; margin: 20px auto;&quot;&gt;
+    &lt;img
         
       
     
@@ -405,6 +359,10 @@
     
     
       <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+      <category term="web-scraping" scheme="http://codingdose.info/tags/web-scraping/"/>
+    
+      <category term="crazy" scheme="http://codingdose.info/tags/crazy/"/>
     
   </entry>
   
@@ -413,7 +371,7 @@
     <link href="http://codingdose.info/2018/04/17/create-multiple-directories-with-makedirs-Python/"/>
     <id>http://codingdose.info/2018/04/17/create-multiple-directories-with-makedirs-Python/</id>
     <published>2018-04-17T14:43:51.000Z</published>
-    <updated>2020-10-07T04:23:15.859Z</updated>
+    <updated>2020-11-02T00:29:27.149Z</updated>
     
     <summary type="html">
     
@@ -431,6 +389,8 @@
     
       <category term="python" scheme="http://codingdose.info/tags/python/"/>
     
+      <category term="file-management" scheme="http://codingdose.info/tags/file-management/"/>
+    
   </entry>
   
   <entry>
@@ -438,7 +398,7 @@
     <link href="http://codingdose.info/2018/04/14/Deques-in-Python/"/>
     <id>http://codingdose.info/2018/04/14/Deques-in-Python/</id>
     <published>2018-04-14T21:14:58.000Z</published>
-    <updated>2020-10-07T04:23:15.856Z</updated>
+    <updated>2020-11-02T00:30:19.366Z</updated>
     
     <summary type="html">
     
@@ -463,7 +423,7 @@
     <link href="http://codingdose.info/2018/04/07/create-a-basic-api-with-flask/"/>
     <id>http://codingdose.info/2018/04/07/create-a-basic-api-with-flask/</id>
     <published>2018-04-08T04:20:50.000Z</published>
-    <updated>2020-10-07T04:23:15.858Z</updated>
+    <updated>2020-11-02T00:29:38.498Z</updated>
     
     <summary type="html">
     
@@ -482,6 +442,8 @@
     
       <category term="python" scheme="http://codingdose.info/tags/python/"/>
     
+      <category term="web-development" scheme="http://codingdose.info/tags/web-development/"/>
+    
   </entry>
   
   <entry>
@@ -489,7 +451,7 @@
     <link href="http://codingdose.info/2018/04/07/Create-and-object-with-namedtuple/"/>
     <id>http://codingdose.info/2018/04/07/Create-and-object-with-namedtuple/</id>
     <published>2018-04-07T19:21:03.000Z</published>
-    <updated>2020-10-07T04:23:15.856Z</updated>
+    <updated>2020-11-02T00:29:52.939Z</updated>
     
     <summary type="html">
     
@@ -506,6 +468,8 @@
     
     
       <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+      <category term="classes" scheme="http://codingdose.info/tags/classes/"/>
     
   </entry>
   
@@ -533,6 +497,86 @@
       <category term="python" scheme="http://codingdose.info/tags/python/"/>
     
       <category term="snippet" scheme="http://codingdose.info/tags/snippet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unit Testing With Python: An Introduction</title>
+    <link href="http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/"/>
+    <id>http://codingdose.info/2018/03/27/unit-testing-with-python-an-introduction/</id>
+    <published>2018-03-27T21:25:01.000Z</published>
+    <updated>2020-10-07T04:23:15.861Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;I encourage developers to see the value of unit testing; I urge them to get into the habit of writing structured tests
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Suppress Print Output in Python</title>
+    <link href="http://codingdose.info/2018/03/22/supress-print-output-in-python/"/>
+    <id>http://codingdose.info/2018/03/22/supress-print-output-in-python/</id>
+    <published>2018-03-23T02:23:22.000Z</published>
+    <updated>2020-10-07T04:23:15.861Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Why&quot;&gt;&lt;a href=&quot;#Why&quot; class=&quot;headerlink&quot; title=&quot;Why?&quot;&gt;&lt;/a&gt;Why?&lt;/h2&gt;&lt;p&gt;Sometimes you don’t want output &lt;em&gt;at all&lt;/em&gt; to your screen,
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Classes and Special Methods in Python</title>
+    <link href="http://codingdose.info/2018/03/18/class-inheritance-with-python/"/>
+    <id>http://codingdose.info/2018/03/18/class-inheritance-with-python/</id>
+    <published>2018-03-18T17:24:18.000Z</published>
+    <updated>2020-11-01T19:45:20.449Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;!-- Start of Unsplash Embed Code - Full-width (Embed code by @BirdyOz)--&gt;
+&lt;div style=&quot;width:100%; margin: 20px auto;&quot;&gt;
+    &lt;img
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://codingdose.info/tags/python/"/>
+    
+      <category term="classes" scheme="http://codingdose.info/tags/classes/"/>
     
   </entry>
   
